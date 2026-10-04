@@ -4,15 +4,14 @@ build-backend = "hatchling.build"
 
 [project]
 name = "ekfs-dfg-biomed-network"
-version = "2.0.0"
+version = "0.1.0"
 description = "Reproducible multi-layer network analysis and career funding trajectories for EKFS and DFG biomedical research cohorts."
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
 requires-python = ">=3.10"
 authors = [
-    { name = "Abhinav Mishra", email = "mishraabhinav36@gmail.com" },
-    { name = "Scientific Data Engineering & Network Science Team" }
+    { name = "Abhinav Mishra", email = "mishraabhinav36@gmail.com" }
 ]
 keywords = [
     "network-science",

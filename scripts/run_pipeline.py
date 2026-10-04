@@ -2,21 +2,22 @@
 """
 EKFS & DFG Biomedical Research Funding Network Analysis Platform
 Production Pipeline Execution Engine
-Author: Senior Research-Software Engineer & Network Scientist
+Author: Abhinav Mishra, MSc
+Date: 2026-10-04
 """
 
-import os
-import re
-import csv
 import json
 import math
+import os
+import re
 import shutil
-import yaml
+
+import matplotlib
 import numpy as np
 import pandas as pd
-import scipy.sparse as sp
 import scipy.sparse.linalg as spla
-import matplotlib
+import yaml
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -42,13 +43,16 @@ print("Loaded configuration successfully.")
 # 2. Ingest Authoritative Datasets
 # ------------------------------------------------------------------------------
 ekfs_raw = pd.read_csv("data/raw/ekfs/ekfs_projects_snapshot.csv")
-dfg_raw  = pd.read_csv("data/raw/dfg/dfg_gepris_snapshot.csv")
+dfg_raw = pd.read_csv("data/raw/dfg/dfg_gepris_snapshot.csv")
 oa_authors_raw = pd.read_csv("data/raw/openalex/openalex_authors_snapshot.csv")
 oa_works_raw = pd.read_csv("data/raw/openalex/openalex_works_snapshot.csv")
 authorships_raw = pd.read_csv("data/raw/openalex/openalex_authorships_snapshot.csv")
 overrides_raw = pd.read_csv("data/processed/researcher_identity_overrides.csv")
 
-print(f"Ingested {len(ekfs_raw)} EKFS projects, {len(dfg_raw)} DFG projects, {len(oa_works_raw)} publications.")
+print(
+    f"Ingested {len(ekfs_raw)} EKFS projects, {len(dfg_raw)} DFG projects, {len(oa_works_raw)} publications."
+)
+
 
 # ------------------------------------------------------------------------------
 # 3. Disambiguation & Identity Resolution Engine
@@ -76,6 +80,7 @@ def normalize_name(raw_name):
     last = " ".join(parts[1:])
     return {"clean": f"{first} {last}", "last": last, "first": first}
 
+
 # Map all raw project investigator names to canonical identities
 identity_records = []
 unresolved_records = []
@@ -86,24 +91,26 @@ for idx, row in ekfs_raw.iterrows():
     norm = normalize_name(raw_name)
     inst = row["institution"]
     pid = row["project_id"]
-    
+
     # Check overrides first
     override = overrides_raw[overrides_raw["raw_name"] == raw_name]
     if len(override) > 0:
         ov = override.iloc[0]
-        identity_records.append({
-            "canonical_id": ov["canonical_id"],
-            "canonical_display_name": ov["canonical_display_name"],
-            "source_name": raw_name,
-            "funder": "EKFS",
-            "project_id": pid,
-            "institution": inst,
-            "openalex_id": ov["openalex_id"],
-            "orcid": ov["orcid"],
-            "confidence_score": 1.0,
-            "resolution_method": "manual_override",
-            "needs_manual_review": False
-        })
+        identity_records.append(
+            {
+                "canonical_id": ov["canonical_id"],
+                "canonical_display_name": ov["canonical_display_name"],
+                "source_name": raw_name,
+                "funder": "EKFS",
+                "project_id": pid,
+                "institution": inst,
+                "openalex_id": ov["openalex_id"],
+                "orcid": ov["orcid"],
+                "confidence_score": 1.0,
+                "resolution_method": "manual_override",
+                "needs_manual_review": False,
+            }
+        )
     else:
         # Multi-signal matching against OpenAlex authors snapshot
         best_match = None
@@ -117,35 +124,39 @@ for idx, row in ekfs_raw.iterrows():
             if score > best_score:
                 best_score = score
                 best_match = oa
-                
+
         if best_match is not None and best_score >= 0.65:
-            identity_records.append({
-                "canonical_id": f"RES_{best_match['openalex_id']}",
-                "canonical_display_name": best_match["display_name"],
-                "source_name": raw_name,
-                "funder": "EKFS",
-                "project_id": pid,
-                "institution": inst,
-                "openalex_id": best_match["openalex_id"],
-                "orcid": best_match["orcid"],
-                "confidence_score": round(best_score, 3),
-                "resolution_method": "high_confidence_multi_signal",
-                "needs_manual_review": False
-            })
+            identity_records.append(
+                {
+                    "canonical_id": f"RES_{best_match['openalex_id']}",
+                    "canonical_display_name": best_match["display_name"],
+                    "source_name": raw_name,
+                    "funder": "EKFS",
+                    "project_id": pid,
+                    "institution": inst,
+                    "openalex_id": best_match["openalex_id"],
+                    "orcid": best_match["orcid"],
+                    "confidence_score": round(best_score, 3),
+                    "resolution_method": "high_confidence_multi_signal",
+                    "needs_manual_review": False,
+                }
+            )
         else:
-            identity_records.append({
-                "canonical_id": f"RES_UNRES_{abs(hash(raw_name)) % 100000}",
-                "canonical_display_name": norm["clean"],
-                "source_name": raw_name,
-                "funder": "EKFS",
-                "project_id": pid,
-                "institution": inst,
-                "openalex_id": np.nan,
-                "orcid": np.nan,
-                "confidence_score": round(best_score, 3),
-                "resolution_method": "unresolved_low_confidence",
-                "needs_manual_review": True
-            })
+            identity_records.append(
+                {
+                    "canonical_id": f"RES_UNRES_{abs(hash(raw_name)) % 100000}",
+                    "canonical_display_name": norm["clean"],
+                    "source_name": raw_name,
+                    "funder": "EKFS",
+                    "project_id": pid,
+                    "institution": inst,
+                    "openalex_id": np.nan,
+                    "orcid": np.nan,
+                    "confidence_score": round(best_score, 3),
+                    "resolution_method": "unresolved_low_confidence",
+                    "needs_manual_review": True,
+                }
+            )
 
 # Process DFG investigators
 for idx, row in dfg_raw.iterrows():
@@ -153,23 +164,25 @@ for idx, row in dfg_raw.iterrows():
     norm = normalize_name(raw_name)
     inst = row["participating_institutions"]
     pid = row["project_id"]
-    
+
     override = overrides_raw[overrides_raw["raw_name"] == raw_name]
     if len(override) > 0:
         ov = override.iloc[0]
-        identity_records.append({
-            "canonical_id": ov["canonical_id"],
-            "canonical_display_name": ov["canonical_display_name"],
-            "source_name": raw_name,
-            "funder": "DFG",
-            "project_id": pid,
-            "institution": inst,
-            "openalex_id": ov["openalex_id"],
-            "orcid": ov["orcid"],
-            "confidence_score": 1.0,
-            "resolution_method": "manual_override",
-            "needs_manual_review": False
-        })
+        identity_records.append(
+            {
+                "canonical_id": ov["canonical_id"],
+                "canonical_display_name": ov["canonical_display_name"],
+                "source_name": raw_name,
+                "funder": "DFG",
+                "project_id": pid,
+                "institution": inst,
+                "openalex_id": ov["openalex_id"],
+                "orcid": ov["orcid"],
+                "confidence_score": 1.0,
+                "resolution_method": "manual_override",
+                "needs_manual_review": False,
+            }
+        )
     else:
         best_match = None
         best_score = 0.0
@@ -181,35 +194,39 @@ for idx, row in dfg_raw.iterrows():
             if score > best_score:
                 best_score = score
                 best_match = oa
-                
+
         if best_match is not None and best_score >= 0.65:
-            identity_records.append({
-                "canonical_id": f"RES_{best_match['openalex_id']}",
-                "canonical_display_name": best_match["display_name"],
-                "source_name": raw_name,
-                "funder": "DFG",
-                "project_id": pid,
-                "institution": inst,
-                "openalex_id": best_match["openalex_id"],
-                "orcid": best_match["orcid"],
-                "confidence_score": round(best_score, 3),
-                "resolution_method": "high_confidence_multi_signal",
-                "needs_manual_review": False
-            })
+            identity_records.append(
+                {
+                    "canonical_id": f"RES_{best_match['openalex_id']}",
+                    "canonical_display_name": best_match["display_name"],
+                    "source_name": raw_name,
+                    "funder": "DFG",
+                    "project_id": pid,
+                    "institution": inst,
+                    "openalex_id": best_match["openalex_id"],
+                    "orcid": best_match["orcid"],
+                    "confidence_score": round(best_score, 3),
+                    "resolution_method": "high_confidence_multi_signal",
+                    "needs_manual_review": False,
+                }
+            )
         else:
-            identity_records.append({
-                "canonical_id": f"RES_UNRES_{abs(hash(raw_name)) % 100000}",
-                "canonical_display_name": norm["clean"],
-                "source_name": raw_name,
-                "funder": "DFG",
-                "project_id": pid,
-                "institution": inst,
-                "openalex_id": np.nan,
-                "orcid": np.nan,
-                "confidence_score": round(best_score, 3),
-                "resolution_method": "unresolved_low_confidence",
-                "needs_manual_review": True
-            })
+            identity_records.append(
+                {
+                    "canonical_id": f"RES_UNRES_{abs(hash(raw_name)) % 100000}",
+                    "canonical_display_name": norm["clean"],
+                    "source_name": raw_name,
+                    "funder": "DFG",
+                    "project_id": pid,
+                    "institution": inst,
+                    "openalex_id": np.nan,
+                    "orcid": np.nan,
+                    "confidence_score": round(best_score, 3),
+                    "resolution_method": "unresolved_low_confidence",
+                    "needs_manual_review": True,
+                }
+            )
 
 identities_df = pd.DataFrame(identity_records)
 identities_df.to_csv("outputs/tables/identity_resolution_report.csv", index=False)
@@ -220,6 +237,8 @@ print("Saved identity resolution report.")
 # ------------------------------------------------------------------------------
 # Determine funder membership for each unique researcher
 funder_summary = identities_df.groupby("canonical_id")["funder"].unique().reset_index()
+
+
 def classify_membership(funders_list):
     has_ekfs = "EKFS" in funders_list
     has_dfg = "DFG" in funders_list
@@ -232,66 +251,99 @@ def classify_membership(funders_list):
     else:
         return "neither"
 
+
 funder_summary["funder_membership"] = funder_summary["funder"].apply(classify_membership)
 
 # Deduplicate researchers table
 researchers_df = identities_df.drop_duplicates(subset=["canonical_id"]).copy()
-researchers_df = researchers_df.merge(funder_summary[["canonical_id", "funder_membership"]], on="canonical_id")
-researchers_df = researchers_df.rename(columns={
-    "canonical_id": "researcher_id",
-    "canonical_display_name": "display_name",
-    "confidence_score": "identity_confidence"
-})
+researchers_df = researchers_df.merge(
+    funder_summary[["canonical_id", "funder_membership"]], on="canonical_id"
+)
+researchers_df = researchers_df.rename(
+    columns={
+        "canonical_id": "researcher_id",
+        "canonical_display_name": "display_name",
+        "confidence_score": "identity_confidence",
+    }
+)
 researchers_df["country"] = "Germany"
-researchers_final = researchers_df[[
-    "researcher_id", "display_name", "openalex_id", "orcid",
-    "institution", "country", "funder_membership", "identity_confidence", "needs_manual_review"
-]]
+researchers_final = researchers_df[
+    [
+        "researcher_id",
+        "display_name",
+        "openalex_id",
+        "orcid",
+        "institution",
+        "country",
+        "funder_membership",
+        "identity_confidence",
+        "needs_manual_review",
+    ]
+]
 researchers_final.to_csv("outputs/tables/researchers.csv", index=False)
 
 # Normalize Projects Table
-ekfs_p = ekfs_raw.rename(columns={
-    "funding_line": "programme_or_funding_line",
-    "topic": "topic_or_subject",
-    "year": "funding_year"
-})
+ekfs_p = ekfs_raw.rename(
+    columns={
+        "funding_line": "programme_or_funding_line",
+        "topic": "topic_or_subject",
+        "year": "funding_year",
+    }
+)
 ekfs_p["funder"] = "EKFS"
 
-dfg_p = dfg_raw.rename(columns={
-    "programme": "programme_or_funding_line",
-    "subject_classification": "topic_or_subject"
-})
+dfg_p = dfg_raw.rename(
+    columns={"programme": "programme_or_funding_line", "subject_classification": "topic_or_subject"}
+)
 dfg_p["funder"] = "DFG"
 dfg_p["status"] = "active"
 
-cols_proj = ["project_id", "funder", "title", "programme_or_funding_line", "topic_or_subject",
-             "start_date", "end_date", "status", "funding_year", "source_url"]
+cols_proj = [
+    "project_id",
+    "funder",
+    "title",
+    "programme_or_funding_line",
+    "topic_or_subject",
+    "start_date",
+    "end_date",
+    "status",
+    "funding_year",
+    "source_url",
+]
 
-projects_df = pd.concat([ekfs_p[cols_proj], dfg_p[cols_proj]], ignore_index=True).drop_duplicates(subset=["project_id"])
+projects_df = pd.concat([ekfs_p[cols_proj], dfg_p[cols_proj]], ignore_index=True).drop_duplicates(
+    subset=["project_id"]
+)
 projects_df.to_csv("outputs/tables/projects.csv", index=False)
 
 # Normalize Project-Researchers Link Table
-proj_res = identities_df[["project_id", "canonical_id"]].rename(columns={"canonical_id": "researcher_id"}).drop_duplicates()
+proj_res = (
+    identities_df[["project_id", "canonical_id"]]
+    .rename(columns={"canonical_id": "researcher_id"})
+    .drop_duplicates()
+)
 proj_res["role"] = "Principal Investigator / Lead"
 proj_res.to_csv("outputs/tables/project_researchers.csv", index=False)
 
 # Normalize Publications Table
-pubs_final = oa_works_raw[["work_id", "doi", "title", "publication_year", "cited_by_count", "type", "primary_topic"]].drop_duplicates(subset=["work_id"])
+pubs_final = oa_works_raw[
+    ["work_id", "doi", "title", "publication_year", "cited_by_count", "type", "primary_topic"]
+].drop_duplicates(subset=["work_id"])
 pubs_final.to_csv("outputs/tables/publications.csv", index=False)
 
 # Publication Authors Table
-authorships_final = authorships_raw[["work_id", "researcher_id", "authorship_position"]].drop_duplicates()
+authorships_final = authorships_raw[
+    ["work_id", "researcher_id", "authorship_position"]
+].drop_duplicates()
 authorships_final.to_csv("outputs/tables/publication_authors.csv", index=False)
 
 # Normalize Institutions Table
 inst_names = sorted(list(researchers_final["institution"].dropna().unique()))
 inst_records = []
 for i, inst_name in enumerate(inst_names):
-    inst_records.append({
-        "institution_id": f"INST_{i+1:03d}",
-        "canonical_name": inst_name,
-        "country": "Germany"
-    })
+    inst_records.append(
+        {"institution_id": f"INST_{i + 1:03d}", "canonical_name": inst_name, "country": "Germany"}
+    )
 inst_df = pd.DataFrame(inst_records)
 inst_df.to_csv("outputs/tables/institutions.csv", index=False)
 
@@ -318,10 +370,14 @@ grant_pairs = grant_pairs[grant_pairs["researcher_id_x"] < grant_pairs["research
 grant_pairs = grant_pairs.rename(columns={"researcher_id_x": "from", "researcher_id_y": "to"})
 grant_pairs = grant_pairs.merge(projects_df[["project_id", "funder"]], on="project_id")
 if len(grant_pairs) > 0:
-    funding_edges = grant_pairs.groupby(["from", "to"]).agg(
-        shared_grant_count=("project_id", "count"),
-        shared_funders=("funder", lambda s: "; ".join(sorted(list(set(s)))))
-    ).reset_index()
+    funding_edges = (
+        grant_pairs.groupby(["from", "to"])
+        .agg(
+            shared_grant_count=("project_id", "count"),
+            shared_funders=("funder", lambda s: "; ".join(sorted(list(set(s))))),
+        )
+        .reset_index()
+    )
 else:
     funding_edges = pd.DataFrame(columns=["from", "to", "shared_grant_count", "shared_funders"])
 funding_edges.to_csv("outputs/tables/funding_edges.csv", index=False)
@@ -337,16 +393,33 @@ for _, row in coauthorship_edges.iterrows():
         inst_edges_list.append({"from": a, "to": b, "weight": row["weight"]})
 
 if inst_edges_list:
-    inst_edges_df = pd.DataFrame(inst_edges_list).groupby(["from", "to"]).agg(
-        coauthored_publication_weight=("weight", "sum"),
-        cross_institution_researcher_pairs=("weight", "count")
-    ).reset_index()
-    inst_edges_df["total_institutional_tie_strength"] = inst_edges_df["coauthored_publication_weight"]
+    inst_edges_df = (
+        pd.DataFrame(inst_edges_list)
+        .groupby(["from", "to"])
+        .agg(
+            coauthored_publication_weight=("weight", "sum"),
+            cross_institution_researcher_pairs=("weight", "count"),
+        )
+        .reset_index()
+    )
+    inst_edges_df["total_institutional_tie_strength"] = inst_edges_df[
+        "coauthored_publication_weight"
+    ]
 else:
-    inst_edges_df = pd.DataFrame(columns=["from", "to", "coauthored_publication_weight", "cross_institution_researcher_pairs", "total_institutional_tie_strength"])
+    inst_edges_df = pd.DataFrame(
+        columns=[
+            "from",
+            "to",
+            "coauthored_publication_weight",
+            "cross_institution_researcher_pairs",
+            "total_institutional_tie_strength",
+        ]
+    )
 
 inst_edges_df.to_csv("outputs/tables/institution_edges.csv", index=False)
-print(f"Constructed coauthorship edges: {len(coauthorship_edges)}, institution edges: {len(inst_edges_df)}")
+print(
+    f"Constructed coauthorship edges: {len(coauthorship_edges)}, institution edges: {len(inst_edges_df)}"
+)
 
 # ------------------------------------------------------------------------------
 # 6. Centrality Metrics & Louvain Community Detection
@@ -369,6 +442,7 @@ deg = np.sum(adj > 0, axis=1)
 # Weighted degree / strength: cumulative weight
 strn = np.sum(adj, axis=1)
 
+
 # Betweenness centrality (Brandes algorithm on weighted graph with inverse distance)
 def brandes_betweenness(adj_mat):
     n = adj_mat.shape[0]
@@ -379,7 +453,7 @@ def brandes_betweenness(adj_mat):
         for j in range(n):
             if adj_mat[i, j] > 0:
                 dist_mat[i, j] = 1.0 / adj_mat[i, j]
-                
+
     for s in range(n):
         S = []
         P = [[] for _ in range(n)]
@@ -388,7 +462,7 @@ def brandes_betweenness(adj_mat):
         d = np.full(n, np.inf)
         d[s] = 0
         Q = list(range(n))
-        
+
         while Q:
             # Pop minimum d in Q
             u = min(Q, key=lambda x: d[x])
@@ -417,6 +491,7 @@ def brandes_betweenness(adj_mat):
     # Undirected normalization
     scale = 1.0 / ((n - 1) * (n - 2)) if n > 2 else 1.0
     return (CB / 2.0) * scale
+
 
 betw = brandes_betweenness(adj)
 
@@ -496,7 +571,7 @@ if m > 0:
             best_comm = communities[i]
             best_gain = 0.0
             cur_comm = communities[i]
-            
+
             # evaluate moving i to community of each neighbor
             neighbor_comms = set([communities[j] for j in range(N) if adj[i, j] > 0])
             for target_comm in neighbor_comms:
@@ -504,7 +579,9 @@ if m > 0:
                     continue
                 # Delta Q calculation
                 k_i_in = sum([adj[i, j] for j in range(N) if communities[j] == target_comm])
-                sigma_tot = sum([degrees[j] for j in range(N) if communities[j] == target_comm and j != i])
+                sigma_tot = sum(
+                    [degrees[j] for j in range(N) if communities[j] == target_comm and j != i]
+                )
                 gain = (k_i_in / m) - (degrees[i] * sigma_tot) / (2.0 * m * m)
                 if gain > best_gain:
                     best_gain = gain
@@ -515,7 +592,7 @@ if m > 0:
 
 # Remap communities to 1..K
 unique_comms = sorted(list(set(communities)))
-comm_remap = {c: i+1 for i, c in enumerate(unique_comms)}
+comm_remap = {c: i + 1 for i, c in enumerate(unique_comms)}
 comm_labels = [comm_remap[c] for c in communities]
 
 # Collaboration Profile Classification
@@ -534,37 +611,48 @@ for i in range(N):
 
 res_name_map = dict(zip(researchers_final["researcher_id"], researchers_final["display_name"]))
 res_inst_map = dict(zip(researchers_final["researcher_id"], researchers_final["institution"]))
-res_funder_map = dict(zip(researchers_final["researcher_id"], researchers_final["funder_membership"]))
+res_funder_map = dict(
+    zip(researchers_final["researcher_id"], researchers_final["funder_membership"])
+)
 
 metrics_records = []
 for i in range(N):
-    metrics_records.append({
-        "researcher_id": nodes[i],
-        "display_name": res_name_map.get(nodes[i], ""),
-        "institution": res_inst_map.get(nodes[i], ""),
-        "funder_membership": res_funder_map.get(nodes[i], ""),
-        "degree": int(deg[i]),
-        "weighted_degree": round(float(strn[i]), 2),
-        "betweenness": round(float(betw[i]), 5),
-        "eigenvector_centrality": round(float(ev[i]), 5),
-        "closeness": round(float(close[i]), 5),
-        "component_id": int(comp_id[i]),
-        "community": int(comm_labels[i]),
-        "strongest_collaborator_id": strongest_collab[i],
-        "strongest_collaborator_name": res_name_map.get(strongest_collab[i], "") if strongest_collab[i] else "",
-        "strongest_tie_weight": int(strongest_w[i]),
-        "collaboration_profile": profiles[i]
-    })
+    metrics_records.append(
+        {
+            "researcher_id": nodes[i],
+            "display_name": res_name_map.get(nodes[i], ""),
+            "institution": res_inst_map.get(nodes[i], ""),
+            "funder_membership": res_funder_map.get(nodes[i], ""),
+            "degree": int(deg[i]),
+            "weighted_degree": round(float(strn[i]), 2),
+            "betweenness": round(float(betw[i]), 5),
+            "eigenvector_centrality": round(float(ev[i]), 5),
+            "closeness": round(float(close[i]), 5),
+            "component_id": int(comp_id[i]),
+            "community": int(comm_labels[i]),
+            "strongest_collaborator_id": strongest_collab[i],
+            "strongest_collaborator_name": res_name_map.get(strongest_collab[i], "")
+            if strongest_collab[i]
+            else "",
+            "strongest_tie_weight": int(strongest_w[i]),
+            "collaboration_profile": profiles[i],
+        }
+    )
 
 researcher_metrics = pd.DataFrame(metrics_records)
 researcher_metrics.to_csv("outputs/tables/researcher_metrics.csv", index=False)
-researcher_metrics.to_csv("outputs/tables/netSummary.csv", index=False) # Backwards compatible
+researcher_metrics.to_csv("outputs/tables/netSummary.csv", index=False)  # Backwards compatible
 print(f"Metrics and communities calculated for {N} researchers.")
 
 # Community Summary
 comm_summary_list = []
 # Attach topic from projects
-res_topic_dict = proj_res.merge(projects_df[["project_id", "topic_or_subject"]], on="project_id").groupby("researcher_id")["topic_or_subject"].agg(lambda s: s.mode()[0] if len(s) > 0 else "").to_dict()
+res_topic_dict = (
+    proj_res.merge(projects_df[["project_id", "topic_or_subject"]], on="project_id")
+    .groupby("researcher_id")["topic_or_subject"]
+    .agg(lambda s: s.mode()[0] if len(s) > 0 else "")
+    .to_dict()
+)
 
 for c_id in sorted(list(set(comm_labels))):
     sub = researcher_metrics[researcher_metrics["community"] == c_id]
@@ -572,25 +660,31 @@ for c_id in sorted(list(set(comm_labels))):
     ekfs_c = sum(sub["funder_membership"] == "EKFS only")
     dfg_c = sum(sub["funder_membership"] == "DFG only")
     both_c = sum(sub["funder_membership"] == "both")
-    dom_inst = sub["institution"].value_counts().index[0] if len(sub["institution"].dropna()) > 0 else ""
-    c_topics = [res_topic_dict.get(r_id, "") for r_id in sub["researcher_id"] if res_topic_dict.get(r_id)]
+    dom_inst = (
+        sub["institution"].value_counts().index[0] if len(sub["institution"].dropna()) > 0 else ""
+    )
+    c_topics = [
+        res_topic_dict.get(r_id, "") for r_id in sub["researcher_id"] if res_topic_dict.get(r_id)
+    ]
     dom_topic = pd.Series(c_topics).value_counts().index[0] if len(c_topics) > 0 else "Biomedicine"
     top_deg_res = sub.sort_values(by="weighted_degree", ascending=False).iloc[0]["display_name"]
     top_betw_res = sub.sort_values(by="betweenness", ascending=False).iloc[0]["display_name"]
-    
-    comm_summary_list.append({
-        "community": c_id,
-        "member_count": m_count,
-        "ekfs_only_count": ekfs_c,
-        "dfg_only_count": dfg_c,
-        "both_funded_count": both_c,
-        "dominant_institution": dom_inst,
-        "dominant_topic": dom_topic,
-        "mean_weighted_degree": round(sub["weighted_degree"].mean(), 2),
-        "max_betweenness": round(sub["betweenness"].max(), 5),
-        "highest_degree_researcher": top_deg_res,
-        "highest_betweenness_bridge": top_betw_res
-    })
+
+    comm_summary_list.append(
+        {
+            "community": c_id,
+            "member_count": m_count,
+            "ekfs_only_count": ekfs_c,
+            "dfg_only_count": dfg_c,
+            "both_funded_count": both_c,
+            "dominant_institution": dom_inst,
+            "dominant_topic": dom_topic,
+            "mean_weighted_degree": round(sub["weighted_degree"].mean(), 2),
+            "max_betweenness": round(sub["betweenness"].max(), 5),
+            "highest_degree_researcher": top_deg_res,
+            "highest_betweenness_bridge": top_betw_res,
+        }
+    )
 
 comm_summary_df = pd.DataFrame(comm_summary_list)
 comm_summary_df.to_csv("outputs/tables/community_summary.csv", index=False)
@@ -598,21 +692,25 @@ comm_summary_df.to_csv("outputs/tables/community_summary.csv", index=False)
 # Top 3 Researchers per Community
 top3_list = []
 for c_id in sorted(list(set(comm_labels))):
-    sub = researcher_metrics[researcher_metrics["community"] == c_id].sort_values(
-        by=["weighted_degree", "betweenness"], ascending=False
-    ).head(3)
+    sub = (
+        researcher_metrics[researcher_metrics["community"] == c_id]
+        .sort_values(by=["weighted_degree", "betweenness"], ascending=False)
+        .head(3)
+    )
     for _, r in sub.iterrows():
-        top3_list.append({
-            "community": c_id,
-            "researcher": r["display_name"],
-            "researcher_id": r["researcher_id"],
-            "funder_membership": r["funder_membership"],
-            "institution": r["institution"],
-            "degree": r["degree"],
-            "weighted_degree": r["weighted_degree"],
-            "betweenness": r["betweenness"],
-            "strongest_collaborator": r["strongest_collaborator_name"]
-        })
+        top3_list.append(
+            {
+                "community": c_id,
+                "researcher": r["display_name"],
+                "researcher_id": r["researcher_id"],
+                "funder_membership": r["funder_membership"],
+                "institution": r["institution"],
+                "degree": r["degree"],
+                "weighted_degree": r["weighted_degree"],
+                "betweenness": r["betweenness"],
+                "strongest_collaborator": r["strongest_collaborator_name"],
+            }
+        )
 top3_df = pd.DataFrame(top3_list)
 top3_df.to_csv("outputs/tables/top3_per_community.csv", index=False)
 print("Community summaries and top 3 tables generated.")
@@ -621,7 +719,7 @@ print("Community summaries and top 3 tables generated.")
 # 7. Funding Overlap & Trajectory Analysis
 # ------------------------------------------------------------------------------
 ekfs_investigators = set(identities_df[identities_df["funder"] == "EKFS"]["canonical_id"])
-dfg_investigators  = set(identities_df[identities_df["funder"] == "DFG"]["canonical_id"])
+dfg_investigators = set(identities_df[identities_df["funder"] == "DFG"]["canonical_id"])
 both_investigators = ekfs_investigators.intersection(dfg_investigators)
 total_investigators = ekfs_investigators.union(dfg_investigators)
 
@@ -639,7 +737,7 @@ overlap_metrics = [
     {"metric": "DFG-Only Investigators", "value": str(n_dfg - n_both)},
     {"metric": "Jaccard Overlap Index", "value": str(round(n_both / n_total, 4))},
     {"metric": "EKFS Cohort Overlap Share", "value": f"{round((n_both / n_ekfs) * 100, 2)}%"},
-    {"metric": "DFG Cohort Overlap Share", "value": f"{round((n_both / n_dfg) * 100, 2)}%"}
+    {"metric": "DFG Cohort Overlap Share", "value": f"{round((n_both / n_dfg) * 100, 2)}%"},
 ]
 overlap_df = pd.DataFrame(overlap_metrics)
 overlap_df.to_csv("outputs/tables/funding_overlap.csv", index=False)
@@ -652,21 +750,21 @@ for r_id in nodes:
     sub_g = res_grants_all[res_grants_all["researcher_id"] == r_id]
     r_name = res_name_map.get(r_id, "")
     inst = res_inst_map.get(r_id, "")
-    
+
     has_ekfs = "EKFS" in sub_g["funder"].values
     has_dfg = "DFG" in sub_g["funder"].values
-    
+
     ekfs_yrs = sub_g[sub_g["funder"] == "EKFS"]["funding_year"].dropna().tolist()
-    dfg_yrs  = sub_g[sub_g["funder"] == "DFG"]["funding_year"].dropna().tolist()
-    
+    dfg_yrs = sub_g[sub_g["funder"] == "DFG"]["funding_year"].dropna().tolist()
+
     first_e = min(ekfs_yrs) if ekfs_yrs else None
-    last_e  = max(ekfs_yrs) if ekfs_yrs else None
+    last_e = max(ekfs_yrs) if ekfs_yrs else None
     first_d = min(dfg_yrs) if dfg_yrs else None
-    last_d  = max(dfg_yrs) if dfg_yrs else None
-    
+    last_d = max(dfg_yrs) if dfg_yrs else None
+
     dfg_progs = "; ".join(sub_g[sub_g["funder"] == "DFG"]["programme_or_funding_line"].unique())
     ekfs_lines = "; ".join(sub_g[sub_g["funder"] == "EKFS"]["programme_or_funding_line"].unique())
-    
+
     if has_ekfs and not has_dfg:
         traj_type = "EKFS_Only"
         interval = None
@@ -689,33 +787,39 @@ for r_id in nodes:
         else:
             traj_type = "Overlapping_Mixed"
             interval = abs(first_e - first_d)
-            
-    prior_dfg_count = sum([1 for y in dfg_yrs if first_e and y < first_e]) if has_ekfs else len(dfg_yrs)
-    
-    if prior_dfg_count >= 1 and ("Sachbeihilfe" in dfg_progs or "SFB" in dfg_progs or "Heisenberg" in dfg_progs):
+
+    prior_dfg_count = (
+        sum([1 for y in dfg_yrs if first_e and y < first_e]) if has_ekfs else len(dfg_yrs)
+    )
+
+    if prior_dfg_count >= 1 and (
+        "Sachbeihilfe" in dfg_progs or "SFB" in dfg_progs or "Heisenberg" in dfg_progs
+    ):
         scr_note = "Observed independent prior DFG project (Sachbeihilfe/major line); relevant for lines requiring prior peer-reviewed awards or junior limits."
     elif prior_dfg_count == 0 and has_ekfs:
         scr_note = "No observed prior DFG funding in records; typical profile for junior clinician scientist lines (e.g. Memorial Stipendien)."
     else:
         scr_note = "Informational screening observation only."
-        
-    trajectories_records.append({
-        "researcher_id": r_id,
-        "researcher": r_name,
-        "institution": inst,
-        "trajectory_type": traj_type,
-        "interval_years": interval,
-        "has_ekfs": has_ekfs,
-        "has_dfg": has_dfg,
-        "first_ekfs_year": first_e,
-        "first_dfg_year": first_d,
-        "ekfs_grant_count": len(ekfs_yrs),
-        "dfg_grant_count": len(dfg_yrs),
-        "observed_prior_dfg_grants": prior_dfg_count,
-        "prior_dfg_programmes": dfg_progs,
-        "screening_note": scr_note,
-        "data_completeness_flag": "Observational records bounded by available GEPRIS and EKFS database snapshots. Not an official eligibility ruling."
-    })
+
+    trajectories_records.append(
+        {
+            "researcher_id": r_id,
+            "researcher": r_name,
+            "institution": inst,
+            "trajectory_type": traj_type,
+            "interval_years": interval,
+            "has_ekfs": has_ekfs,
+            "has_dfg": has_dfg,
+            "first_ekfs_year": first_e,
+            "first_dfg_year": first_d,
+            "ekfs_grant_count": len(ekfs_yrs),
+            "dfg_grant_count": len(dfg_yrs),
+            "observed_prior_dfg_grants": prior_dfg_count,
+            "prior_dfg_programmes": dfg_progs,
+            "screening_note": scr_note,
+            "data_completeness_flag": "Observational records bounded by available GEPRIS and EKFS database snapshots. Not an official eligibility ruling.",
+        }
+    )
 
 trajectories_df = pd.DataFrame(trajectories_records)
 trajectories_df.to_csv("outputs/tables/funding_trajectories.csv", index=False)
@@ -725,28 +829,32 @@ print("Funding trajectories derived.")
 # 8. Topic Analysis & Temporal Snapshots
 # ------------------------------------------------------------------------------
 # Topic Enrichment Table
-funder_proj_topics = projects_df.groupby(["funder", "topic_or_subject"]).size().unstack(fill_value=0)
+funder_proj_topics = (
+    projects_df.groupby(["funder", "topic_or_subject"]).size().unstack(fill_value=0)
+)
 topic_enrich_list = []
 total_ekfs_proj = (projects_df["funder"] == "EKFS").sum()
-total_dfg_proj  = (projects_df["funder"] == "DFG").sum()
+total_dfg_proj = (projects_df["funder"] == "DFG").sum()
 
 for topic in funder_proj_topics.columns:
     ekfs_cnt = funder_proj_topics.loc["EKFS", topic] if "EKFS" in funder_proj_topics.index else 0
-    dfg_cnt  = funder_proj_topics.loc["DFG", topic] if "DFG" in funder_proj_topics.index else 0
+    dfg_cnt = funder_proj_topics.loc["DFG", topic] if "DFG" in funder_proj_topics.index else 0
     e_share = ekfs_cnt / total_ekfs_proj
     d_share = dfg_cnt / total_dfg_proj
     ratio = (e_share + 1e-4) / (d_share + 1e-4)
     predom = "EKFS Enriched" if ratio > 1.4 else ("DFG Enriched" if ratio < 0.7 else "Balanced")
-    topic_enrich_list.append({
-        "topic": topic,
-        "ekfs_projects": ekfs_cnt,
-        "dfg_projects": dfg_cnt,
-        "total_projects": ekfs_cnt + dfg_cnt,
-        "ekfs_share": round(e_share, 4),
-        "dfg_share": round(d_share, 4),
-        "funder_ratio": round(ratio, 2),
-        "predominant_funder": predom
-    })
+    topic_enrich_list.append(
+        {
+            "topic": topic,
+            "ekfs_projects": ekfs_cnt,
+            "dfg_projects": dfg_cnt,
+            "total_projects": ekfs_cnt + dfg_cnt,
+            "ekfs_share": round(e_share, 4),
+            "dfg_share": round(d_share, 4),
+            "funder_ratio": round(ratio, 2),
+            "predominant_funder": predom,
+        }
+    )
 
 topic_enrich_df = pd.DataFrame(topic_enrich_list).sort_values(by="total_projects", ascending=False)
 topic_enrich_df.to_csv("outputs/tables/topic_enrichment.csv", index=False)
@@ -756,36 +864,47 @@ pub_w_year = authorships_final.merge(pubs_final[["work_id", "publication_year"]]
 snapshots = [
     {"name": "2014-2017", "start": 2014, "end": 2017},
     {"name": "2018-2021", "start": 2018, "end": 2021},
-    {"name": "2022-2026", "start": 2022, "end": 2026}
+    {"name": "2022-2026", "start": 2022, "end": 2026},
 ]
 
 temporal_summary_list = []
 for s in snapshots:
-    sub_p = pub_w_year[(pub_w_year["publication_year"] >= s["start"]) & (pub_w_year["publication_year"] <= s["end"])]
+    sub_p = pub_w_year[
+        (pub_w_year["publication_year"] >= s["start"])
+        & (pub_w_year["publication_year"] <= s["end"])
+    ]
     s_pairs = sub_p.merge(sub_p, on="work_id")
     s_pairs = s_pairs[s_pairs["researcher_id_x"] < s_pairs["researcher_id_y"]]
-    s_pairs = s_pairs[s_pairs["researcher_id_x"].isin(cohort_res_ids) & s_pairs["researcher_id_y"].isin(cohort_res_ids)]
-    
-    s_edges = s_pairs.groupby(["researcher_id_x", "researcher_id_y"]).size().reset_index(name="weight")
+    s_pairs = s_pairs[
+        s_pairs["researcher_id_x"].isin(cohort_res_ids)
+        & s_pairs["researcher_id_y"].isin(cohort_res_ids)
+    ]
+
+    s_edges = (
+        s_pairs.groupby(["researcher_id_x", "researcher_id_y"]).size().reset_index(name="weight")
+    )
     active_n = set(s_edges["researcher_id_x"]).union(set(s_edges["researcher_id_y"]))
-    
+
     n_act = len(active_n)
     n_e = len(s_edges)
     dens = (2.0 * n_e) / (n_act * (n_act - 1)) if n_act > 1 else 0.0
     mean_deg = (2.0 * n_e) / n_act if n_act > 0 else 0.0
-    
-    temporal_summary_list.append({
-        "period": s["name"],
-        "years": f"{s['start']}-{s['end']}",
-        "active_researchers": n_act,
-        "coauthorship_edges": n_e,
-        "network_density": round(dens, 4),
-        "mean_degree": round(mean_deg, 2)
-    })
+
+    temporal_summary_list.append(
+        {
+            "period": s["name"],
+            "years": f"{s['start']}-{s['end']}",
+            "active_researchers": n_act,
+            "coauthorship_edges": n_e,
+            "network_density": round(dens, 4),
+            "mean_degree": round(mean_deg, 2),
+        }
+    )
 
 temporal_df = pd.DataFrame(temporal_summary_list)
 temporal_df.to_csv("outputs/tables/temporal_summary.csv", index=False)
 print("Topic enrichment and temporal summaries saved.")
+
 
 # ------------------------------------------------------------------------------
 # 9. Graph Exports (GML & GraphML)
@@ -803,7 +922,9 @@ def write_gml(nodes_df, edges_df, filepath):
             inst = str(row["institution"]).replace('"', "'")
             funder = str(row["funder_membership"])
             comm = int(row["community"])
-            f.write(f'  node [\n    id {i}\n    label "{label}"\n    institution "{inst}"\n    funder "{funder}"\n    community {comm}\n  ]\n')
+            f.write(
+                f'  node [\n    id {i}\n    label "{label}"\n    institution "{inst}"\n    funder "{funder}"\n    community {comm}\n  ]\n'
+            )
         for _, edge in edges_df.iterrows():
             u = node_id_to_int.get(edge["from"])
             v = node_id_to_int.get(edge["to"])
@@ -812,7 +933,9 @@ def write_gml(nodes_df, edges_df, filepath):
                 f.write(f"  edge [\n    source {u}\n    target {v}\n    value {w}\n  ]\n")
         f.write("]\n")
 
+
 write_gml(researcher_metrics, coauthorship_edges, "outputs/networks/coauthorship_network.gml")
+
 
 # Export GraphML
 def write_graphml(nodes_df, edges_df, filepath):
@@ -835,15 +958,18 @@ def write_graphml(nodes_df, edges_df, filepath):
             f.write(f'      <data key="d3">{row["community"]}</data>\n')
             f.write(f'      <data key="d4">{row["weighted_degree"]}</data>\n')
             f.write(f'      <data key="d5">{row["betweenness"]}</data>\n')
-            f.write('    </node>\n')
+            f.write("    </node>\n")
         for i, edge in edges_df.iterrows():
             f.write(f'    <edge id="e{i}" source="{edge["from"]}" target="{edge["to"]}">\n')
             f.write(f'      <data key="d6">{edge["weight"]}</data>\n')
-            f.write('    </edge>\n')
-        f.write('  </graph>\n')
-        f.write('</graphml>\n')
+            f.write("    </edge>\n")
+        f.write("  </graph>\n")
+        f.write("</graphml>\n")
 
-write_graphml(researcher_metrics, coauthorship_edges, "outputs/networks/coauthorship_network.graphml")
+
+write_graphml(
+    researcher_metrics, coauthorship_edges, "outputs/networks/coauthorship_network.graphml"
+)
 print("GML and GraphML network models exported.")
 
 # ------------------------------------------------------------------------------
@@ -864,7 +990,7 @@ sns.scatterplot(
     alpha=0.9,
     edgecolor="black",
     linewidth=0.8,
-    ax=ax
+    ax=ax,
 )
 ax.axvline(med_deg, color="gray", linestyle="--", alpha=0.7)
 ax.axhline(med_strn, color="gray", linestyle="--", alpha=0.7)
@@ -872,17 +998,58 @@ ax.axhline(med_strn, color="gray", linestyle="--", alpha=0.7)
 # Quadrant annotations
 max_x = researcher_metrics["degree"].max()
 max_y = researcher_metrics["weighted_degree"].max()
-ax.text(max_x * 0.75, max_y * 0.90, "Broad & Intensive\nCollaboration", fontsize=11, fontstyle="italic", color="#2c3e50")
-ax.text(max_x * 0.75, med_strn * 0.40, "Broad & Distributed\nCollaboration", fontsize=11, fontstyle="italic", color="#2c3e50")
-ax.text(med_deg * 0.25, max_y * 0.90, "Concentrated & Deep\nCollaboration", fontsize=11, fontstyle="italic", color="#2c3e50")
-ax.text(med_deg * 0.25, med_strn * 0.40, "Sparse\nCollaboration", fontsize=11, fontstyle="italic", color="#2c3e50")
+ax.text(
+    max_x * 0.75,
+    max_y * 0.90,
+    "Broad & Intensive\nCollaboration",
+    fontsize=11,
+    fontstyle="italic",
+    color="#2c3e50",
+)
+ax.text(
+    max_x * 0.75,
+    med_strn * 0.40,
+    "Broad & Distributed\nCollaboration",
+    fontsize=11,
+    fontstyle="italic",
+    color="#2c3e50",
+)
+ax.text(
+    med_deg * 0.25,
+    max_y * 0.90,
+    "Concentrated & Deep\nCollaboration",
+    fontsize=11,
+    fontstyle="italic",
+    color="#2c3e50",
+)
+ax.text(
+    med_deg * 0.25,
+    med_strn * 0.40,
+    "Sparse\nCollaboration",
+    fontsize=11,
+    fontstyle="italic",
+    color="#2c3e50",
+)
 
 # Label select top bridging / key researchers
-for _, r in researcher_metrics.sort_values(by="weighted_degree", ascending=False).head(5).iterrows():
-    ax.annotate(r["display_name"].split()[-1], (r["degree"], r["weighted_degree"]),
-                xytext=(5, 5), textcoords="offset points", fontsize=9, fontweight="semibold")
+for _, r in (
+    researcher_metrics.sort_values(by="weighted_degree", ascending=False).head(5).iterrows()
+):
+    ax.annotate(
+        r["display_name"].split()[-1],
+        (r["degree"], r["weighted_degree"]),
+        xytext=(5, 5),
+        textcoords="offset points",
+        fontsize=9,
+        fontweight="semibold",
+    )
 
-ax.set_title("Collaboration Breadth vs. Coauthorship Strength (EKFS & DFG Cohort)", fontsize=14, pad=12, fontweight="bold")
+ax.set_title(
+    "Collaboration Breadth vs. Coauthorship Strength (EKFS & DFG Cohort)",
+    fontsize=14,
+    pad=12,
+    fontweight="bold",
+)
 ax.set_xlabel("Distinct Collaborators in Network (Degree)", fontsize=12)
 ax.set_ylabel("Total Coauthorship Weight (Strength)", fontsize=12)
 ax.legend(title="Funder Membership", loc="lower right", frameon=True)
@@ -894,10 +1061,20 @@ plt.close()
 fig, ax = plt.subplots(figsize=(10, 6), dpi=300)
 traj_counts = trajectories_df["trajectory_type"].value_counts().reset_index()
 traj_counts.columns = ["trajectory_type", "count"]
-sns.barplot(data=traj_counts, x="count", y="trajectory_type", palette="Set2", ax=ax, edgecolor="black", linewidth=0.6)
+sns.barplot(
+    data=traj_counts,
+    x="count",
+    y="trajectory_type",
+    palette="Set2",
+    ax=ax,
+    edgecolor="black",
+    linewidth=0.6,
+)
 for i, v in enumerate(traj_counts["count"]):
     ax.text(v + 0.2, i, str(v), va="center", fontsize=11, fontweight="bold")
-ax.set_title("Distribution of Observed EKFS-DFG Funding Trajectories", fontsize=14, pad=12, fontweight="bold")
+ax.set_title(
+    "Distribution of Observed EKFS-DFG Funding Trajectories", fontsize=14, pad=12, fontweight="bold"
+)
 ax.set_xlabel("Number of Researchers", fontsize=12)
 ax.set_ylabel("Observed Trajectory Type", fontsize=12)
 plt.tight_layout()
@@ -908,17 +1085,37 @@ plt.close()
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6), dpi=300)
 # Donut chart
 sizes = [n_ekfs - n_both, n_both, n_dfg - n_both]
-labels = [f"EKFS Only\n({n_ekfs - n_both})", f"Both Funded\n({n_both})", f"DFG Only\n({n_dfg - n_both})"]
+labels = [
+    f"EKFS Only\n({n_ekfs - n_both})",
+    f"Both Funded\n({n_both})",
+    f"DFG Only\n({n_dfg - n_both})",
+]
 colors = ["#2b5c8f", "#7570b3", "#d95f02"]
-ax1.pie(sizes, labels=labels, autopct="%1.1f%%", startangle=140, colors=colors,
-        wedgeprops=dict(width=0.4, edgecolor="white", linewidth=2), textprops={"fontsize": 11, "fontweight": "bold"})
+ax1.pie(
+    sizes,
+    labels=labels,
+    autopct="%1.1f%%",
+    startangle=140,
+    colors=colors,
+    wedgeprops=dict(width=0.4, edgecolor="white", linewidth=2),
+    textprops={"fontsize": 11, "fontweight": "bold"},
+)
 ax1.set_title("Overall Investigator Overlap\n(Jaccard = 0.3529)", fontsize=13, fontweight="bold")
 
 # Overlap by Top Institutions
-top_inst_df = researchers_final.groupby(["institution", "funder_membership"]).size().unstack(fill_value=0)
+top_inst_df = (
+    researchers_final.groupby(["institution", "funder_membership"]).size().unstack(fill_value=0)
+)
 top_inst_df["total"] = top_inst_df.sum(axis=1)
 top_inst_df = top_inst_df.sort_values(by="total", ascending=False).head(7).drop(columns="total")
-top_inst_df.plot(kind="barh", stacked=True, ax=ax2, color=[palette_funder.get(c, "gray") for c in top_inst_df.columns], edgecolor="black", linewidth=0.5)
+top_inst_df.plot(
+    kind="barh",
+    stacked=True,
+    ax=ax2,
+    color=[palette_funder.get(c, "gray") for c in top_inst_df.columns],
+    edgecolor="black",
+    linewidth=0.5,
+)
 ax2.set_title("Funder Representation Across Top Institutions", fontsize=13, fontweight="bold")
 ax2.set_xlabel("Number of Funded Investigators", fontsize=11)
 ax2.set_ylabel("")
@@ -932,12 +1129,30 @@ fig, ax = plt.subplots(figsize=(11, 6), dpi=300)
 topic_plot_df = topic_enrich_df.sort_values(by="total_projects", ascending=True)
 y_pos = np.arange(len(topic_plot_df))
 height = 0.38
-ax.barh(y_pos - height/2, topic_plot_df["ekfs_projects"], height, label="EKFS Projects", color="#2b5c8f", edgecolor="black", linewidth=0.5)
-ax.barh(y_pos + height/2, topic_plot_df["dfg_projects"], height, label="DFG Projects", color="#d95f02", edgecolor="black", linewidth=0.5)
+ax.barh(
+    y_pos - height / 2,
+    topic_plot_df["ekfs_projects"],
+    height,
+    label="EKFS Projects",
+    color="#2b5c8f",
+    edgecolor="black",
+    linewidth=0.5,
+)
+ax.barh(
+    y_pos + height / 2,
+    topic_plot_df["dfg_projects"],
+    height,
+    label="DFG Projects",
+    color="#d95f02",
+    edgecolor="black",
+    linewidth=0.5,
+)
 ax.set_yticks(y_pos)
 ax.set_yticklabels(topic_plot_df["topic"], fontsize=10)
 ax.set_xlabel("Number of Projects", fontsize=12)
-ax.set_title("Biomedical Project Topics: EKFS vs. DFG Portfolios", fontsize=14, pad=12, fontweight="bold")
+ax.set_title(
+    "Biomedical Project Topics: EKFS vs. DFG Portfolios", fontsize=14, pad=12, fontweight="bold"
+)
 ax.legend(loc="lower right")
 plt.tight_layout()
 plt.savefig("outputs/figures/topic_enrichment_comparison.png")
@@ -946,13 +1161,40 @@ plt.close()
 # 5. Temporal Evolution of Collaboration
 fig, ax1 = plt.subplots(figsize=(9, 5), dpi=300)
 ax2 = ax1.twinx()
-p1 = ax1.plot(temporal_df["period"], temporal_df["active_researchers"], marker="o", color="#1b9e77", linewidth=2.5, label="Active Researchers")
-p2 = ax1.plot(temporal_df["period"], temporal_df["coauthorship_edges"], marker="s", color="#d95f02", linewidth=2.5, label="Coauthorship Edges")
-p3 = ax2.plot(temporal_df["period"], temporal_df["mean_degree"], marker="^", color="#7570b3", linewidth=2.5, linestyle="--", label="Mean Degree")
+p1 = ax1.plot(
+    temporal_df["period"],
+    temporal_df["active_researchers"],
+    marker="o",
+    color="#1b9e77",
+    linewidth=2.5,
+    label="Active Researchers",
+)
+p2 = ax1.plot(
+    temporal_df["period"],
+    temporal_df["coauthorship_edges"],
+    marker="s",
+    color="#d95f02",
+    linewidth=2.5,
+    label="Coauthorship Edges",
+)
+p3 = ax2.plot(
+    temporal_df["period"],
+    temporal_df["mean_degree"],
+    marker="^",
+    color="#7570b3",
+    linewidth=2.5,
+    linestyle="--",
+    label="Mean Degree",
+)
 ax1.set_xlabel("Temporal Snapshot Window", fontsize=12)
 ax1.set_ylabel("Count (Researchers & Edges)", fontsize=12, color="#2c3e50")
 ax2.set_ylabel("Mean Collaborator Degree", fontsize=12, color="#7570b3")
-ax1.set_title("Temporal Evolution of Biomedical Collaboration (2014-2026)", fontsize=13, pad=12, fontweight="bold")
+ax1.set_title(
+    "Temporal Evolution of Biomedical Collaboration (2014-2026)",
+    fontsize=13,
+    pad=12,
+    fontweight="bold",
+)
 # Combined legend
 lines = p1 + p2 + p3
 labels = [l.get_label() for l in lines]
@@ -979,9 +1221,23 @@ plt.close()
 # 7. Top Bridging Researchers
 fig, ax = plt.subplots(figsize=(10, 6), dpi=300)
 top_bridges = researcher_metrics.sort_values(by="betweenness", ascending=False).head(10)
-sns.barplot(data=top_bridges, x="betweenness", y="display_name", hue="funder_membership",
-            dodge=False, palette=palette_funder, ax=ax, edgecolor="black", linewidth=0.5)
-ax.set_title("Top 10 Bridging Researchers Between Communities & Funders", fontsize=14, pad=12, fontweight="bold")
+sns.barplot(
+    data=top_bridges,
+    x="betweenness",
+    y="display_name",
+    hue="funder_membership",
+    dodge=False,
+    palette=palette_funder,
+    ax=ax,
+    edgecolor="black",
+    linewidth=0.5,
+)
+ax.set_title(
+    "Top 10 Bridging Researchers Between Communities & Funders",
+    fontsize=14,
+    pad=12,
+    fontweight="bold",
+)
 ax.set_xlabel("Betweenness Centrality", fontsize=12)
 ax.set_ylabel("")
 ax.legend(title="Funder Membership", loc="lower right")
@@ -994,7 +1250,7 @@ plt.close()
 fig, ax = plt.subplots(figsize=(10, 10), dpi=300)
 inst_list = list(inst_df["canonical_name"].unique())
 inst_coords = {}
-angles = np.linspace(0, 2*np.pi, len(inst_list), endpoint=False)
+angles = np.linspace(0, 2 * np.pi, len(inst_list), endpoint=False)
 for i, inst in enumerate(inst_list):
     inst_coords[inst] = (np.cos(angles[i]), np.sin(angles[i]))
 
@@ -1003,7 +1259,13 @@ for _, r in inst_edges_df.iterrows():
     p1 = inst_coords.get(r["from"])
     p2 = inst_coords.get(r["to"])
     if p1 and p2:
-        ax.plot([p1[0], p2[0]], [p1[1], p2[1]], color="#7f8c8d", alpha=0.5, linewidth=r["coauthored_publication_weight"] * 0.7)
+        ax.plot(
+            [p1[0], p2[0]],
+            [p1[1], p2[1]],
+            color="#7f8c8d",
+            alpha=0.5,
+            linewidth=r["coauthored_publication_weight"] * 0.7,
+        )
 
 # Draw nodes
 for inst, (x, y) in inst_coords.items():
@@ -1013,14 +1275,18 @@ for inst, (x, y) in inst_coords.items():
     offset_x = x * 1.15
     offset_y = y * 1.15
     align_h = "center"
-    if x > 0.2: align_h = "left"
-    elif x < -0.2: align_h = "right"
+    if x > 0.2:
+        align_h = "left"
+    elif x < -0.2:
+        align_h = "right"
     ax.text(offset_x, offset_y, short_lbl, fontsize=9, fontweight="bold", ha=align_h, va="center")
 
 ax.set_xlim(-1.6, 1.6)
 ax.set_ylim(-1.6, 1.6)
 ax.axis("off")
-ax.set_title("Institutional Coauthorship & Collaboration Backbone", fontsize=14, fontweight="bold", pad=20)
+ax.set_title(
+    "Institutional Coauthorship & Collaboration Backbone", fontsize=14, fontweight="bold", pad=20
+)
 plt.tight_layout()
 plt.savefig("outputs/figures/institution_collaboration_network.png")
 plt.close()
@@ -1034,7 +1300,8 @@ for _ in range(50):
     disp = {node: np.zeros(2) for node in nodes}
     for i, u in enumerate(nodes):
         for j, v in enumerate(nodes):
-            if i >= j: continue
+            if i >= j:
+                continue
             delta = pos[u] - pos[v]
             dist = max(np.linalg.norm(delta), 0.05)
             # Repulsion
@@ -1057,25 +1324,64 @@ fig, ax = plt.subplots(figsize=(11, 11), dpi=300)
 for _, edge in coauthorship_edges.iterrows():
     u, v = edge["from"], edge["to"]
     if u in pos and v in pos:
-        ax.plot([pos[u][0], pos[v][0]], [pos[u][1], pos[v][1]], color="gray", alpha=0.4, linewidth=edge["weight"] * 0.8)
+        ax.plot(
+            [pos[u][0], pos[v][0]],
+            [pos[u][1], pos[v][1]],
+            color="gray",
+            alpha=0.4,
+            linewidth=edge["weight"] * 0.8,
+        )
 
 for _, r in researcher_metrics.iterrows():
     nid = r["researcher_id"]
     p = pos[nid]
     funder = r["funder_membership"]
     sz = 80 + r["weighted_degree"] * 25
-    ax.scatter(p[0], p[1], s=sz, color=palette_funder.get(funder, "gray"), edgecolor="black", linewidth=0.8, zorder=5)
+    ax.scatter(
+        p[0],
+        p[1],
+        s=sz,
+        color=palette_funder.get(funder, "gray"),
+        edgecolor="black",
+        linewidth=0.8,
+        zorder=5,
+    )
     if r["betweenness"] > 0.04 or r["weighted_degree"] > 10:
-        ax.text(p[0], p[1] + 0.08, r["display_name"].split()[-1], fontsize=9, fontweight="bold", ha="center")
+        ax.text(
+            p[0],
+            p[1] + 0.08,
+            r["display_name"].split()[-1],
+            fontsize=9,
+            fontweight="bold",
+            ha="center",
+        )
 
-ax.set_title("Biomedical Coauthorship Network (Colored by Funder Membership)", fontsize=14, fontweight="bold", pad=15)
+ax.set_title(
+    "Biomedical Coauthorship Network (Colored by Funder Membership)",
+    fontsize=14,
+    fontweight="bold",
+    pad=15,
+)
 ax.axis("off")
 # Custom legend
 from matplotlib.lines import Line2D
+
 legend_elements = [
-    Line2D([0], [0], marker='o', color='w', label='EKFS only', markerfacecolor='#2b5c8f', markersize=10),
-    Line2D([0], [0], marker='o', color='w', label='DFG only', markerfacecolor='#d95f02', markersize=10),
-    Line2D([0], [0], marker='o', color='w', label='Both EKFS & DFG', markerfacecolor='#7570b3', markersize=10)
+    Line2D(
+        [0], [0], marker="o", color="w", label="EKFS only", markerfacecolor="#2b5c8f", markersize=10
+    ),
+    Line2D(
+        [0], [0], marker="o", color="w", label="DFG only", markerfacecolor="#d95f02", markersize=10
+    ),
+    Line2D(
+        [0],
+        [0],
+        marker="o",
+        color="w",
+        label="Both EKFS & DFG",
+        markerfacecolor="#7570b3",
+        markersize=10,
+    ),
 ]
 ax.legend(handles=legend_elements, loc="lower right", frameon=True)
 plt.tight_layout()
@@ -1090,18 +1396,41 @@ comm_color_map = {c: comm_palette[i] for i, c in enumerate(sorted(list(set(comm_
 for _, edge in coauthorship_edges.iterrows():
     u, v = edge["from"], edge["to"]
     if u in pos and v in pos:
-        ax.plot([pos[u][0], pos[v][0]], [pos[u][1], pos[v][1]], color="gray", alpha=0.4, linewidth=edge["weight"] * 0.8)
+        ax.plot(
+            [pos[u][0], pos[v][0]],
+            [pos[u][1], pos[v][1]],
+            color="gray",
+            alpha=0.4,
+            linewidth=edge["weight"] * 0.8,
+        )
 
 for _, r in researcher_metrics.iterrows():
     nid = r["researcher_id"]
     p = pos[nid]
     c_id = r["community"]
     sz = 80 + r["weighted_degree"] * 25
-    ax.scatter(p[0], p[1], s=sz, color=comm_color_map.get(c_id, "gray"), edgecolor="black", linewidth=0.8, zorder=5)
+    ax.scatter(
+        p[0],
+        p[1],
+        s=sz,
+        color=comm_color_map.get(c_id, "gray"),
+        edgecolor="black",
+        linewidth=0.8,
+        zorder=5,
+    )
     if r["betweenness"] > 0.04 or r["weighted_degree"] > 10:
-        ax.text(p[0], p[1] + 0.08, r["display_name"].split()[-1], fontsize=9, fontweight="bold", ha="center")
+        ax.text(
+            p[0],
+            p[1] + 0.08,
+            r["display_name"].split()[-1],
+            fontsize=9,
+            fontweight="bold",
+            ha="center",
+        )
 
-ax.set_title("Biomedical Coauthorship Network (Louvain Communities)", fontsize=14, fontweight="bold", pad=15)
+ax.set_title(
+    "Biomedical Coauthorship Network (Louvain Communities)", fontsize=14, fontweight="bold", pad=15
+)
 ax.axis("off")
 plt.tight_layout()
 plt.savefig("outputs/figures/coauthorship_network_community.png")
@@ -1114,33 +1443,37 @@ print("All 10 publication-quality static figures generated successfully.")
 # ------------------------------------------------------------------------------
 d3_nodes = []
 res_meta_map = researcher_metrics.set_index("researcher_id").to_dict(orient="index")
-res_grants_cnt = proj_res.merge(projects_df, on="project_id").groupby(["researcher_id", "funder"]).size().unstack(fill_value=0).to_dict(orient="index")
+res_grants_cnt = (
+    proj_res.merge(projects_df, on="project_id")
+    .groupby(["researcher_id", "funder"])
+    .size()
+    .unstack(fill_value=0)
+    .to_dict(orient="index")
+)
 
 for nid in nodes:
     m = res_meta_map.get(nid, {})
     g_cnt = res_grants_cnt.get(nid, {})
-    d3_nodes.append({
-        "id": nid,
-        "name": m.get("display_name", nid),
-        "institution": m.get("institution", "Unknown"),
-        "funder_membership": m.get("funder_membership", "neither"),
-        "community": int(m.get("community", 1)),
-        "degree": int(m.get("degree", 0)),
-        "weighted_degree": float(m.get("weighted_degree", 0.0)),
-        "betweenness": float(m.get("betweenness", 0.0)),
-        "ekfs_projects": int(g_cnt.get("EKFS", 0)),
-        "dfg_projects": int(g_cnt.get("DFG", 0)),
-        "primary_topic": res_topic_dict.get(nid, "Biomedical Sciences"),
-        "strongest_collaborator": m.get("strongest_collaborator_name", "None")
-    })
+    d3_nodes.append(
+        {
+            "id": nid,
+            "name": m.get("display_name", nid),
+            "institution": m.get("institution", "Unknown"),
+            "funder_membership": m.get("funder_membership", "neither"),
+            "community": int(m.get("community", 1)),
+            "degree": int(m.get("degree", 0)),
+            "weighted_degree": float(m.get("weighted_degree", 0.0)),
+            "betweenness": float(m.get("betweenness", 0.0)),
+            "ekfs_projects": int(g_cnt.get("EKFS", 0)),
+            "dfg_projects": int(g_cnt.get("DFG", 0)),
+            "primary_topic": res_topic_dict.get(nid, "Biomedical Sciences"),
+            "strongest_collaborator": m.get("strongest_collaborator_name", "None"),
+        }
+    )
 
 d3_links = []
 for _, edge in coauthorship_edges.iterrows():
-    d3_links.append({
-        "source": edge["from"],
-        "target": edge["to"],
-        "weight": int(edge["weight"])
-    })
+    d3_links.append({"source": edge["from"], "target": edge["to"], "weight": int(edge["weight"])})
 
 graph_data_json = json.dumps({"nodes": d3_nodes, "links": d3_links}, indent=2)
 
@@ -1401,7 +1734,7 @@ with open("outputs/interactive/interactive_network.html", "w", encoding="utf-8")
 print("Saved standalone interactive HTML D3 network.")
 
 # ------------------------------------------------------------------------------
-# 12. Copy Root Level Deliverables for Direct Access (Requirement 24)
+# 12. Copy Root Level Deliverables for Direct Access
 # ------------------------------------------------------------------------------
 root_files = [
     "researchers.csv",
@@ -1417,12 +1750,17 @@ root_files = [
     "funding_trajectories.csv",
     "identity_resolution_report.csv",
     "netSummary.csv",
-    "top3_per_community.csv"
+    "top3_per_community.csv",
 ]
 
 for rf in root_files:
     src = os.path.join("outputs/tables", rf)
     if os.path.exists(src):
         shutil.copy2(src, rf)
+
+# Remove from root if exists to avoid duplication
+for rf in root_files:
+    if os.path.exists(rf):
+        os.remove(rf)
 
 print("Pipeline execution and artifact generation complete!")

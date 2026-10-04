@@ -2,10 +2,11 @@
 Core Functional Logic and Scientific Algorithms for EKFS-DFG Pipeline
 """
 
-import re
 import math
+import re
+
 import numpy as np
-import pandas as pd
+
 
 def normalize_name(raw_name):
     """Normalize academic titles, particles, and formatting."""
@@ -29,10 +30,11 @@ def normalize_name(raw_name):
         return {"clean": "", "last": "", "first": ""}
     if len(parts) == 1:
         return {"clean": parts[0], "last": parts[0], "first": ""}
-    
+
     first = parts[0]
     last = " ".join(parts[1:])
     return {"clean": f"{first} {last}", "last": last, "first": first}
+
 
 def classify_membership(funders_list):
     """Classify researcher by grant support."""
@@ -47,6 +49,7 @@ def classify_membership(funders_list):
     else:
         return "neither"
 
+
 def brandes_betweenness(adj_mat):
     """Compute Brandes betweenness centrality on weighted adjacency matrix."""
     n = adj_mat.shape[0]
@@ -59,7 +62,7 @@ def brandes_betweenness(adj_mat):
         for j in range(n):
             if adj_mat[i, j] > 0:
                 dist_mat[i, j] = 1.0 / adj_mat[i, j]
-                
+
     for s in range(n):
         S = []
         P = [[] for _ in range(n)]
@@ -68,7 +71,7 @@ def brandes_betweenness(adj_mat):
         d = np.full(n, np.inf)
         d[s] = 0
         Q = list(range(n))
-        
+
         while Q:
             u = min(Q, key=lambda x: d[x])
             Q.remove(u)
@@ -95,6 +98,7 @@ def brandes_betweenness(adj_mat):
                 CB[w] += delta[w]
     scale = 1.0 / ((n - 1) * (n - 2)) if n > 2 else 1.0
     return (CB / 2.0) * scale
+
 
 def calculate_modularity(adj, communities):
     """Calculate Newman-Girvan modularity Q."""
