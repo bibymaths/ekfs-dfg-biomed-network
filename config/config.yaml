@@ -1,0 +1,97 @@
+# ==============================================================================
+# EKFS-DFG Research Funding Network Analysis Platform Configuration
+# ==============================================================================
+
+project:
+  name: "EKFS_DFG_Network"
+  title: "Biomedical Research Funding & Collaboration Network: EKFS & DFG"
+  version: "2.0.0"
+  description: "Comparative bibliometric and network science analysis of Else Kröner-Fresenius-Stiftung and DFG funding trajectories in German biomedicine."
+
+# Funder cohort configuration
+funders:
+  ekfs:
+    enabled: true
+    source_name: "Else Kröner-Fresenius-Stiftung"
+    database_url: "https://www.ekfs.de/wissenschaftliche-foerderung/aktuelle-projekte"
+    years: [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]
+    funding_lines:
+      - "Else Kröner Memorial Stipendien"
+      - "Else Kröner Forschungskollegs"
+      - "Else Kröner Medical Scientist Kollegs"
+      - "Schlüsselprojekte"
+      - "First-in-HUMAN"
+      - "Translationale Forschungsprojekte"
+      - "Exzellenzstipendien"
+    topics: "all" # or list: ["Onkologie", "Immunologie", "Neurowissenschaften", "Kardiologie", "Infektionsbiologie"]
+    status: "all" # "all", "active", or "completed"
+
+  dfg:
+    enabled: true
+    source_name: "Deutsche Forschungsgemeinschaft (GEPRIS)"
+    database_url: "https://gepris.dfg.de/gepris/OCTOPUS"
+    research_area: "Life Sciences"
+    subject_classifications:
+      - "201 Basic Biological and Medical Research"
+      - "205 Medicine"
+      - "206 Neurosciences"
+    programmes:
+      - "Sachbeihilfe"
+      - "Emmy Noether-Programm"
+      - "Heisenberg-Programm"
+      - "Sonderforschungsbereiche"
+      - "Klinische Forschungsgruppen"
+      - "Graduiertenkollegs"
+    years: [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]
+
+# Cohort selection logic
+cohort:
+  selection_strategy: "union" # "union" (all EKFS + all matching DFG), "intersection" (both only), "ekfs_only", "dfg_only"
+  focal_institutions: "all" # or list of institutions
+
+# Network construction parameters
+network:
+  mode: "cohort" # "cohort" (cohort-induced) or "expanded" (includes external coauthors)
+  edge_types:
+    coauthorship: true
+    shared_project: true
+    institutional_copresence: true
+  publication_window:
+    start_year: 2010
+    end_year: 2026
+  temporal_snapshots:
+    - name: "2014_2017"
+      label: "2014-2017 (Early Cohort)"
+      start_year: 2014
+      end_year: 2017
+    - name: "2018_2021"
+      label: "2018-2021 (Mid Cohort)"
+      start_year: 2018
+      end_year: 2021
+    - name: "2022_2026"
+      label: "2022-2026 (Recent/Active Cohort)"
+      start_year: 2022
+      end_year: 2026
+  community_detection:
+    method: "louvain"
+    random_seed: 42
+    resolution: 1.0
+
+# OpenAlex Author Disambiguation Parameters
+disambiguation:
+  min_confidence_score: 0.65
+  authorities:
+    use_orcid: true
+    use_affiliations: true
+    use_field_concepts: true
+  manual_overrides_file: "data/processed/researcher_identity_overrides.csv"
+  ambiguity_report_file: "outputs/tables/identity_resolution_report.csv"
+
+# Funding Trajectory & Eligibility Screening Parameters
+trajectories:
+  pre_funding_window_years: 3
+  post_funding_window_years: 3
+  eligibility_screening:
+    informational_only: true
+    target_funding_line: "Else Kröner Memorial Stipendien"
+    rule_prior_peer_reviewed_limit: 1 # Requires no major prior DFG Sachbeihilfe before Memorial Stipendium

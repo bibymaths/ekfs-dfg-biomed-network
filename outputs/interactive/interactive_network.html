@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>EKFS & DFG Biomedical Coauthorship & Funding Network</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa;
+      color: #333;
+    }
+    header {
+      background: #2c3e50;
+      color: white;
+      padding: 16px 24px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    h1 { margin: 0; font-size: 20px; }
+    .subtitle { font-size: 13px; color: #bdc3c7; }
+    #controls {
+      padding: 12px 24px;
+      background: white;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    select, input {
+      padding: 6px 12px;
+      border-radius: 4px;
+      border: 1px solid #cbd5e1;
+      font-size: 13px;
+    }
+    #chart {
+      width: 100vw;
+      height: calc(100vh - 125px);
+      position: relative;
+    }
+    .tooltip {
+      position: absolute;
+      background: rgba(30, 41, 59, 0.95);
+      color: white;
+      padding: 12px 16px;
+      border-radius: 6px;
+      font-size: 12px;
+      pointer-events: none;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2);
+      line-height: 1.5;
+      max-width: 320px;
+      display: none;
+      z-index: 100;
+    }
+    .tooltip h4 { margin: 0 0 6px 0; font-size: 14px; color: #38bdf8; }
+    .legend {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: white;
+      padding: 12px 16px;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      font-size: 12px;
+    }
+    .legend-item { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+    .legend-color { width: 14px; height: 14px; border-radius: 50%; display: inline-block; }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>EKFS & DFG Biomedical Collaboration Network</h1>
+      <div class="subtitle">Interactive Multi-Layer Coauthorship and Funding Topology</div>
+    </div>
+  </header>
+  <div id="controls">
+    <label>Color By: 
+      <select id="colorSelect">
+        <option value="funder">Funder Membership</option>
+        <option value="community">Louvain Community</option>
+      </select>
+    </label>
+    <label>Search Researcher:
+      <input type="text" id="searchInput" placeholder="Type researcher name...">
+    </label>
+    <span style="font-size: 12px; color: #64748b;">(Drag nodes to pin; zoom/pan available)</span>
+  </div>
+  <div id="chart"></div>
+  <div id="tooltip" class="tooltip"></div>
+  <div class="legend" id="legend">
+    <div style="font-weight: bold; margin-bottom: 6px;">Funder Membership</div>
+    <div class="legend-item"><span class="legend-color" style="background: #2b5c8f;"></span> EKFS only</div>
+    <div class="legend-item"><span class="legend-color" style="background: #d95f02;"></span> DFG only</div>
+    <div class="legend-item"><span class="legend-color" style="background: #7570b3;"></span> Both EKFS & DFG</div>
+  </div>
+
+  <script>
+    const data = {
+  "nodes": [
+    {
+      "id": "RES_A5012345678",
+      "name": "Christian von Kalle",
+      "institution": "Charit\u00e9 - Universit\u00e4tsmedizin Berlin",
+      "funder_membership": "both",
+      "community": 1,
+      "degree": 4,
+      "weighted_degree": 13.0,
+      "betweenness": 0.13731,
+      "ekfs_projects": 1,
+      "dfg_projects": 2,
+      "primary_topic": "205 Medicine",
+      "strongest_collaborator": "Britta Siegmund"
+    },
+    {
+      "id": "RES_A5012345679",
+      "name": "Julia-Stefanie Frick",
+      "institution": "Universit\u00e4tsklinikum T\u00fcbingen",
+      "funder_membership": "both",
+      "community": 3,
+      "degree": 3,
+      "weighted_degree": 7.0,
+      "betweenness": 0.02652,
+      "ekfs_projects": 1,
+      "dfg_projects": 1,
+      "primary_topic": "205 Medicine",
+      "strongest_collaborator": "Marion Subklewe"
+    },
+    {
+      "id": "RES_A5012345680",
+      "name": "Stefan Endres",
+      "institution": "LMU Klinikum M\u00fcnchen",
+      "funder_membership": "both",
+      "community": 3,
+      "degree": 3,
+      "weighted_degree": 9.0,
+      "betweenness": 0.03883,
+      "ekfs_projects": 1,
+      "dfg_projects": 2,
+      "primary_topic": "205 Medicine",
+      "strongest_collaborator": "Sebastian Kobold"
+    },
+    {
+      "id": "RES_A5012345681",
+      "name": "Felix Neuhaus",
+      "institution": "Universit\u00e4tsklinikum Frankfurt",
+      "funder_membership": "both",
+      "community": 3,
+      "degree": 2,
+      "weighted_degree": 10.0,
+      "betweenness": 0.02652,
+      "ekfs_projects": 1,
+      "dfg_projects": 1,
+      "primary_topic": "205 Medicine",
+      "strongest_collaborator": "Sandra Ciesek"
+    },
+    {
+      "id": "RES_A5012345682",
+      "name": "Sandra Ciesek",
+      "institution": "Universit\u00e4tsklinikum Frankfurt",
+      "funder_membership": "both",
+      "community": 3,
+      "degree": 2,
+      "weighted_degree": 9.0,
+      "betweenness": 0.05161,
+      "ekfs_projects": 1,
+      "dfg_projects": 2,
+      "primary_topic": "205 Medicine",
+      "strongest_collaborator": "Felix Neuhaus"
+    },
+    {
+      "id": "RES_A5012345683",
+      "name": "Moritz von Winterfeld",
+      "institution": "Universit\u00e4tsklinikum Heidelberg",
+      "funder_membership": "both",
+      "community": 3,
+      "degree": 2,
+      "weighted_degree": 6.0,
+      "betweenness": 0.00047,
+      "ekfs_projects": 1,
+      "dfg_projects": 1,
+      "primary_topic": "205 Medicine",
+      "strongest_collaborator": "Felix Neuhaus"
+    },
+    {
+      "id": "RES_A5012345684",
+      "name": "Marion Subklewe",
+      "institution": "LMU Klinikum M\u00fcnchen",
+      "funder_membership": "both",
+      "community": 3,
+      "degree": 6,
+      "weighted_degree": 20.0,
+      "betweenness": 0.07434,
+      "ekfs_projects": 1,
+      "dfg_projects": 1,
+      "primary_topic": "205 Medicine",
+      "strongest_collaborator": "Julia-Stefanie Frick"
+    },
+    {
+      "id": "RES_A5012345685",
+      "name": "Alexander Mildner",
+      "institution": "Universit\u00e4tsklinikum Freiburg",
+      "funder_membership": "both",
+      "community": 1,
+      "degree": 2,
+      "weighted_degree": 6.0,
+      "betweenness": 0.0,
+      "ekfs_projects": 1,
+      "dfg_projects": 1,
+      "primary_topic": "205 Medicine",
+      "strongest_collaborator": "Hannah Voelkle"
+    },
+    {
+      "id": "RES_A5012345686",
+      "name": "Leif Erik Sander",
+      "institution": "Charit\u00e9 - Universit\u00e4tsmedizin Berlin",
+      "funder_membership": "both",
+      "community": 1,
+      "degree": 3,
+      "weighted_degree": 7.0,
+      "betweenness": 0.0,
+      "ekfs_projects": 1,
+      "dfg_projects": 2,
+      "primary_topic": "205 Medicine",
+      "strongest_collaborator": "J\u00f6rg Vogel"
+    },
+    {
+      "id": "RES_A5012345687",
+      "name": "Katharina Limm",
+      "institution": "Universit\u00e4tsklinikum Erlangen",
+      "funder_membership": "both",
+      "community": 3,
+      "degree": 1,
+      "weighted_degree": 5.0,
+      "betweenness": 0.0,
+      "ekfs_projects": 1,
+      "dfg_projects": 1,
+      "primary_topic": "205 Medicine",
+      "strongest_collaborator": "Brenda Schulman"
+    },
+    {
+      "id": "RES_A5012345688",
+      "name": "Tobias Bopp",
+      "institution": "Universit\u00e4tsklinikum Frankfurt",
+      "funder_membership": "both",
+      "community": 2,
+      "degree": 0,
+      "weighted_degree": 0.0,
+      "betweenness": 0.0,
+      "ekfs_projects": 1,
+      "dfg_projects": 1,
+      "primary_topic": "205 Medicine",
+      "strongest_collaborator": ""
+    },
+    {
+      "id": "RES_A5012345689",
+      "name": "Johannes Schetelig",
+      "institution": "Universit\u00e4tsklinikum Hamburg-Eppendorf",
+      "funder_membership": "both",
+      "community": 3,
+      "degree": 2,
+      "weighted_degree": 6.0,
+      "betweenness": 0.01326,
+      "ekfs_projects": 1,
+      "dfg_projects": 1,
+      "primary_topic": "205 Medicine",
+      "strongest_collaborator": "Simon Lebek"
+    },
+    {
+      "id": "RES_A5012345690",
+      "name": "Maximilian Merz",
+      "institution": "Universit\u00e4tsklinikum Heidelberg",
+      "funder_membership": "EKFS only",
+      "community": 1,
+      "degree": 3,
+      "weighted_degree": 10.0,
+      "betweenness": 0.0483,
+      "ekfs_projects": 1,
+      "dfg_projects": 0,
+      "primary_topic": "Multiple Myeloma & Oncology",
+      "strongest_collaborator": "Sonja-Verena Albers"
+    },
+    {
+      "id": "RES_A5012345691",
+      "name": "Anna-Lena Kretz",
+      "institution": "Universit\u00e4tsklinikum Freiburg",
+      "funder_membership": "EKFS only",
+      "community": 1,
+      "degree": 2,
+      "weighted_degree": 7.0,
+      "betweenness": 0.0,
+      "ekfs_projects": 1,
+      "dfg_projects": 0,
+      "primary_topic": "Surgical Oncology & Apoptosis",
+      "strongest_collaborator": "Christoph Kuppe"
+    },
+    {
+      "id": "RES_A5012345692",
+      "name": "Lukas Flatz",
+      "institution": "Universit\u00e4tsklinikum T\u00fcbingen",
+      "funder_membership": "EKFS only",
+      "community": 1,
+      "degree": 2,
+      "weighted_degree": 5.0,
+      "betweenness": 0.01136,
+      "ekfs_projects": 1,
+      "dfg_projects": 0,
+      "primary_topic": "Dermato-Oncology & Viral Vectors",
+      "strongest_collaborator": "Maximilian Merz"
+    },
+    {
+      "id": "RES_A5012345693",
+      "name": "Christoph Kuppe",
+      "institution": "Universit\u00e4tsklinikum K\u00f6ln",
+      "funder_membership": "EKFS only",
+      "community": 1,
+      "degree": 3,
+      "weighted_degree": 13.0,
+      "betweenness": 0.05398,
+      "ekfs_projects": 1,
+      "dfg_projects": 0,
+      "primary_topic": "Nephrology & Single-Cell Genomics",
+      "strongest_collaborator": "Anna-Lena Kretz"
+    },
+    {
+      "id": "RES_A5012345694",
+      "name": "Clarissa von Rundstedt",
+      "institution": "Universit\u00e4tsmedizin G\u00f6ttingen",
+      "funder_membership": "EKFS only",
+      "community": 3,
+      "degree": 5,
+      "weighted_degree": 9.0,
+      "betweenness": 0.03456,
+      "ekfs_projects": 1,
+      "dfg_projects": 0,
+      "primary_topic": "Urological Oncology",
+      "strongest_collaborator": "Marion Subklewe"
+    },
+    {
+      "id": "RES_A5012345695",
+      "name": "Simon Lebek",
+      "institution": "Klinikum rechts der Isar, TU M\u00fcnchen",
+      "funder_membership": "EKFS only",
+      "community": 3,
+      "degree": 4,
+      "weighted_degree": 14.0,
+      "betweenness": 0.10985,
+      "ekfs_projects": 1,
+      "dfg_projects": 0,
+      "primary_topic": "Cardiovascular Gene Editing",
+      "strongest_collaborator": "Sandra Ciesek"
+    },
+    {
+      "id": "RES_A5012345696",
+      "name": "Hannah Voelkle",
+      "institution": "Charit\u00e9 - Universit\u00e4tsmedizin Berlin",
+      "funder_membership": "EKFS only",
+      "community": 1,
+      "degree": 5,
+      "weighted_degree": 18.0,
+      "betweenness": 0.15767,
+      "ekfs_projects": 1,
+      "dfg_projects": 0,
+      "primary_topic": "Neurology & Neurodegeneration",
+      "strongest_collaborator": "Christian von Kalle"
+    },
+    {
+      "id": "RES_A5012345697",
+      "name": "Niklas de Beauclair",
+      "institution": "Universit\u00e4tsklinikum Hamburg-Eppendorf",
+      "funder_membership": "EKFS only",
+      "community": 3,
+      "degree": 3,
+      "weighted_degree": 5.0,
+      "betweenness": 0.0,
+      "ekfs_projects": 1,
+      "dfg_projects": 0,
+      "primary_topic": "Pediatric Hematology",
+      "strongest_collaborator": "Marion Subklewe"
+    },
+    {
+      "id": "RES_A5012345698",
+      "name": "Laura Mayer-Suess",
+      "institution": "LMU Klinikum M\u00fcnchen",
+      "funder_membership": "EKFS only",
+      "community": 3,
+      "degree": 3,
+      "weighted_degree": 9.0,
+      "betweenness": 0.1482,
+      "ekfs_projects": 1,
+      "dfg_projects": 0,
+      "primary_topic": "Translational Neurovascular Medicine",
+      "strongest_collaborator": "Hannah Voelkle"
+    },
+    {
+      "id": "RES_A5012345699",
+      "name": "Sebastian Kobold",
+      "institution": "LMU Klinikum M\u00fcnchen",
+      "funder_membership": "EKFS only",
+      "community": 3,
+      "degree": 6,
+      "weighted_degree": 20.0,
+      "betweenness": 0.20218,
+      "ekfs_projects": 1,
+      "dfg_projects": 0,
+      "primary_topic": "Cancer Immunotherapy",
+      "strongest_collaborator": "Stefan Endres"
+    },
+    {
+      "id": "RES_A5012345700",
+      "name": "Veit Hornung",
+      "institution": "LMU Klinikum M\u00fcnchen",
+      "funder_membership": "DFG only",
+      "community": 3,
+      "degree": 2,
+      "weighted_degree": 8.0,
+      "betweenness": 0.02746,
+      "ekfs_projects": 0,
+      "dfg_projects": 1,
+      "primary_topic": "205 Medicine",
+      "strongest_collaborator": "Marion Subklewe"
+    },
+    {
+      "id": "RES_A5012345701",
+      "name": "Peter Krammer",
+      "institution": "Deutsches Krebsforschungszentrum (DKFZ)",
+      "funder_membership": "DFG only",
+      "community": 3,
+      "degree": 2,
+      "weighted_degree": 2.0,
+      "betweenness": 0.0,
+      "ekfs_projects": 0,
+      "dfg_projects": 1,
+      "primary_topic": "205 Medicine",
+      "strongest_collaborator": "Julia-Stefanie Frick"
+    },
+    {
+      "id": "RES_A5012345702",
+      "name": "Michael Hallek",
+      "institution": "Universit\u00e4tsklinikum K\u00f6ln",
+      "funder_membership": "DFG only",
+      "community": 1,
+      "degree": 1,
+      "weighted_degree": 3.0,
+      "betweenness": 0.0,
+      "ekfs_projects": 0,
+      "dfg_projects": 1,
+      "primary_topic": "205 Medicine",
+      "strongest_collaborator": "Christoph Kuppe"
+    },
+    {
+      "id": "RES_A5012345703",
+      "name": "Sonja-Verena Albers",
+      "institution": "Universit\u00e4tsklinikum Freiburg",
+      "funder_membership": "DFG only",
+      "community": 1,
+      "degree": 2,
+      "weighted_degree": 12.0,
+      "betweenness": 0.05208,
+      "ekfs_projects": 0,
+      "dfg_projects": 1,
+      "primary_topic": "205 Medicine",
+      "strongest_collaborator": "Maximilian Merz"
+    },
+    {
+      "id": "RES_A5012345704",
+      "name": "Mathias Heikenw\u00e4lder",
+      "institution": "Deutsches Krebsforschungszentrum (DKFZ)",
+      "funder_membership": "DFG only",
+      "community": 3,
+      "degree": 3,
+      "weighted_degree": 6.0,
+      "betweenness": 0.0142,
+      "ekfs_projects": 0,
+      "dfg_projects": 1,
+      "primary_topic": "205 Medicine",
+      "strongest_collaborator": "Stefan Endres"
+    },
+    {
+      "id": "RES_A5012345705",
+      "name": "Brenda Schulman",
+      "institution": "Klinikum rechts der Isar, TU M\u00fcnchen",
+      "funder_membership": "DFG only",
+      "community": 3,
+      "degree": 3,
+      "weighted_degree": 10.0,
+      "betweenness": 0.02746,
+      "ekfs_projects": 0,
+      "dfg_projects": 1,
+      "primary_topic": "205 Medicine",
+      "strongest_collaborator": "Katharina Limm"
+    },
+    {
+      "id": "RES_A5012345706",
+      "name": "Dirk Busch",
+      "institution": "Klinikum rechts der Isar, TU M\u00fcnchen",
+      "funder_membership": "DFG only",
+      "community": 4,
+      "degree": 0,
+      "weighted_degree": 0.0,
+      "betweenness": 0.0,
+      "ekfs_projects": 0,
+      "dfg_projects": 1,
+      "primary_topic": "205 Medicine",
+      "strongest_collaborator": ""
+    },
+    {
+      "id": "RES_A5012345707",
+      "name": "J\u00f6rg Vogel",
+      "institution": "Universit\u00e4tsmedizin G\u00f6ttingen",
+      "funder_membership": "DFG only",
+      "community": 1,
+      "degree": 3,
+      "weighted_degree": 15.0,
+      "betweenness": 0.08428,
+      "ekfs_projects": 0,
+      "dfg_projects": 1,
+      "primary_topic": "205 Medicine",
+      "strongest_collaborator": "Sonja-Verena Albers"
+    },
+    {
+      "id": "RES_A5012345708",
+      "name": "Eicke Latz",
+      "institution": "Charit\u00e9 - Universit\u00e4tsmedizin Berlin",
+      "funder_membership": "DFG only",
+      "community": 1,
+      "degree": 2,
+      "weighted_degree": 6.0,
+      "betweenness": 0.0,
+      "ekfs_projects": 0,
+      "dfg_projects": 1,
+      "primary_topic": "205 Medicine",
+      "strongest_collaborator": "Britta Siegmund"
+    },
+    {
+      "id": "RES_A5012345709",
+      "name": "Britta Siegmund",
+      "institution": "Charit\u00e9 - Universit\u00e4tsmedizin Berlin",
+      "funder_membership": "DFG only",
+      "community": 1,
+      "degree": 6,
+      "weighted_degree": 21.0,
+      "betweenness": 0.15246,
+      "ekfs_projects": 0,
+      "dfg_projects": 1,
+      "primary_topic": "205 Medicine",
+      "strongest_collaborator": "Christian von Kalle"
+    },
+    {
+      "id": "RES_A5012345710",
+      "name": "Robert Thimme",
+      "institution": "Universit\u00e4tsklinikum Freiburg",
+      "funder_membership": "DFG only",
+      "community": 5,
+      "degree": 0,
+      "weighted_degree": 0.0,
+      "betweenness": 0.0,
+      "ekfs_projects": 0,
+      "dfg_projects": 1,
+      "primary_topic": "205 Medicine",
+      "strongest_collaborator": ""
+    },
+    {
+      "id": "RES_A5012345711",
+      "name": "Lars Zender",
+      "institution": "Universit\u00e4tsklinikum T\u00fcbingen",
+      "funder_membership": "DFG only",
+      "community": 1,
+      "degree": 2,
+      "weighted_degree": 3.0,
+      "betweenness": 0.00189,
+      "ekfs_projects": 0,
+      "dfg_projects": 1,
+      "primary_topic": "205 Medicine",
+      "strongest_collaborator": "Lukas Flatz"
+    }
+  ],
+  "links": [
+    {
+      "source": "RES_A5012345678",
+      "target": "RES_A5012345709",
+      "weight": 6
+    },
+    {
+      "source": "RES_A5012345691",
+      "target": "RES_A5012345693",
+      "weight": 6
+    },
+    {
+      "source": "RES_A5012345690",
+      "target": "RES_A5012345703",
+      "weight": 6
+    },
+    {
+      "source": "RES_A5012345703",
+      "target": "RES_A5012345707",
+      "weight": 6
+    },
+    {
+      "source": "RES_A5012345679",
+      "target": "RES_A5012345684",
+      "weight": 5
+    },
+    {
+      "source": "RES_A5012345678",
+      "target": "RES_A5012345696",
+      "weight": 5
+    },
+    {
+      "source": "RES_A5012345686",
+      "target": "RES_A5012345707",
+      "weight": 5
+    },
+    {
+      "source": "RES_A5012345684",
+      "target": "RES_A5012345700",
+      "weight": 5
+    },
+    {
+      "source": "RES_A5012345687",
+      "target": "RES_A5012345705",
+      "weight": 5
+    },
+    {
+      "source": "RES_A5012345685",
+      "target": "RES_A5012345696",
+      "weight": 5
+    },
+    {
+      "source": "RES_A5012345684",
+      "target": "RES_A5012345694",
+      "weight": 5
+    },
+    {
+      "source": "RES_A5012345681",
+      "target": "RES_A5012345683",
+      "weight": 5
+    },
+    {
+      "source": "RES_A5012345681",
+      "target": "RES_A5012345682",
+      "weight": 5
+    },
+    {
+      "source": "RES_A5012345680",
+      "target": "RES_A5012345704",
+      "weight": 4
+    },
+    {
+      "source": "RES_A5012345708",
+      "target": "RES_A5012345709",
+      "weight": 4
+    },
+    {
+      "source": "RES_A5012345698",
+      "target": "RES_A5012345699",
+      "weight": 4
+    },
+    {
+      "source": "RES_A5012345707",
+      "target": "RES_A5012345709",
+      "weight": 4
+    },
+    {
+      "source": "RES_A5012345699",
+      "target": "RES_A5012345705",
+      "weight": 4
+    },
+    {
+      "source": "RES_A5012345695",
+      "target": "RES_A5012345699",
+      "weight": 4
+    },
+    {
+      "source": "RES_A5012345696",
+      "target": "RES_A5012345698",
+      "weight": 4
+    },
+    {
+      "source": "RES_A5012345680",
+      "target": "RES_A5012345699",
+      "weight": 4
+    },
+    {
+      "source": "RES_A5012345682",
+      "target": "RES_A5012345695",
+      "weight": 4
+    },
+    {
+      "source": "RES_A5012345693",
+      "target": "RES_A5012345709",
+      "weight": 4
+    },
+    {
+      "source": "RES_A5012345689",
+      "target": "RES_A5012345695",
+      "weight": 4
+    },
+    {
+      "source": "RES_A5012345693",
+      "target": "RES_A5012345702",
+      "weight": 3
+    },
+    {
+      "source": "RES_A5012345699",
+      "target": "RES_A5012345700",
+      "weight": 3
+    },
+    {
+      "source": "RES_A5012345690",
+      "target": "RES_A5012345692",
+      "weight": 3
+    },
+    {
+      "source": "RES_A5012345684",
+      "target": "RES_A5012345697",
+      "weight": 2
+    },
+    {
+      "source": "RES_A5012345684",
+      "target": "RES_A5012345695",
+      "weight": 2
+    },
+    {
+      "source": "RES_A5012345692",
+      "target": "RES_A5012345711",
+      "weight": 2
+    },
+    {
+      "source": "RES_A5012345696",
+      "target": "RES_A5012345709",
+      "weight": 2
+    },
+    {
+      "source": "RES_A5012345696",
+      "target": "RES_A5012345708",
+      "weight": 2
+    },
+    {
+      "source": "RES_A5012345689",
+      "target": "RES_A5012345697",
+      "weight": 2
+    },
+    {
+      "source": "RES_A5012345679",
+      "target": "RES_A5012345711",
+      "weight": 1
+    },
+    {
+      "source": "RES_A5012345678",
+      "target": "RES_A5012345694",
+      "weight": 1
+    },
+    {
+      "source": "RES_A5012345678",
+      "target": "RES_A5012345686",
+      "weight": 1
+    },
+    {
+      "source": "RES_A5012345680",
+      "target": "RES_A5012345698",
+      "weight": 1
+    },
+    {
+      "source": "RES_A5012345679",
+      "target": "RES_A5012345701",
+      "weight": 1
+    },
+    {
+      "source": "RES_A5012345683",
+      "target": "RES_A5012345697",
+      "weight": 1
+    },
+    {
+      "source": "RES_A5012345686",
+      "target": "RES_A5012345709",
+      "weight": 1
+    },
+    {
+      "source": "RES_A5012345684",
+      "target": "RES_A5012345699",
+      "weight": 1
+    },
+    {
+      "source": "RES_A5012345685",
+      "target": "RES_A5012345691",
+      "weight": 1
+    },
+    {
+      "source": "RES_A5012345690",
+      "target": "RES_A5012345694",
+      "weight": 1
+    },
+    {
+      "source": "RES_A5012345694",
+      "target": "RES_A5012345704",
+      "weight": 1
+    },
+    {
+      "source": "RES_A5012345694",
+      "target": "RES_A5012345705",
+      "weight": 1
+    },
+    {
+      "source": "RES_A5012345701",
+      "target": "RES_A5012345704",
+      "weight": 1
+    }
+  ]
+};
+
+    const width = window.innerWidth;
+    const height = window.innerHeight - 125;
+
+    const svg = d3.select("#chart").append("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .call(d3.zoom().on("zoom", (event) => g.attr("transform", event.transform)));
+
+    const g = svg.append("g");
+
+    const colorFunder = d3.scaleOrdinal()
+      .domain(["EKFS only", "DFG only", "both"])
+      .range(["#2b5c8f", "#d95f02", "#7570b3"]);
+
+    const colorCommunity = d3.scaleOrdinal(d3.schemeCategory10);
+
+    const simulation = d3.forceSimulation(data.nodes)
+      .force("link", d3.forceLink(data.links).id(d => d.id).distance(d => 120 / Math.sqrt(d.weight)))
+      .force("charge", d3.forceManyBody().strength(-300))
+      .force("center", d3.forceCenter(width / 2, height / 2))
+      .force("collision", d3.forceCollide().radius(d => Math.sqrt(d.weighted_degree) * 6 + 10));
+
+    const link = g.append("g")
+      .attr("stroke", "#94a3b8")
+      .attr("stroke-opacity", 0.6)
+      .selectAll("line")
+      .data(data.links)
+      .join("line")
+      .attr("stroke-width", d => Math.max(1.5, Math.sqrt(d.weight) * 2));
+
+    const node = g.append("g")
+      .selectAll("circle")
+      .data(data.nodes)
+      .join("circle")
+      .attr("r", d => Math.max(6, Math.sqrt(d.weighted_degree) * 4 + 4))
+      .attr("fill", d => colorFunder(d.funder_membership))
+      .attr("stroke", "#1e293b")
+      .attr("stroke-width", 1.5)
+      .call(d3.drag()
+        .on("start", dragstarted)
+        .on("drag", dragged)
+        .on("end", dragended));
+
+    const labels = g.append("g")
+      .selectAll("text")
+      .data(data.nodes)
+      .join("text")
+      .text(d => d.name.split(" ").slice(-1)[0])
+      .attr("font-size", "10px")
+      .attr("font-weight", "600")
+      .attr("dx", 10)
+      .attr("dy", 4)
+      .attr("fill", "#1e293b");
+
+    const tooltip = d3.select("#tooltip");
+
+    node.on("mouseover", (event, d) => {
+      tooltip.style("display", "block")
+        .html(`
+          <h4>${d.name}</h4>
+          <b>Funder Membership:</b> ${d.funder_membership}<br>
+          <b>Institution:</b> ${d.institution}<br>
+          <b>Primary Topic:</b> ${d.primary_topic}<br>
+          <b>EKFS Projects:</b> ${d.ekfs_projects} | <b>DFG Projects:</b> ${d.dfg_projects}<br>
+          <hr style="border: 0; border-top: 1px solid #475569; margin: 6px 0;">
+          <b>Distinct Collaborators (Degree):</b> ${d.degree}<br>
+          <b>Coauthorship Strength:</b> ${d.weighted_degree}<br>
+          <b>Betweenness Centrality:</b> ${d.betweenness}<br>
+          <b>Louvain Community:</b> Module ${d.community}<br>
+          <b>Strongest Collaborator:</b> ${d.strongest_collaborator}
+        `);
+    })
+    .on("mousemove", (event) => {
+      tooltip.style("left", (event.pageX + 14) + "px")
+             .style("top", (event.pageY - 28) + "px");
+    })
+    .on("mouseout", () => {
+      tooltip.style("display", "none");
+    });
+
+    simulation.on("tick", () => {
+      link
+        .attr("x1", d => d.source.x)
+        .attr("y1", d => d.source.y)
+        .attr("x2", d => d.target.x)
+        .attr("y2", d => d.target.y);
+
+      node
+        .attr("cx", d => d.x)
+        .attr("cy", d => d.y);
+
+      labels
+        .attr("x", d => d.x)
+        .attr("y", d => d.y);
+    });
+
+    function dragstarted(event, d) {
+      if (!event.active) simulation.alphaTarget(0.3).restart();
+      d.fx = d.x;
+      d.fy = d.y;
+    }
+
+    function dragged(event, d) {
+      d.fx = event.x;
+      d.fy = event.y;
+    }
+
+    function dragended(event, d) {
+      if (!event.active) simulation.alphaTarget(0);
+      d.fx = null;
+      d.fy = null;
+    }
+
+    // Color switch
+    d3.select("#colorSelect").on("change", function() {
+      const val = this.value;
+      if (val === "funder") {
+        node.attr("fill", d => colorFunder(d.funder_membership));
+        d3.select("#legend").html(`
+          <div style="font-weight: bold; margin-bottom: 6px;">Funder Membership</div>
+          <div class="legend-item"><span class="legend-color" style="background: #2b5c8f;"></span> EKFS only</div>
+          <div class="legend-item"><span class="legend-color" style="background: #d95f02;"></span> DFG only</div>
+          <div class="legend-item"><span class="legend-color" style="background: #7570b3;"></span> Both EKFS & DFG</div>
+        `);
+      } else {
+        node.attr("fill", d => colorCommunity(d.community));
+        d3.select("#legend").html(`
+          <div style="font-weight: bold; margin-bottom: 6px;">Louvain Communities</div>
+          <div class="legend-item"><span class="legend-color" style="background: ${d3.schemeCategory10[0]};"></span> Module 1</div>
+          <div class="legend-item"><span class="legend-color" style="background: ${d3.schemeCategory10[1]};"></span> Module 2</div>
+          <div class="legend-item"><span class="legend-color" style="background: ${d3.schemeCategory10[2]};"></span> Module 3</div>
+          <div class="legend-item"><span class="legend-color" style="background: ${d3.schemeCategory10[3]};"></span> Module 4</div>
+        `);
+      }
+    });
+
+    // Search filter
+    d3.select("#searchInput").on("input", function() {
+      const query = this.value.toLowerCase();
+      node.attr("opacity", d => d.name.toLowerCase().includes(query) ? 1.0 : 0.15);
+      labels.attr("opacity", d => d.name.toLowerCase().includes(query) ? 1.0 : 0.15);
+    });
+  </script>
+</body>
+</html>

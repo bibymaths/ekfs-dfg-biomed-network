@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns">
+  <key id="d0" for="node" attr.name="name" attr.type="string"/>
+  <key id="d1" for="node" attr.name="institution" attr.type="string"/>
+  <key id="d2" for="node" attr.name="funder" attr.type="string"/>
+  <key id="d3" for="node" attr.name="community" attr.type="int"/>
+  <key id="d4" for="node" attr.name="weighted_degree" attr.type="double"/>
+  <key id="d5" for="node" attr.name="betweenness" attr.type="double"/>
+  <key id="d6" for="edge" attr.name="weight" attr.type="int"/>
+  <graph id="G" edgedefault="undirected">
+    <node id="RES_A5012345678">
+      <data key="d0">Christian von Kalle</data>
+      <data key="d1">Charité - Universitätsmedizin Berlin</data>
+      <data key="d2">both</data>
+      <data key="d3">1</data>
+      <data key="d4">13.0</data>
+      <data key="d5">0.13731</data>
+    </node>
+    <node id="RES_A5012345679">
+      <data key="d0">Julia-Stefanie Frick</data>
+      <data key="d1">Universitätsklinikum Tübingen</data>
+      <data key="d2">both</data>
+      <data key="d3">3</data>
+      <data key="d4">7.0</data>
+      <data key="d5">0.02652</data>
+    </node>
+    <node id="RES_A5012345680">
+      <data key="d0">Stefan Endres</data>
+      <data key="d1">LMU Klinikum München</data>
+      <data key="d2">both</data>
+      <data key="d3">3</data>
+      <data key="d4">9.0</data>
+      <data key="d5">0.03883</data>
+    </node>
+    <node id="RES_A5012345681">
+      <data key="d0">Felix Neuhaus</data>
+      <data key="d1">Universitätsklinikum Frankfurt</data>
+      <data key="d2">both</data>
+      <data key="d3">3</data>
+      <data key="d4">10.0</data>
+      <data key="d5">0.02652</data>
+    </node>
+    <node id="RES_A5012345682">
+      <data key="d0">Sandra Ciesek</data>
+      <data key="d1">Universitätsklinikum Frankfurt</data>
+      <data key="d2">both</data>
+      <data key="d3">3</data>
+      <data key="d4">9.0</data>
+      <data key="d5">0.05161</data>
+    </node>
+    <node id="RES_A5012345683">
+      <data key="d0">Moritz von Winterfeld</data>
+      <data key="d1">Universitätsklinikum Heidelberg</data>
+      <data key="d2">both</data>
+      <data key="d3">3</data>
+      <data key="d4">6.0</data>
+      <data key="d5">0.00047</data>
+    </node>
+    <node id="RES_A5012345684">
+      <data key="d0">Marion Subklewe</data>
+      <data key="d1">LMU Klinikum München</data>
+      <data key="d2">both</data>
+      <data key="d3">3</data>
+      <data key="d4">20.0</data>
+      <data key="d5">0.07434</data>
+    </node>
+    <node id="RES_A5012345685">
+      <data key="d0">Alexander Mildner</data>
+      <data key="d1">Universitätsklinikum Freiburg</data>
+      <data key="d2">both</data>
+      <data key="d3">1</data>
+      <data key="d4">6.0</data>
+      <data key="d5">0.0</data>
+    </node>
+    <node id="RES_A5012345686">
+      <data key="d0">Leif Erik Sander</data>
+      <data key="d1">Charité - Universitätsmedizin Berlin</data>
+      <data key="d2">both</data>
+      <data key="d3">1</data>
+      <data key="d4">7.0</data>
+      <data key="d5">0.0</data>
+    </node>
+    <node id="RES_A5012345687">
+      <data key="d0">Katharina Limm</data>
+      <data key="d1">Universitätsklinikum Erlangen</data>
+      <data key="d2">both</data>
+      <data key="d3">3</data>
+      <data key="d4">5.0</data>
+      <data key="d5">0.0</data>
+    </node>
+    <node id="RES_A5012345688">
+      <data key="d0">Tobias Bopp</data>
+      <data key="d1">Universitätsklinikum Frankfurt</data>
+      <data key="d2">both</data>
+      <data key="d3">2</data>
+      <data key="d4">0.0</data>
+      <data key="d5">0.0</data>
+    </node>
+    <node id="RES_A5012345689">
+      <data key="d0">Johannes Schetelig</data>
+      <data key="d1">Universitätsklinikum Hamburg-Eppendorf</data>
+      <data key="d2">both</data>
+      <data key="d3">3</data>
+      <data key="d4">6.0</data>
+      <data key="d5">0.01326</data>
+    </node>
+    <node id="RES_A5012345690">
+      <data key="d0">Maximilian Merz</data>
+      <data key="d1">Universitätsklinikum Heidelberg</data>
+      <data key="d2">EKFS only</data>
+      <data key="d3">1</data>
+      <data key="d4">10.0</data>
+      <data key="d5">0.0483</data>
+    </node>
+    <node id="RES_A5012345691">
+      <data key="d0">Anna-Lena Kretz</data>
+      <data key="d1">Universitätsklinikum Freiburg</data>
+      <data key="d2">EKFS only</data>
+      <data key="d3">1</data>
+      <data key="d4">7.0</data>
+      <data key="d5">0.0</data>
+    </node>
+    <node id="RES_A5012345692">
+      <data key="d0">Lukas Flatz</data>
+      <data key="d1">Universitätsklinikum Tübingen</data>
+      <data key="d2">EKFS only</data>
+      <data key="d3">1</data>
+      <data key="d4">5.0</data>
+      <data key="d5">0.01136</data>
+    </node>
+    <node id="RES_A5012345693">
+      <data key="d0">Christoph Kuppe</data>
+      <data key="d1">Universitätsklinikum Köln</data>
+      <data key="d2">EKFS only</data>
+      <data key="d3">1</data>
+      <data key="d4">13.0</data>
+      <data key="d5">0.05398</data>
+    </node>
+    <node id="RES_A5012345694">
+      <data key="d0">Clarissa von Rundstedt</data>
+      <data key="d1">Universitätsmedizin Göttingen</data>
+      <data key="d2">EKFS only</data>
+      <data key="d3">3</data>
+      <data key="d4">9.0</data>
+      <data key="d5">0.03456</data>
+    </node>
+    <node id="RES_A5012345695">
+      <data key="d0">Simon Lebek</data>
+      <data key="d1">Klinikum rechts der Isar, TU München</data>
+      <data key="d2">EKFS only</data>
+      <data key="d3">3</data>
+      <data key="d4">14.0</data>
+      <data key="d5">0.10985</data>
+    </node>
+    <node id="RES_A5012345696">
+      <data key="d0">Hannah Voelkle</data>
+      <data key="d1">Charité - Universitätsmedizin Berlin</data>
+      <data key="d2">EKFS only</data>
+      <data key="d3">1</data>
+      <data key="d4">18.0</data>
+      <data key="d5">0.15767</data>
+    </node>
+    <node id="RES_A5012345697">
+      <data key="d0">Niklas de Beauclair</data>
+      <data key="d1">Universitätsklinikum Hamburg-Eppendorf</data>
+      <data key="d2">EKFS only</data>
+      <data key="d3">3</data>
+      <data key="d4">5.0</data>
+      <data key="d5">0.0</data>
+    </node>
+    <node id="RES_A5012345698">
+      <data key="d0">Laura Mayer-Suess</data>
+      <data key="d1">LMU Klinikum München</data>
+      <data key="d2">EKFS only</data>
+      <data key="d3">3</data>
+      <data key="d4">9.0</data>
+      <data key="d5">0.1482</data>
+    </node>
+    <node id="RES_A5012345699">
+      <data key="d0">Sebastian Kobold</data>
+      <data key="d1">LMU Klinikum München</data>
+      <data key="d2">EKFS only</data>
+      <data key="d3">3</data>
+      <data key="d4">20.0</data>
+      <data key="d5">0.20218</data>
+    </node>
+    <node id="RES_A5012345700">
+      <data key="d0">Veit Hornung</data>
+      <data key="d1">LMU Klinikum München</data>
+      <data key="d2">DFG only</data>
+      <data key="d3">3</data>
+      <data key="d4">8.0</data>
+      <data key="d5">0.02746</data>
+    </node>
+    <node id="RES_A5012345701">
+      <data key="d0">Peter Krammer</data>
+      <data key="d1">Deutsches Krebsforschungszentrum (DKFZ)</data>
+      <data key="d2">DFG only</data>
+      <data key="d3">3</data>
+      <data key="d4">2.0</data>
+      <data key="d5">0.0</data>
+    </node>
+    <node id="RES_A5012345702">
+      <data key="d0">Michael Hallek</data>
+      <data key="d1">Universitätsklinikum Köln</data>
+      <data key="d2">DFG only</data>
+      <data key="d3">1</data>
+      <data key="d4">3.0</data>
+      <data key="d5">0.0</data>
+    </node>
+    <node id="RES_A5012345703">
+      <data key="d0">Sonja-Verena Albers</data>
+      <data key="d1">Universitätsklinikum Freiburg</data>
+      <data key="d2">DFG only</data>
+      <data key="d3">1</data>
+      <data key="d4">12.0</data>
+      <data key="d5">0.05208</data>
+    </node>
+    <node id="RES_A5012345704">
+      <data key="d0">Mathias Heikenwälder</data>
+      <data key="d1">Deutsches Krebsforschungszentrum (DKFZ)</data>
+      <data key="d2">DFG only</data>
+      <data key="d3">3</data>
+      <data key="d4">6.0</data>
+      <data key="d5">0.0142</data>
+    </node>
+    <node id="RES_A5012345705">
+      <data key="d0">Brenda Schulman</data>
+      <data key="d1">Klinikum rechts der Isar, TU München</data>
+      <data key="d2">DFG only</data>
+      <data key="d3">3</data>
+      <data key="d4">10.0</data>
+      <data key="d5">0.02746</data>
+    </node>
+    <node id="RES_A5012345706">
+      <data key="d0">Dirk Busch</data>
+      <data key="d1">Klinikum rechts der Isar, TU München</data>
+      <data key="d2">DFG only</data>
+      <data key="d3">4</data>
+      <data key="d4">0.0</data>
+      <data key="d5">0.0</data>
+    </node>
+    <node id="RES_A5012345707">
+      <data key="d0">Jörg Vogel</data>
+      <data key="d1">Universitätsmedizin Göttingen</data>
+      <data key="d2">DFG only</data>
+      <data key="d3">1</data>
+      <data key="d4">15.0</data>
+      <data key="d5">0.08428</data>
+    </node>
+    <node id="RES_A5012345708">
+      <data key="d0">Eicke Latz</data>
+      <data key="d1">Charité - Universitätsmedizin Berlin</data>
+      <data key="d2">DFG only</data>
+      <data key="d3">1</data>
+      <data key="d4">6.0</data>
+      <data key="d5">0.0</data>
+    </node>
+    <node id="RES_A5012345709">
+      <data key="d0">Britta Siegmund</data>
+      <data key="d1">Charité - Universitätsmedizin Berlin</data>
+      <data key="d2">DFG only</data>
+      <data key="d3">1</data>
+      <data key="d4">21.0</data>
+      <data key="d5">0.15246</data>
+    </node>
+    <node id="RES_A5012345710">
+      <data key="d0">Robert Thimme</data>
+      <data key="d1">Universitätsklinikum Freiburg</data>
+      <data key="d2">DFG only</data>
+      <data key="d3">5</data>
+      <data key="d4">0.0</data>
+      <data key="d5">0.0</data>
+    </node>
+    <node id="RES_A5012345711">
+      <data key="d0">Lars Zender</data>
+      <data key="d1">Universitätsklinikum Tübingen</data>
+      <data key="d2">DFG only</data>
+      <data key="d3">1</data>
+      <data key="d4">3.0</data>
+      <data key="d5">0.00189</data>
+    </node>
+    <edge id="e3" source="RES_A5012345678" target="RES_A5012345709">
+      <data key="d6">6</data>
+    </edge>
+    <edge id="e29" source="RES_A5012345691" target="RES_A5012345693">
+      <data key="d6">6</data>
+    </edge>
+    <edge id="e28" source="RES_A5012345690" target="RES_A5012345703">
+      <data key="d6">6</data>
+    </edge>
+    <edge id="e43" source="RES_A5012345703" target="RES_A5012345707">
+      <data key="d6">6</data>
+    </edge>
+    <edge id="e4" source="RES_A5012345679" target="RES_A5012345684">
+      <data key="d6">5</data>
+    </edge>
+    <edge id="e2" source="RES_A5012345678" target="RES_A5012345696">
+      <data key="d6">5</data>
+    </edge>
+    <edge id="e21" source="RES_A5012345686" target="RES_A5012345707">
+      <data key="d6">5</data>
+    </edge>
+    <edge id="e18" source="RES_A5012345684" target="RES_A5012345700">
+      <data key="d6">5</data>
+    </edge>
+    <edge id="e23" source="RES_A5012345687" target="RES_A5012345705">
+      <data key="d6">5</data>
+    </edge>
+    <edge id="e20" source="RES_A5012345685" target="RES_A5012345696">
+      <data key="d6">5</data>
+    </edge>
+    <edge id="e14" source="RES_A5012345684" target="RES_A5012345694">
+      <data key="d6">5</data>
+    </edge>
+    <edge id="e11" source="RES_A5012345681" target="RES_A5012345683">
+      <data key="d6">5</data>
+    </edge>
+    <edge id="e10" source="RES_A5012345681" target="RES_A5012345682">
+      <data key="d6">5</data>
+    </edge>
+    <edge id="e9" source="RES_A5012345680" target="RES_A5012345704">
+      <data key="d6">4</data>
+    </edge>
+    <edge id="e45" source="RES_A5012345708" target="RES_A5012345709">
+      <data key="d6">4</data>
+    </edge>
+    <edge id="e39" source="RES_A5012345698" target="RES_A5012345699">
+      <data key="d6">4</data>
+    </edge>
+    <edge id="e44" source="RES_A5012345707" target="RES_A5012345709">
+      <data key="d6">4</data>
+    </edge>
+    <edge id="e41" source="RES_A5012345699" target="RES_A5012345705">
+      <data key="d6">4</data>
+    </edge>
+    <edge id="e35" source="RES_A5012345695" target="RES_A5012345699">
+      <data key="d6">4</data>
+    </edge>
+    <edge id="e36" source="RES_A5012345696" target="RES_A5012345698">
+      <data key="d6">4</data>
+    </edge>
+    <edge id="e8" source="RES_A5012345680" target="RES_A5012345699">
+      <data key="d6">4</data>
+    </edge>
+    <edge id="e12" source="RES_A5012345682" target="RES_A5012345695">
+      <data key="d6">4</data>
+    </edge>
+    <edge id="e32" source="RES_A5012345693" target="RES_A5012345709">
+      <data key="d6">4</data>
+    </edge>
+    <edge id="e24" source="RES_A5012345689" target="RES_A5012345695">
+      <data key="d6">4</data>
+    </edge>
+    <edge id="e31" source="RES_A5012345693" target="RES_A5012345702">
+      <data key="d6">3</data>
+    </edge>
+    <edge id="e40" source="RES_A5012345699" target="RES_A5012345700">
+      <data key="d6">3</data>
+    </edge>
+    <edge id="e26" source="RES_A5012345690" target="RES_A5012345692">
+      <data key="d6">3</data>
+    </edge>
+    <edge id="e16" source="RES_A5012345684" target="RES_A5012345697">
+      <data key="d6">2</data>
+    </edge>
+    <edge id="e15" source="RES_A5012345684" target="RES_A5012345695">
+      <data key="d6">2</data>
+    </edge>
+    <edge id="e30" source="RES_A5012345692" target="RES_A5012345711">
+      <data key="d6">2</data>
+    </edge>
+    <edge id="e38" source="RES_A5012345696" target="RES_A5012345709">
+      <data key="d6">2</data>
+    </edge>
+    <edge id="e37" source="RES_A5012345696" target="RES_A5012345708">
+      <data key="d6">2</data>
+    </edge>
+    <edge id="e25" source="RES_A5012345689" target="RES_A5012345697">
+      <data key="d6">2</data>
+    </edge>
+    <edge id="e6" source="RES_A5012345679" target="RES_A5012345711">
+      <data key="d6">1</data>
+    </edge>
+    <edge id="e1" source="RES_A5012345678" target="RES_A5012345694">
+      <data key="d6">1</data>
+    </edge>
+    <edge id="e0" source="RES_A5012345678" target="RES_A5012345686">
+      <data key="d6">1</data>
+    </edge>
+    <edge id="e7" source="RES_A5012345680" target="RES_A5012345698">
+      <data key="d6">1</data>
+    </edge>
+    <edge id="e5" source="RES_A5012345679" target="RES_A5012345701">
+      <data key="d6">1</data>
+    </edge>
+    <edge id="e13" source="RES_A5012345683" target="RES_A5012345697">
+      <data key="d6">1</data>
+    </edge>
+    <edge id="e22" source="RES_A5012345686" target="RES_A5012345709">
+      <data key="d6">1</data>
+    </edge>
+    <edge id="e17" source="RES_A5012345684" target="RES_A5012345699">
+      <data key="d6">1</data>
+    </edge>
+    <edge id="e19" source="RES_A5012345685" target="RES_A5012345691">
+      <data key="d6">1</data>
+    </edge>
+    <edge id="e27" source="RES_A5012345690" target="RES_A5012345694">
+      <data key="d6">1</data>
+    </edge>
+    <edge id="e33" source="RES_A5012345694" target="RES_A5012345704">
+      <data key="d6">1</data>
+    </edge>
+    <edge id="e34" source="RES_A5012345694" target="RES_A5012345705">
+      <data key="d6">1</data>
+    </edge>
+    <edge id="e42" source="RES_A5012345701" target="RES_A5012345704">
+      <data key="d6">1</data>
+    </edge>
+  </graph>
+</graphml>

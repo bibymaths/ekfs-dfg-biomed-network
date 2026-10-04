@@ -1,0 +1,15 @@
+---
+title: "NoblePrize Cohort Coauthorship Analysis (Legacy Repository)"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+# Historical Nobel Prize Cohort Demonstration
+
+*Preserved from original `Juselius_secretdoor` codebase.*
+Demonstrated that the underlying network construction algorithms could be repurposed from Jusélius grantees to arbitrary cohorts (such as Nobel Laureates in Physiology or Medicine).
+
+In the refactored EKFS-DFG platform, this cohort concept has been formally abstracted into the unified cohort specification engine (`config/config.yaml` and `R/normalise_entities.R`).

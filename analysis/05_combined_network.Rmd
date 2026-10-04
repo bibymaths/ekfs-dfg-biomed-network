@@ -1,0 +1,17 @@
+---
+title: "05: Combined EKFS-DFG Multilayer Network & Cross-Funder Bridges"
+author: "Network Science Team"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+# 1. Scope & Objective
+Constructs the joint EKFS-DFG network landscape:
+- Nodes categorized as EKFS only, DFG only, or Both
+- Louvain community detection across the combined ecosystem
+- Identification of boundary-spanning bridge researchers linking foundation-funded clinician scientists with DFG basic researchers
+- Degree vs. weighted coauthorship strength quadrant profiling

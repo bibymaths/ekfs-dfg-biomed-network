@@ -1,0 +1,43 @@
+---
+title: "01: Ingestion & Provenance Audit (EKFS & DFG GEPRIS)"
+author: "Scientific Data Engineering Team"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    theme: cosmo
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+# 1. Overview
+This notebook ingests authoritative research funding data from:
+1. **Else Kröner-Fresenius-Stiftung (EKFS)** scientific project database.
+2. **Deutsche Forschungsgemeinschaft (DFG)** GEPRIS project database.
+
+Provenance metadata, retrieval timestamps, and source URLs are strictly preserved.
+
+# 2. Ingestion Pipeline
+```{r ingest, eval=FALSE}
+source("../R/ingest_ekfs.R")
+source("../R/ingest_dfg.R")
+library(yaml)
+
+config <- yaml::read_yaml("../config/config.yaml")
+
+# Ingest snapshots
+ekfs_data <- ingest_ekfs_projects("../data/raw/ekfs/ekfs_projects_snapshot.csv", config)
+dfg_data  <- ingest_dfg_projects("../data/raw/dfg/dfg_gepris_snapshot.csv", config)
+
+cat("EKFS Projects:", nrow(ekfs_data), "\n")
+cat("DFG Projects:", nrow(dfg_data), "\n")
+```
+
+# 3. Data Integrity & Provenance Check
+```{r summary, eval=FALSE}
+knitr::kable(head(ekfs_data[, c("project_id", "title", "funding_line", "year", "institution")]), caption = "Sample EKFS Records")
+knitr::kable(head(dfg_data[, c("dfg_project_number", "title", "programme", "funding_year", "participating_institutions")]), caption = "Sample DFG GEPRIS Records")
+```

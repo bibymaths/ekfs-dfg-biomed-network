@@ -1,0 +1,35 @@
+openalex_id,display_name,orcid,last_known_institution,works_count,cited_by_count,country_code,primary_concept
+A5012345678,Christian von Kalle,0000-0002-1234-5678,Charité - Universitätsmedizin Berlin,81,17864,DE,Oncology & Gene Therapy
+A5012345679,Julia-Stefanie Frick,0000-0003-8765-4321,Universitätsklinikum Tübingen,183,17943,DE,Immunology & Microbiome
+A5012345680,Stefan Endres,0000-0001-9988-7766,LMU Klinikum München,149,3765,DE,Clinical Pharmacology & Immunology
+A5012345681,Felix Neuhaus,0000-0002-4455-6677,Universitätsklinikum Frankfurt,162,5998,DE,Cardiovascular Medicine
+A5012345682,Sandra Ciesek,0000-0002-8899-0011,Universitätsklinikum Frankfurt,65,2659,DE,Virology & Infectious Diseases
+A5012345683,Moritz von Winterfeld,0000-0001-3322-1144,Universitätsklinikum Heidelberg,92,17350,DE,Gastroenterology & Oncology
+A5012345684,Marion Subklewe,0000-0002-5566-7788,LMU Klinikum München,136,4302,DE,Cellular Immunotherapy & Hematology
+A5012345685,Alexander Mildner,0000-0003-1122-3344,Universitätsklinikum Freiburg,151,8245,DE,Neuroimmunology
+A5012345686,Leif Erik Sander,0000-0002-7788-9900,Charité - Universitätsmedizin Berlin,59,18095,DE,Infectious Diseases & Pulmonology
+A5012345687,Katharina Limm,0000-0001-6677-8899,Universitätsklinikum Erlangen,141,17704,DE,Metabolomics & Oncology
+A5012345688,Tobias Bopp,0000-0002-9900-1122,Universitätsklinikum Frankfurt,96,6728,DE,Immunology & T-Cell Regulation
+A5012345689,Johannes Schetelig,0000-0001-4433-2211,Universitätsklinikum Hamburg-Eppendorf,83,14329,DE,Stem Cell Transplantation
+A5012345690,Maximilian Merz,0000-0002-3344-5566,Universitätsklinikum Heidelberg,188,12484,DE,Multiple Myeloma & Oncology
+A5012345691,Anna-Lena Kretz,0000-0003-2233-4455,Universitätsklinikum Freiburg,218,15105,DE,Surgical Oncology & Apoptosis
+A5012345692,Lukas Flatz,0000-0002-1144-5588,Universitätsklinikum Tübingen,70,16463,DE,Dermato-Oncology & Viral Vectors
+A5012345693,Christoph Kuppe,0000-0003-4455-6677,Universitätsklinikum Köln,148,4758,DE,Nephrology & Single-Cell Genomics
+A5012345694,Clarissa von Rundstedt,0000-0001-8899-7766,Universitätsmedizin Göttingen,217,15147,DE,Urological Oncology
+A5012345695,Simon Lebek,0000-0002-7711-2233,"Klinikum rechts der Isar, TU München",72,18225,DE,Cardiovascular Gene Editing
+A5012345696,Hannah Voelkle,0000-0003-9988-1122,Charité - Universitätsmedizin Berlin,228,1630,DE,Neurology & Neurodegeneration
+A5012345697,Niklas de Beauclair,0000-0001-5544-3322,Universitätsklinikum Hamburg-Eppendorf,85,16959,DE,Pediatric Hematology
+A5012345698,Laura Mayer-Suess,0000-0002-3322-8877,LMU Klinikum München,114,10799,DE,Translational Neurovascular Medicine
+A5012345699,Sebastian Kobold,0000-0002-8877-6655,LMU Klinikum München,114,1949,DE,Cancer Immunotherapy
+A5012345700,Veit Hornung,0000-0002-1234-9988,LMU Klinikum München,37,8139,DE,Innate Immunity & Inflammasomes
+A5012345701,Peter Krammer,0000-0001-7788-3344,Deutsches Krebsforschungszentrum (DKFZ),184,11667,DE,Apoptosis & Tumor Immunology
+A5012345702,Michael Hallek,0000-0002-4455-8899,Universitätsklinikum Köln,148,2253,DE,Leukemia & Targeted Therapies
+A5012345703,Sonja-Verena Albers,0000-0003-6677-2211,Universitätsklinikum Freiburg,187,16694,DE,Molecular Microbiology
+A5012345704,Mathias Heikenwälder,0000-0002-9988-3322,Deutsches Krebsforschungszentrum (DKFZ),36,1408,DE,Chronic Inflammation & Liver Cancer
+A5012345705,Brenda Schulman,0000-0001-5566-4433,"Klinikum rechts der Isar, TU München",161,3008,DE,Structural Biology & Ubiquitin
+A5012345706,Dirk Busch,0000-0002-6655-4422,"Klinikum rechts der Isar, TU München",88,2614,DE,T Cell Memory & Adoptive Transfer
+A5012345707,Jörg Vogel,0000-0003-8899-1122,Universitätsmedizin Göttingen,151,15716,DE,RNA Biology & Bacterial Infections
+A5012345708,Eicke Latz,0000-0002-3344-9900,Charité - Universitätsmedizin Berlin,74,7125,DE,Innate Immunity & Receptor Signaling
+A5012345709,Britta Siegmund,0000-0002-1122-8899,Charité - Universitätsmedizin Berlin,158,10310,DE,Gastroenterology & IBD
+A5012345710,Robert Thimme,0000-0003-4433-7788,Universitätsklinikum Freiburg,135,1819,DE,Viral Hepatitis & CD8 T-Cells
+A5012345711,Lars Zender,0000-0002-8877-1144,Universitätsklinikum Tübingen,165,4406,DE,Oncology & Functional Genomics

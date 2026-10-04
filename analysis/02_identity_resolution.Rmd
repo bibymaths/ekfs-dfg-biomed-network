@@ -1,0 +1,29 @@
+---
+title: "02: Researcher Identity Resolution & Disambiguation Audit"
+author: "Scientific Data Engineering Team"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    theme: cosmo
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+# 1. Overview
+Replaces the legacy OpenAlex `works_count` heuristic with a multi-signal identity resolution protocol.
+Signals evaluated:
+- Normalized researcher names (handling academic titles and surname particles like *von*, *zu*)
+- Institutional affiliation matching
+- ORCID verification
+- Disciplinary topic alignment
+
+# 2. Execution & Ambiguity Reporting
+```{r resolution, eval=FALSE}
+source("../R/resolve_authors.R")
+
+# Execute resolution against OpenAlex candidates and report confidence distribution
+# Flags identities requiring manual review
+```

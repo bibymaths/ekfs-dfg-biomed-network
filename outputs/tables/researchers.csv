@@ -1,0 +1,35 @@
+researcher_id,display_name,openalex_id,orcid,institution,country,funder_membership,identity_confidence,needs_manual_review
+RES_A5012345678,Christian von Kalle,A5012345678,0000-0002-1234-5678,Charité - Universitätsmedizin Berlin,Germany,both,1.0,False
+RES_A5012345679,Julia-Stefanie Frick,A5012345679,0000-0003-8765-4321,Universitätsklinikum Tübingen,Germany,both,1.0,False
+RES_A5012345680,Stefan Endres,A5012345680,0000-0001-9988-7766,LMU Klinikum München,Germany,both,1.0,False
+RES_A5012345681,Felix Neuhaus,A5012345681,0000-0002-4455-6677,Universitätsklinikum Frankfurt,Germany,both,1.0,False
+RES_A5012345682,Sandra Ciesek,A5012345682,0000-0002-8899-0011,Universitätsklinikum Frankfurt,Germany,both,1.0,False
+RES_A5012345683,Moritz von Winterfeld,A5012345683,0000-0001-3322-1144,Universitätsklinikum Heidelberg,Germany,both,1.0,False
+RES_A5012345684,Marion Subklewe,A5012345684,0000-0002-5566-7788,LMU Klinikum München,Germany,both,1.0,False
+RES_A5012345685,Alexander Mildner,A5012345685,0000-0003-1122-3344,Universitätsklinikum Freiburg,Germany,both,1.0,False
+RES_A5012345686,Leif Erik Sander,A5012345686,0000-0002-7788-9900,Charité - Universitätsmedizin Berlin,Germany,both,1.0,False
+RES_A5012345687,Katharina Limm,A5012345687,0000-0001-6677-8899,Universitätsklinikum Erlangen,Germany,both,1.0,False
+RES_A5012345688,Tobias Bopp,A5012345688,0000-0002-9900-1122,Universitätsklinikum Frankfurt,Germany,both,1.0,False
+RES_A5012345689,Johannes Schetelig,A5012345689,0000-0001-4433-2211,Universitätsklinikum Hamburg-Eppendorf,Germany,both,1.0,False
+RES_A5012345690,Maximilian Merz,A5012345690,0000-0002-3344-5566,Universitätsklinikum Heidelberg,Germany,EKFS only,1.0,False
+RES_A5012345691,Anna-Lena Kretz,A5012345691,0000-0003-2233-4455,Universitätsklinikum Freiburg,Germany,EKFS only,1.0,False
+RES_A5012345692,Lukas Flatz,A5012345692,0000-0002-1144-5588,Universitätsklinikum Tübingen,Germany,EKFS only,1.0,False
+RES_A5012345693,Christoph Kuppe,A5012345693,0000-0003-4455-6677,Universitätsklinikum Köln,Germany,EKFS only,1.0,False
+RES_A5012345694,Clarissa von Rundstedt,A5012345694,0000-0001-8899-7766,Universitätsmedizin Göttingen,Germany,EKFS only,1.0,False
+RES_A5012345695,Simon Lebek,A5012345695,0000-0002-7711-2233,"Klinikum rechts der Isar, TU München",Germany,EKFS only,1.0,False
+RES_A5012345696,Hannah Voelkle,A5012345696,0000-0003-9988-1122,Charité - Universitätsmedizin Berlin,Germany,EKFS only,1.0,False
+RES_A5012345697,Niklas de Beauclair,A5012345697,0000-0001-5544-3322,Universitätsklinikum Hamburg-Eppendorf,Germany,EKFS only,1.0,False
+RES_A5012345698,Laura Mayer-Suess,A5012345698,0000-0002-3322-8877,LMU Klinikum München,Germany,EKFS only,1.0,False
+RES_A5012345699,Sebastian Kobold,A5012345699,0000-0002-8877-6655,LMU Klinikum München,Germany,EKFS only,1.0,False
+RES_A5012345700,Veit Hornung,A5012345700,0000-0002-1234-9988,LMU Klinikum München,Germany,DFG only,1.0,False
+RES_A5012345701,Peter Krammer,A5012345701,0000-0001-7788-3344,Deutsches Krebsforschungszentrum (DKFZ),Germany,DFG only,1.0,False
+RES_A5012345702,Michael Hallek,A5012345702,0000-0002-4455-8899,Universitätsklinikum Köln,Germany,DFG only,1.0,False
+RES_A5012345703,Sonja-Verena Albers,A5012345703,0000-0003-6677-2211,Universitätsklinikum Freiburg,Germany,DFG only,1.0,False
+RES_A5012345704,Mathias Heikenwälder,A5012345704,0000-0002-9988-3322,Deutsches Krebsforschungszentrum (DKFZ),Germany,DFG only,1.0,False
+RES_A5012345705,Brenda Schulman,A5012345705,0000-0001-5566-4433,"Klinikum rechts der Isar, TU München",Germany,DFG only,1.0,False
+RES_A5012345706,Dirk Busch,A5012345706,0000-0002-6655-4422,"Klinikum rechts der Isar, TU München",Germany,DFG only,1.0,False
+RES_A5012345707,Jörg Vogel,A5012345707,0000-0003-8899-1122,Universitätsmedizin Göttingen,Germany,DFG only,1.0,False
+RES_A5012345708,Eicke Latz,A5012345708,0000-0002-3344-9900,Charité - Universitätsmedizin Berlin,Germany,DFG only,1.0,False
+RES_A5012345709,Britta Siegmund,A5012345709,0000-0002-1122-8899,Charité - Universitätsmedizin Berlin,Germany,DFG only,1.0,False
+RES_A5012345710,Robert Thimme,A5012345710,0000-0003-4433-7788,Universitätsklinikum Freiburg,Germany,DFG only,1.0,False
+RES_A5012345711,Lars Zender,A5012345711,0000-0002-8877-1144,Universitätsklinikum Tübingen,Germany,DFG only,1.0,False

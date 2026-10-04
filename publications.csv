@@ -1,0 +1,350 @@
+work_id,doi,title,publication_year,cited_by_count,type,primary_topic
+W100000001,10.1038/s41591-033-05016-1,Synergistic regulation of oncology & gene therapy in clinical cohorts: multicenter trial observations,2014,239,article,Oncology & Gene Therapy
+W100000002,10.1038/s41591-049-04944-2,Synergistic regulation of oncology & gene therapy in clinical cohorts: multicenter trial observations,2017,26,article,Oncology & Gene Therapy
+W100000003,10.1038/s41591-037-09568-9,Synergistic regulation of oncology & gene therapy in clinical cohorts: multicenter trial observations,2014,71,article,Oncology & Gene Therapy
+W100000004,10.1038/s41591-043-03673-9,Synergistic regulation of oncology & gene therapy in clinical cohorts: multicenter trial observations,2020,132,article,Oncology & Gene Therapy
+W100000005,10.1038/s41591-081-07812-3,Synergistic regulation of oncology & gene therapy in clinical cohorts: multicenter trial observations,2022,276,article,Oncology & Gene Therapy
+W100000006,10.1038/s41591-023-02918-7,Synergistic regulation of oncology & gene therapy in clinical cohorts: multicenter trial observations,2013,244,article,Oncology & Gene Therapy
+W100000007,10.1038/s41591-050-02917-5,Synergistic regulation of oncology & gene therapy in clinical cohorts: multicenter trial observations,2024,14,article,Oncology & Gene Therapy
+W100000008,10.1038/s41591-073-01264-6,Synergistic regulation of oncology & gene therapy in clinical cohorts: multicenter trial observations,2013,22,article,Oncology & Gene Therapy
+W100000009,10.1038/s41591-089-06833-6,Synergistic regulation of oncology & gene therapy in clinical cohorts: multicenter trial observations,2021,22,article,Oncology & Gene Therapy
+W100000010,10.1038/s41591-099-07479-5,Synergistic regulation of oncology & gene therapy in clinical cohorts: multicenter trial observations,2025,39,article,Oncology & Gene Therapy
+W100000011,10.1038/s41591-069-07021-3,Synergistic regulation of oncology & gene therapy in clinical cohorts: multicenter trial observations,2021,107,article,Oncology & Gene Therapy
+W100000012,10.1038/s41591-071-07041-2,Synergistic regulation of oncology & gene therapy in clinical cohorts: multicenter trial observations,2018,166,article,Oncology & Gene Therapy
+W100000013,10.1038/s41591-012-06970-7,Synergistic regulation of oncology & gene therapy in clinical cohorts: multicenter trial observations,2015,212,article,Oncology & Gene Therapy
+W100000014,10.1038/s41591-077-08821-2,Synergistic regulation of immunology & microbiome in clinical cohorts: multicenter trial observations,2019,275,article,Immunology & Microbiome
+W100000015,10.1038/s41591-055-04919-2,Synergistic regulation of immunology & microbiome in clinical cohorts: multicenter trial observations,2024,249,article,Immunology & Microbiome
+W100000016,10.1038/s41591-072-04517-5,Synergistic regulation of immunology & microbiome in clinical cohorts: multicenter trial observations,2020,197,article,Immunology & Microbiome
+W100000017,10.1038/s41591-039-06898-7,Synergistic regulation of immunology & microbiome in clinical cohorts: multicenter trial observations,2023,252,article,Immunology & Microbiome
+W100000018,10.1038/s41591-021-09694-3,Synergistic regulation of immunology & microbiome in clinical cohorts: multicenter trial observations,2024,261,article,Immunology & Microbiome
+W100000019,10.1038/s41591-020-03906-5,Synergistic regulation of immunology & microbiome in clinical cohorts: multicenter trial observations,2015,182,article,Immunology & Microbiome
+W100000020,10.1038/s41591-038-07966-7,Synergistic regulation of immunology & microbiome in clinical cohorts: multicenter trial observations,2018,6,article,Immunology & Microbiome
+W100000021,10.1038/s41591-094-08970-3,Synergistic regulation of clinical pharmacology & immunology in clinical cohorts: multicenter trial observations,2015,57,article,Clinical Pharmacology & Immunology
+W100000022,10.1038/s41591-071-09175-7,Synergistic regulation of clinical pharmacology & immunology in clinical cohorts: multicenter trial observations,2013,214,article,Clinical Pharmacology & Immunology
+W100000023,10.1038/s41591-092-07135-9,Synergistic regulation of clinical pharmacology & immunology in clinical cohorts: multicenter trial observations,2016,136,article,Clinical Pharmacology & Immunology
+W100000024,10.1038/s41591-071-06638-2,Synergistic regulation of clinical pharmacology & immunology in clinical cohorts: multicenter trial observations,2019,39,article,Clinical Pharmacology & Immunology
+W100000025,10.1038/s41591-080-09318-9,Synergistic regulation of clinical pharmacology & immunology in clinical cohorts: multicenter trial observations,2021,133,article,Clinical Pharmacology & Immunology
+W100000026,10.1038/s41591-028-01596-9,Synergistic regulation of clinical pharmacology & immunology in clinical cohorts: multicenter trial observations,2022,53,article,Clinical Pharmacology & Immunology
+W100000027,10.1038/s41591-042-01297-9,Synergistic regulation of clinical pharmacology & immunology in clinical cohorts: multicenter trial observations,2021,273,article,Clinical Pharmacology & Immunology
+W100000028,10.1038/s41591-024-01550-9,Synergistic regulation of clinical pharmacology & immunology in clinical cohorts: multicenter trial observations,2026,106,article,Clinical Pharmacology & Immunology
+W100000029,10.1038/s41591-018-07270-4,Synergistic regulation of clinical pharmacology & immunology in clinical cohorts: multicenter trial observations,2022,44,article,Clinical Pharmacology & Immunology
+W100000030,10.1038/s41591-041-05208-9,Synergistic regulation of cardiovascular medicine in clinical cohorts: multicenter trial observations,2021,196,article,Cardiovascular Medicine
+W100000031,10.1038/s41591-071-09152-1,Synergistic regulation of cardiovascular medicine in clinical cohorts: multicenter trial observations,2022,105,article,Cardiovascular Medicine
+W100000032,10.1038/s41591-039-09470-9,Synergistic regulation of cardiovascular medicine in clinical cohorts: multicenter trial observations,2012,47,article,Cardiovascular Medicine
+W100000033,10.1038/s41591-016-05818-7,Synergistic regulation of cardiovascular medicine in clinical cohorts: multicenter trial observations,2015,29,article,Cardiovascular Medicine
+W100000034,10.1038/s41591-054-06415-7,Synergistic regulation of cardiovascular medicine in clinical cohorts: multicenter trial observations,2024,226,article,Cardiovascular Medicine
+W100000035,10.1038/s41591-043-05763-6,Synergistic regulation of cardiovascular medicine in clinical cohorts: multicenter trial observations,2021,71,article,Cardiovascular Medicine
+W100000036,10.1038/s41591-056-08921-2,Synergistic regulation of cardiovascular medicine in clinical cohorts: multicenter trial observations,2020,72,article,Cardiovascular Medicine
+W100000037,10.1038/s41591-036-07227-8,Synergistic regulation of cardiovascular medicine in clinical cohorts: multicenter trial observations,2016,45,article,Cardiovascular Medicine
+W100000038,10.1038/s41591-074-08498-5,Synergistic regulation of cardiovascular medicine in clinical cohorts: multicenter trial observations,2026,188,article,Cardiovascular Medicine
+W100000039,10.1038/s41591-094-05900-1,Synergistic regulation of cardiovascular medicine in clinical cohorts: multicenter trial observations,2026,128,article,Cardiovascular Medicine
+W100000040,10.1038/s41591-054-01309-1,Synergistic regulation of virology & infectious diseases in clinical cohorts: multicenter trial observations,2015,170,article,Virology & Infectious Diseases
+W100000041,10.1038/s41591-018-02061-9,Synergistic regulation of virology & infectious diseases in clinical cohorts: multicenter trial observations,2016,111,article,Virology & Infectious Diseases
+W100000042,10.1038/s41591-046-07058-6,Synergistic regulation of virology & infectious diseases in clinical cohorts: multicenter trial observations,2014,24,article,Virology & Infectious Diseases
+W100000043,10.1038/s41591-085-04203-4,Synergistic regulation of virology & infectious diseases in clinical cohorts: multicenter trial observations,2021,178,article,Virology & Infectious Diseases
+W100000044,10.1038/s41591-098-08557-6,Synergistic regulation of gastroenterology & oncology in clinical cohorts: multicenter trial observations,2021,53,article,Gastroenterology & Oncology
+W100000045,10.1038/s41591-013-05822-2,Synergistic regulation of cellular immunotherapy & hematology in clinical cohorts: multicenter trial observations,2016,155,article,Cellular Immunotherapy & Hematology
+W100000046,10.1038/s41591-045-02999-4,Synergistic regulation of cellular immunotherapy & hematology in clinical cohorts: multicenter trial observations,2023,194,article,Cellular Immunotherapy & Hematology
+W100000047,10.1038/s41591-047-07300-7,Synergistic regulation of cellular immunotherapy & hematology in clinical cohorts: multicenter trial observations,2014,7,article,Cellular Immunotherapy & Hematology
+W100000048,10.1038/s41591-025-07593-4,Synergistic regulation of cellular immunotherapy & hematology in clinical cohorts: multicenter trial observations,2025,11,article,Cellular Immunotherapy & Hematology
+W100000049,10.1038/s41591-071-04953-6,Synergistic regulation of cellular immunotherapy & hematology in clinical cohorts: multicenter trial observations,2018,114,article,Cellular Immunotherapy & Hematology
+W100000050,10.1038/s41591-095-08281-9,Synergistic regulation of cellular immunotherapy & hematology in clinical cohorts: multicenter trial observations,2013,127,article,Cellular Immunotherapy & Hematology
+W100000051,10.1038/s41591-085-03305-6,Synergistic regulation of cellular immunotherapy & hematology in clinical cohorts: multicenter trial observations,2020,254,article,Cellular Immunotherapy & Hematology
+W100000052,10.1038/s41591-097-03658-6,Synergistic regulation of cellular immunotherapy & hematology in clinical cohorts: multicenter trial observations,2016,148,article,Cellular Immunotherapy & Hematology
+W100000053,10.1038/s41591-088-06336-5,Synergistic regulation of cellular immunotherapy & hematology in clinical cohorts: multicenter trial observations,2025,6,article,Cellular Immunotherapy & Hematology
+W100000054,10.1038/s41591-095-07624-1,Synergistic regulation of cellular immunotherapy & hematology in clinical cohorts: multicenter trial observations,2022,183,article,Cellular Immunotherapy & Hematology
+W100000055,10.1038/s41591-076-02547-3,Synergistic regulation of cellular immunotherapy & hematology in clinical cohorts: multicenter trial observations,2017,77,article,Cellular Immunotherapy & Hematology
+W100000056,10.1038/s41591-045-02015-5,Synergistic regulation of cellular immunotherapy & hematology in clinical cohorts: multicenter trial observations,2016,67,article,Cellular Immunotherapy & Hematology
+W100000057,10.1038/s41591-019-06831-6,Synergistic regulation of cellular immunotherapy & hematology in clinical cohorts: multicenter trial observations,2019,30,article,Cellular Immunotherapy & Hematology
+W100000058,10.1038/s41591-088-05288-7,Synergistic regulation of cellular immunotherapy & hematology in clinical cohorts: multicenter trial observations,2016,246,article,Cellular Immunotherapy & Hematology
+W100000059,10.1038/s41591-019-05931-4,Synergistic regulation of cellular immunotherapy & hematology in clinical cohorts: multicenter trial observations,2013,60,article,Cellular Immunotherapy & Hematology
+W100000060,10.1038/s41591-011-02043-4,Synergistic regulation of neuroimmunology in clinical cohorts: multicenter trial observations,2019,188,article,Neuroimmunology
+W100000061,10.1038/s41591-052-06516-3,Synergistic regulation of neuroimmunology in clinical cohorts: multicenter trial observations,2014,45,article,Neuroimmunology
+W100000062,10.1038/s41591-061-07476-3,Synergistic regulation of neuroimmunology in clinical cohorts: multicenter trial observations,2013,43,article,Neuroimmunology
+W100000063,10.1038/s41591-051-09693-7,Synergistic regulation of neuroimmunology in clinical cohorts: multicenter trial observations,2022,132,article,Neuroimmunology
+W100000064,10.1038/s41591-041-02243-1,Synergistic regulation of neuroimmunology in clinical cohorts: multicenter trial observations,2012,212,article,Neuroimmunology
+W100000065,10.1038/s41591-078-01638-4,Synergistic regulation of neuroimmunology in clinical cohorts: multicenter trial observations,2026,148,article,Neuroimmunology
+W100000066,10.1038/s41591-037-08996-8,Synergistic regulation of infectious diseases & pulmonology in clinical cohorts: multicenter trial observations,2015,55,article,Infectious Diseases & Pulmonology
+W100000067,10.1038/s41591-027-07816-5,Synergistic regulation of infectious diseases & pulmonology in clinical cohorts: multicenter trial observations,2012,29,article,Infectious Diseases & Pulmonology
+W100000068,10.1038/s41591-059-05767-1,Synergistic regulation of infectious diseases & pulmonology in clinical cohorts: multicenter trial observations,2026,215,article,Infectious Diseases & Pulmonology
+W100000069,10.1038/s41591-067-06232-7,Synergistic regulation of infectious diseases & pulmonology in clinical cohorts: multicenter trial observations,2016,278,article,Infectious Diseases & Pulmonology
+W100000070,10.1038/s41591-032-01131-5,Synergistic regulation of infectious diseases & pulmonology in clinical cohorts: multicenter trial observations,2015,52,article,Infectious Diseases & Pulmonology
+W100000071,10.1038/s41591-091-05950-4,Synergistic regulation of infectious diseases & pulmonology in clinical cohorts: multicenter trial observations,2018,5,article,Infectious Diseases & Pulmonology
+W100000072,10.1038/s41591-085-06997-9,Synergistic regulation of metabolomics & oncology in clinical cohorts: multicenter trial observations,2019,70,article,Metabolomics & Oncology
+W100000073,10.1038/s41591-037-04208-7,Synergistic regulation of metabolomics & oncology in clinical cohorts: multicenter trial observations,2026,190,article,Metabolomics & Oncology
+W100000074,10.1038/s41591-073-07210-7,Synergistic regulation of metabolomics & oncology in clinical cohorts: multicenter trial observations,2026,191,article,Metabolomics & Oncology
+W100000075,10.1038/s41591-011-09207-7,Synergistic regulation of metabolomics & oncology in clinical cohorts: multicenter trial observations,2024,174,article,Metabolomics & Oncology
+W100000076,10.1038/s41591-025-09397-8,Synergistic regulation of metabolomics & oncology in clinical cohorts: multicenter trial observations,2024,14,article,Metabolomics & Oncology
+W100000077,10.1038/s41591-087-08597-3,Synergistic regulation of stem cell transplantation in clinical cohorts: multicenter trial observations,2020,124,article,Stem Cell Transplantation
+W100000078,10.1038/s41591-092-04595-7,Synergistic regulation of stem cell transplantation in clinical cohorts: multicenter trial observations,2020,41,article,Stem Cell Transplantation
+W100000079,10.1038/s41591-045-01616-8,Synergistic regulation of stem cell transplantation in clinical cohorts: multicenter trial observations,2021,183,article,Stem Cell Transplantation
+W100000080,10.1038/s41591-077-07901-5,Synergistic regulation of stem cell transplantation in clinical cohorts: multicenter trial observations,2019,48,article,Stem Cell Transplantation
+W100000081,10.1038/s41591-080-08545-9,Synergistic regulation of stem cell transplantation in clinical cohorts: multicenter trial observations,2022,152,article,Stem Cell Transplantation
+W100000082,10.1038/s41591-064-09548-6,Synergistic regulation of stem cell transplantation in clinical cohorts: multicenter trial observations,2019,117,article,Stem Cell Transplantation
+W100000083,10.1038/s41591-055-01579-9,Synergistic regulation of multiple myeloma & oncology in clinical cohorts: multicenter trial observations,2021,185,article,Multiple Myeloma & Oncology
+W100000084,10.1038/s41591-076-02565-6,Synergistic regulation of multiple myeloma & oncology in clinical cohorts: multicenter trial observations,2015,33,article,Multiple Myeloma & Oncology
+W100000085,10.1038/s41591-026-03124-3,Synergistic regulation of multiple myeloma & oncology in clinical cohorts: multicenter trial observations,2021,70,article,Multiple Myeloma & Oncology
+W100000086,10.1038/s41591-050-07582-1,Synergistic regulation of multiple myeloma & oncology in clinical cohorts: multicenter trial observations,2019,63,article,Multiple Myeloma & Oncology
+W100000087,10.1038/s41591-065-05216-6,Synergistic regulation of multiple myeloma & oncology in clinical cohorts: multicenter trial observations,2015,215,article,Multiple Myeloma & Oncology
+W100000088,10.1038/s41591-040-04081-5,Synergistic regulation of multiple myeloma & oncology in clinical cohorts: multicenter trial observations,2012,181,article,Multiple Myeloma & Oncology
+W100000089,10.1038/s41591-035-01715-1,Synergistic regulation of multiple myeloma & oncology in clinical cohorts: multicenter trial observations,2024,49,article,Multiple Myeloma & Oncology
+W100000090,10.1038/s41591-059-03684-9,Synergistic regulation of multiple myeloma & oncology in clinical cohorts: multicenter trial observations,2012,204,article,Multiple Myeloma & Oncology
+W100000091,10.1038/s41591-079-05609-2,Synergistic regulation of multiple myeloma & oncology in clinical cohorts: multicenter trial observations,2017,237,article,Multiple Myeloma & Oncology
+W100000092,10.1038/s41591-036-06713-2,Synergistic regulation of multiple myeloma & oncology in clinical cohorts: multicenter trial observations,2024,134,article,Multiple Myeloma & Oncology
+W100000093,10.1038/s41591-086-06558-4,Synergistic regulation of surgical oncology & apoptosis in clinical cohorts: multicenter trial observations,2015,265,article,Surgical Oncology & Apoptosis
+W100000094,10.1038/s41591-021-04997-4,Synergistic regulation of surgical oncology & apoptosis in clinical cohorts: multicenter trial observations,2024,71,article,Surgical Oncology & Apoptosis
+W100000095,10.1038/s41591-030-02656-1,Synergistic regulation of surgical oncology & apoptosis in clinical cohorts: multicenter trial observations,2026,35,article,Surgical Oncology & Apoptosis
+W100000096,10.1038/s41591-059-01459-3,Synergistic regulation of surgical oncology & apoptosis in clinical cohorts: multicenter trial observations,2018,64,article,Surgical Oncology & Apoptosis
+W100000097,10.1038/s41591-052-02575-5,Synergistic regulation of surgical oncology & apoptosis in clinical cohorts: multicenter trial observations,2021,189,article,Surgical Oncology & Apoptosis
+W100000098,10.1038/s41591-052-01767-1,Synergistic regulation of surgical oncology & apoptosis in clinical cohorts: multicenter trial observations,2021,229,article,Surgical Oncology & Apoptosis
+W100000099,10.1038/s41591-077-07768-1,Synergistic regulation of dermato-oncology & viral vectors in clinical cohorts: multicenter trial observations,2015,262,article,Dermato-Oncology & Viral Vectors
+W100000100,10.1038/s41591-048-07250-6,Synergistic regulation of dermato-oncology & viral vectors in clinical cohorts: multicenter trial observations,2023,239,article,Dermato-Oncology & Viral Vectors
+W100000101,10.1038/s41591-055-02765-1,Synergistic regulation of nephrology & single-cell genomics in clinical cohorts: multicenter trial observations,2024,76,article,Nephrology & Single-Cell Genomics
+W100000102,10.1038/s41591-071-09055-4,Synergistic regulation of nephrology & single-cell genomics in clinical cohorts: multicenter trial observations,2021,22,article,Nephrology & Single-Cell Genomics
+W100000103,10.1038/s41591-099-07693-3,Synergistic regulation of nephrology & single-cell genomics in clinical cohorts: multicenter trial observations,2014,234,article,Nephrology & Single-Cell Genomics
+W100000104,10.1038/s41591-075-08946-1,Synergistic regulation of nephrology & single-cell genomics in clinical cohorts: multicenter trial observations,2023,270,article,Nephrology & Single-Cell Genomics
+W100000105,10.1038/s41591-075-06214-6,Synergistic regulation of nephrology & single-cell genomics in clinical cohorts: multicenter trial observations,2017,27,article,Nephrology & Single-Cell Genomics
+W100000106,10.1038/s41591-045-06082-7,Synergistic regulation of nephrology & single-cell genomics in clinical cohorts: multicenter trial observations,2026,179,article,Nephrology & Single-Cell Genomics
+W100000107,10.1038/s41591-038-08006-9,Synergistic regulation of nephrology & single-cell genomics in clinical cohorts: multicenter trial observations,2021,254,article,Nephrology & Single-Cell Genomics
+W100000108,10.1038/s41591-046-08311-7,Synergistic regulation of urological oncology in clinical cohorts: multicenter trial observations,2023,97,article,Urological Oncology
+W100000109,10.1038/s41591-041-03945-1,Synergistic regulation of urological oncology in clinical cohorts: multicenter trial observations,2015,200,article,Urological Oncology
+W100000110,10.1038/s41591-072-07300-9,Synergistic regulation of cardiovascular gene editing in clinical cohorts: multicenter trial observations,2025,55,article,Cardiovascular Gene Editing
+W100000111,10.1038/s41591-032-03699-7,Synergistic regulation of cardiovascular gene editing in clinical cohorts: multicenter trial observations,2023,214,article,Cardiovascular Gene Editing
+W100000112,10.1038/s41591-095-07325-6,Synergistic regulation of cardiovascular gene editing in clinical cohorts: multicenter trial observations,2022,106,article,Cardiovascular Gene Editing
+W100000113,10.1038/s41591-013-08505-9,Synergistic regulation of cardiovascular gene editing in clinical cohorts: multicenter trial observations,2016,68,article,Cardiovascular Gene Editing
+W100000114,10.1038/s41591-010-01096-7,Synergistic regulation of neurology & neurodegeneration in clinical cohorts: multicenter trial observations,2021,174,article,Neurology & Neurodegeneration
+W100000115,10.1038/s41591-034-06086-5,Synergistic regulation of neurology & neurodegeneration in clinical cohorts: multicenter trial observations,2018,206,article,Neurology & Neurodegeneration
+W100000116,10.1038/s41591-050-06734-8,Synergistic regulation of neurology & neurodegeneration in clinical cohorts: multicenter trial observations,2012,72,article,Neurology & Neurodegeneration
+W100000117,10.1038/s41591-029-05321-7,Synergistic regulation of neurology & neurodegeneration in clinical cohorts: multicenter trial observations,2024,118,article,Neurology & Neurodegeneration
+W100000118,10.1038/s41591-047-02078-6,Synergistic regulation of neurology & neurodegeneration in clinical cohorts: multicenter trial observations,2015,245,article,Neurology & Neurodegeneration
+W100000119,10.1038/s41591-081-07871-8,Synergistic regulation of neurology & neurodegeneration in clinical cohorts: multicenter trial observations,2016,153,article,Neurology & Neurodegeneration
+W100000120,10.1038/s41591-012-03423-6,Synergistic regulation of neurology & neurodegeneration in clinical cohorts: multicenter trial observations,2022,193,article,Neurology & Neurodegeneration
+W100000121,10.1038/s41591-072-01009-1,Synergistic regulation of neurology & neurodegeneration in clinical cohorts: multicenter trial observations,2016,21,article,Neurology & Neurodegeneration
+W100000122,10.1038/s41591-032-04825-7,Synergistic regulation of translational neurovascular medicine in clinical cohorts: multicenter trial observations,2023,160,article,Translational Neurovascular Medicine
+W100000123,10.1038/s41591-072-04551-7,Synergistic regulation of translational neurovascular medicine in clinical cohorts: multicenter trial observations,2013,83,article,Translational Neurovascular Medicine
+W100000124,10.1038/s41591-051-04693-1,Synergistic regulation of translational neurovascular medicine in clinical cohorts: multicenter trial observations,2025,91,article,Translational Neurovascular Medicine
+W100000125,10.1038/s41591-094-07638-1,Synergistic regulation of translational neurovascular medicine in clinical cohorts: multicenter trial observations,2017,117,article,Translational Neurovascular Medicine
+W100000126,10.1038/s41591-068-09283-1,Synergistic regulation of cancer immunotherapy in clinical cohorts: multicenter trial observations,2016,16,article,Cancer Immunotherapy
+W100000127,10.1038/s41591-048-09096-2,Synergistic regulation of cancer immunotherapy in clinical cohorts: multicenter trial observations,2014,184,article,Cancer Immunotherapy
+W100000128,10.1038/s41591-095-04420-7,Synergistic regulation of cancer immunotherapy in clinical cohorts: multicenter trial observations,2018,125,article,Cancer Immunotherapy
+W100000129,10.1038/s41591-094-09628-2,Synergistic regulation of cancer immunotherapy in clinical cohorts: multicenter trial observations,2020,225,article,Cancer Immunotherapy
+W100000130,10.1038/s41591-029-02319-9,Synergistic regulation of cancer immunotherapy in clinical cohorts: multicenter trial observations,2025,214,article,Cancer Immunotherapy
+W100000131,10.1038/s41591-092-08545-9,Synergistic regulation of cancer immunotherapy in clinical cohorts: multicenter trial observations,2015,278,article,Cancer Immunotherapy
+W100000132,10.1038/s41591-079-08131-4,Synergistic regulation of cancer immunotherapy in clinical cohorts: multicenter trial observations,2013,226,article,Cancer Immunotherapy
+W100000133,10.1038/s41591-062-02745-6,Synergistic regulation of apoptosis & tumor immunology in clinical cohorts: multicenter trial observations,2015,61,article,Apoptosis & Tumor Immunology
+W100000134,10.1038/s41591-066-03384-8,Synergistic regulation of molecular microbiology in clinical cohorts: multicenter trial observations,2022,131,article,Molecular Microbiology
+W100000135,10.1038/s41591-039-04415-4,Synergistic regulation of molecular microbiology in clinical cohorts: multicenter trial observations,2012,196,article,Molecular Microbiology
+W100000136,10.1038/s41591-075-01235-6,Synergistic regulation of molecular microbiology in clinical cohorts: multicenter trial observations,2022,109,article,Molecular Microbiology
+W100000137,10.1038/s41591-035-07237-8,Synergistic regulation of molecular microbiology in clinical cohorts: multicenter trial observations,2026,273,article,Molecular Microbiology
+W100000138,10.1038/s41591-078-05746-6,Synergistic regulation of molecular microbiology in clinical cohorts: multicenter trial observations,2022,129,article,Molecular Microbiology
+W100000139,10.1038/s41591-078-08216-6,Synergistic regulation of molecular microbiology in clinical cohorts: multicenter trial observations,2015,208,article,Molecular Microbiology
+W100000140,10.1038/s41591-083-02878-8,Synergistic regulation of rna biology & bacterial infections in clinical cohorts: multicenter trial observations,2012,115,article,RNA Biology & Bacterial Infections
+W100000141,10.1038/s41591-036-06520-3,Synergistic regulation of rna biology & bacterial infections in clinical cohorts: multicenter trial observations,2020,188,article,RNA Biology & Bacterial Infections
+W100000142,10.1038/s41591-067-07916-2,Synergistic regulation of rna biology & bacterial infections in clinical cohorts: multicenter trial observations,2021,14,article,RNA Biology & Bacterial Infections
+W100000143,10.1038/s41591-099-05936-5,Synergistic regulation of rna biology & bacterial infections in clinical cohorts: multicenter trial observations,2017,108,article,RNA Biology & Bacterial Infections
+W100000144,10.1038/s41591-037-03803-8,Synergistic regulation of innate immunity & receptor signaling in clinical cohorts: multicenter trial observations,2013,234,article,Innate Immunity & Receptor Signaling
+W100000145,10.1038/s41591-048-01806-6,Synergistic regulation of innate immunity & receptor signaling in clinical cohorts: multicenter trial observations,2016,278,article,Innate Immunity & Receptor Signaling
+W100000146,10.1038/s41591-065-08666-6,Synergistic regulation of innate immunity & receptor signaling in clinical cohorts: multicenter trial observations,2012,247,article,Innate Immunity & Receptor Signaling
+W100000147,10.1038/s41591-060-06837-6,Synergistic regulation of innate immunity & receptor signaling in clinical cohorts: multicenter trial observations,2016,10,article,Innate Immunity & Receptor Signaling
+W100000148,10.1016/j.cell.2021.27.199,Biomarkers and therapeutic vulnerabilities in oncology & gene therapy (Kalle et al.),2026,34,article,Oncology & Gene Therapy
+W100000149,10.1016/j.cell.2020.86.347,Biomarkers and therapeutic vulnerabilities in oncology & gene therapy (Kalle et al.),2024,78,article,Oncology & Gene Therapy
+W100000150,10.1016/j.cell.2016.64.165,Biomarkers and therapeutic vulnerabilities in oncology & gene therapy (Kalle et al.),2014,17,article,Oncology & Gene Therapy
+W100000151,10.1016/j.cell.2014.19.522,Biomarkers and therapeutic vulnerabilities in oncology & gene therapy (Kalle et al.),2020,14,article,Oncology & Gene Therapy
+W100000152,10.1016/j.cell.2014.56.836,Biomarkers and therapeutic vulnerabilities in oncology & gene therapy (Kalle et al.),2017,120,article,Oncology & Gene Therapy
+W100000153,10.1016/j.cell.2023.14.218,Biomarkers and therapeutic vulnerabilities in oncology & gene therapy (Kalle et al.),2023,77,article,Oncology & Gene Therapy
+W100000154,10.1016/j.cell.2014.85.218,Biomarkers and therapeutic vulnerabilities in oncology & gene therapy (Kalle et al.),2017,84,article,Oncology & Gene Therapy
+W100000155,10.1016/j.cell.2023.58.466,Biomarkers and therapeutic vulnerabilities in oncology & gene therapy (Kalle et al.),2016,111,article,Oncology & Gene Therapy
+W100000156,10.1016/j.cell.2015.27.333,Biomarkers and therapeutic vulnerabilities in immunology & microbiome (Frick et al.),2020,66,article,Immunology & Microbiome
+W100000157,10.1016/j.cell.2021.78.819,Biomarkers and therapeutic vulnerabilities in immunology & microbiome (Frick et al.),2026,80,article,Immunology & Microbiome
+W100000158,10.1016/j.cell.2019.60.205,Biomarkers and therapeutic vulnerabilities in immunology & microbiome (Frick et al.),2021,56,article,Immunology & Microbiome
+W100000159,10.1016/j.cell.2015.32.172,Biomarkers and therapeutic vulnerabilities in immunology & microbiome (Frick et al.),2022,12,article,Immunology & Microbiome
+W100000160,10.1016/j.cell.2019.44.265,Biomarkers and therapeutic vulnerabilities in immunology & microbiome (Frick et al.),2024,26,article,Immunology & Microbiome
+W100000161,10.1016/j.cell.2021.25.644,Biomarkers and therapeutic vulnerabilities in immunology & microbiome (Frick et al.),2026,108,article,Immunology & Microbiome
+W100000162,10.1016/j.cell.2020.39.275,Biomarkers and therapeutic vulnerabilities in immunology & microbiome (Frick et al.),2014,145,article,Immunology & Microbiome
+W100000163,10.1016/j.cell.2020.91.288,Biomarkers and therapeutic vulnerabilities in immunology & microbiome (Frick et al.),2017,132,article,Immunology & Microbiome
+W100000164,10.1016/j.cell.2016.56.615,Biomarkers and therapeutic vulnerabilities in clinical pharmacology & immunology (Endres et al.),2023,65,article,Clinical Pharmacology & Immunology
+W100000165,10.1016/j.cell.2015.63.384,Biomarkers and therapeutic vulnerabilities in clinical pharmacology & immunology (Endres et al.),2026,142,article,Clinical Pharmacology & Immunology
+W100000166,10.1016/j.cell.2021.56.914,Biomarkers and therapeutic vulnerabilities in clinical pharmacology & immunology (Endres et al.),2020,148,article,Clinical Pharmacology & Immunology
+W100000167,10.1016/j.cell.2024.43.750,Biomarkers and therapeutic vulnerabilities in clinical pharmacology & immunology (Endres et al.),2021,51,article,Clinical Pharmacology & Immunology
+W100000168,10.1016/j.cell.2025.67.391,Biomarkers and therapeutic vulnerabilities in cardiovascular medicine (Neuhaus et al.),2022,23,article,Cardiovascular Medicine
+W100000169,10.1016/j.cell.2024.82.851,Biomarkers and therapeutic vulnerabilities in cardiovascular medicine (Neuhaus et al.),2015,38,article,Cardiovascular Medicine
+W100000170,10.1016/j.cell.2020.96.238,Biomarkers and therapeutic vulnerabilities in cardiovascular medicine (Neuhaus et al.),2013,124,article,Cardiovascular Medicine
+W100000171,10.1016/j.cell.2014.36.541,Biomarkers and therapeutic vulnerabilities in cardiovascular medicine (Neuhaus et al.),2020,13,article,Cardiovascular Medicine
+W100000172,10.1016/j.cell.2020.14.237,Biomarkers and therapeutic vulnerabilities in cardiovascular medicine (Neuhaus et al.),2016,32,article,Cardiovascular Medicine
+W100000173,10.1016/j.cell.2016.20.692,Biomarkers and therapeutic vulnerabilities in cardiovascular medicine (Neuhaus et al.),2025,112,article,Cardiovascular Medicine
+W100000174,10.1016/j.cell.2017.22.564,Biomarkers and therapeutic vulnerabilities in virology & infectious diseases (Ciesek et al.),2026,34,article,Virology & Infectious Diseases
+W100000175,10.1016/j.cell.2022.78.824,Biomarkers and therapeutic vulnerabilities in virology & infectious diseases (Ciesek et al.),2025,72,article,Virology & Infectious Diseases
+W100000176,10.1016/j.cell.2019.54.771,Biomarkers and therapeutic vulnerabilities in virology & infectious diseases (Ciesek et al.),2024,30,article,Virology & Infectious Diseases
+W100000177,10.1016/j.cell.2021.56.346,Biomarkers and therapeutic vulnerabilities in virology & infectious diseases (Ciesek et al.),2016,91,article,Virology & Infectious Diseases
+W100000178,10.1016/j.cell.2020.52.691,Biomarkers and therapeutic vulnerabilities in virology & infectious diseases (Ciesek et al.),2020,73,article,Virology & Infectious Diseases
+W100000179,10.1016/j.cell.2025.19.101,Biomarkers and therapeutic vulnerabilities in virology & infectious diseases (Ciesek et al.),2026,104,article,Virology & Infectious Diseases
+W100000180,10.1016/j.cell.2014.47.292,Biomarkers and therapeutic vulnerabilities in virology & infectious diseases (Ciesek et al.),2022,99,article,Virology & Infectious Diseases
+W100000181,10.1016/j.cell.2018.20.777,Biomarkers and therapeutic vulnerabilities in gastroenterology & oncology (Winterfeld et al.),2017,48,article,Gastroenterology & Oncology
+W100000182,10.1016/j.cell.2014.61.328,Biomarkers and therapeutic vulnerabilities in gastroenterology & oncology (Winterfeld et al.),2013,133,article,Gastroenterology & Oncology
+W100000183,10.1016/j.cell.2017.29.526,Biomarkers and therapeutic vulnerabilities in gastroenterology & oncology (Winterfeld et al.),2022,44,article,Gastroenterology & Oncology
+W100000184,10.1016/j.cell.2014.11.446,Biomarkers and therapeutic vulnerabilities in gastroenterology & oncology (Winterfeld et al.),2024,48,article,Gastroenterology & Oncology
+W100000185,10.1016/j.cell.2019.64.318,Biomarkers and therapeutic vulnerabilities in cellular immunotherapy & hematology (Subklewe et al.),2018,35,article,Cellular Immunotherapy & Hematology
+W100000186,10.1016/j.cell.2022.27.170,Biomarkers and therapeutic vulnerabilities in cellular immunotherapy & hematology (Subklewe et al.),2023,102,article,Cellular Immunotherapy & Hematology
+W100000187,10.1016/j.cell.2017.77.168,Biomarkers and therapeutic vulnerabilities in cellular immunotherapy & hematology (Subklewe et al.),2021,104,article,Cellular Immunotherapy & Hematology
+W100000188,10.1016/j.cell.2020.99.849,Biomarkers and therapeutic vulnerabilities in cellular immunotherapy & hematology (Subklewe et al.),2015,33,article,Cellular Immunotherapy & Hematology
+W100000189,10.1016/j.cell.2021.41.799,Biomarkers and therapeutic vulnerabilities in cellular immunotherapy & hematology (Subklewe et al.),2023,83,article,Cellular Immunotherapy & Hematology
+W100000190,10.1016/j.cell.2022.71.630,Biomarkers and therapeutic vulnerabilities in cellular immunotherapy & hematology (Subklewe et al.),2019,78,article,Cellular Immunotherapy & Hematology
+W100000191,10.1016/j.cell.2015.57.353,Biomarkers and therapeutic vulnerabilities in neuroimmunology (Mildner et al.),2020,10,article,Neuroimmunology
+W100000192,10.1016/j.cell.2020.45.653,Biomarkers and therapeutic vulnerabilities in neuroimmunology (Mildner et al.),2020,73,article,Neuroimmunology
+W100000193,10.1016/j.cell.2014.83.848,Biomarkers and therapeutic vulnerabilities in neuroimmunology (Mildner et al.),2024,33,article,Neuroimmunology
+W100000194,10.1016/j.cell.2017.94.864,Biomarkers and therapeutic vulnerabilities in neuroimmunology (Mildner et al.),2021,64,article,Neuroimmunology
+W100000195,10.1016/j.cell.2023.20.630,Biomarkers and therapeutic vulnerabilities in infectious diseases & pulmonology (Sander et al.),2024,36,article,Infectious Diseases & Pulmonology
+W100000196,10.1016/j.cell.2024.96.321,Biomarkers and therapeutic vulnerabilities in infectious diseases & pulmonology (Sander et al.),2021,92,article,Infectious Diseases & Pulmonology
+W100000197,10.1016/j.cell.2019.93.864,Biomarkers and therapeutic vulnerabilities in infectious diseases & pulmonology (Sander et al.),2013,12,article,Infectious Diseases & Pulmonology
+W100000198,10.1016/j.cell.2018.98.357,Biomarkers and therapeutic vulnerabilities in infectious diseases & pulmonology (Sander et al.),2013,41,article,Infectious Diseases & Pulmonology
+W100000199,10.1016/j.cell.2023.14.278,Biomarkers and therapeutic vulnerabilities in infectious diseases & pulmonology (Sander et al.),2017,96,article,Infectious Diseases & Pulmonology
+W100000200,10.1016/j.cell.2023.87.462,Biomarkers and therapeutic vulnerabilities in infectious diseases & pulmonology (Sander et al.),2019,127,article,Infectious Diseases & Pulmonology
+W100000201,10.1016/j.cell.2020.20.536,Biomarkers and therapeutic vulnerabilities in infectious diseases & pulmonology (Sander et al.),2018,46,article,Infectious Diseases & Pulmonology
+W100000202,10.1016/j.cell.2021.27.671,Biomarkers and therapeutic vulnerabilities in infectious diseases & pulmonology (Sander et al.),2021,99,article,Infectious Diseases & Pulmonology
+W100000203,10.1016/j.cell.2025.75.353,Biomarkers and therapeutic vulnerabilities in metabolomics & oncology (Limm et al.),2020,75,article,Metabolomics & Oncology
+W100000204,10.1016/j.cell.2014.16.262,Biomarkers and therapeutic vulnerabilities in metabolomics & oncology (Limm et al.),2022,108,article,Metabolomics & Oncology
+W100000205,10.1016/j.cell.2021.89.443,Biomarkers and therapeutic vulnerabilities in metabolomics & oncology (Limm et al.),2018,41,article,Metabolomics & Oncology
+W100000206,10.1016/j.cell.2023.49.877,Biomarkers and therapeutic vulnerabilities in metabolomics & oncology (Limm et al.),2020,62,article,Metabolomics & Oncology
+W100000207,10.1016/j.cell.2023.74.607,Biomarkers and therapeutic vulnerabilities in metabolomics & oncology (Limm et al.),2022,17,article,Metabolomics & Oncology
+W100000208,10.1016/j.cell.2019.96.785,Biomarkers and therapeutic vulnerabilities in metabolomics & oncology (Limm et al.),2022,58,article,Metabolomics & Oncology
+W100000209,10.1016/j.cell.2023.98.901,Biomarkers and therapeutic vulnerabilities in metabolomics & oncology (Limm et al.),2013,86,article,Metabolomics & Oncology
+W100000210,10.1016/j.cell.2014.36.472,Biomarkers and therapeutic vulnerabilities in metabolomics & oncology (Limm et al.),2015,25,article,Metabolomics & Oncology
+W100000211,10.1016/j.cell.2017.47.240,Biomarkers and therapeutic vulnerabilities in immunology & t-cell regulation (Bopp et al.),2013,63,article,Immunology & T-Cell Regulation
+W100000212,10.1016/j.cell.2016.12.803,Biomarkers and therapeutic vulnerabilities in immunology & t-cell regulation (Bopp et al.),2022,94,article,Immunology & T-Cell Regulation
+W100000213,10.1016/j.cell.2025.45.793,Biomarkers and therapeutic vulnerabilities in immunology & t-cell regulation (Bopp et al.),2017,36,article,Immunology & T-Cell Regulation
+W100000214,10.1016/j.cell.2022.78.992,Biomarkers and therapeutic vulnerabilities in stem cell transplantation (Schetelig et al.),2025,43,article,Stem Cell Transplantation
+W100000215,10.1016/j.cell.2023.14.294,Biomarkers and therapeutic vulnerabilities in stem cell transplantation (Schetelig et al.),2022,21,article,Stem Cell Transplantation
+W100000216,10.1016/j.cell.2016.17.253,Biomarkers and therapeutic vulnerabilities in stem cell transplantation (Schetelig et al.),2013,149,article,Stem Cell Transplantation
+W100000217,10.1016/j.cell.2017.16.491,Biomarkers and therapeutic vulnerabilities in stem cell transplantation (Schetelig et al.),2015,32,article,Stem Cell Transplantation
+W100000218,10.1016/j.cell.2022.17.380,Biomarkers and therapeutic vulnerabilities in stem cell transplantation (Schetelig et al.),2013,117,article,Stem Cell Transplantation
+W100000219,10.1016/j.cell.2016.46.457,Biomarkers and therapeutic vulnerabilities in stem cell transplantation (Schetelig et al.),2018,94,article,Stem Cell Transplantation
+W100000220,10.1016/j.cell.2024.74.985,Biomarkers and therapeutic vulnerabilities in multiple myeloma & oncology (Merz et al.),2020,23,article,Multiple Myeloma & Oncology
+W100000221,10.1016/j.cell.2020.83.877,Biomarkers and therapeutic vulnerabilities in multiple myeloma & oncology (Merz et al.),2020,101,article,Multiple Myeloma & Oncology
+W100000222,10.1016/j.cell.2014.88.943,Biomarkers and therapeutic vulnerabilities in multiple myeloma & oncology (Merz et al.),2020,56,article,Multiple Myeloma & Oncology
+W100000223,10.1016/j.cell.2020.83.223,Biomarkers and therapeutic vulnerabilities in multiple myeloma & oncology (Merz et al.),2020,142,article,Multiple Myeloma & Oncology
+W100000224,10.1016/j.cell.2020.60.870,Biomarkers and therapeutic vulnerabilities in multiple myeloma & oncology (Merz et al.),2017,29,article,Multiple Myeloma & Oncology
+W100000225,10.1016/j.cell.2021.23.949,Biomarkers and therapeutic vulnerabilities in multiple myeloma & oncology (Merz et al.),2021,53,article,Multiple Myeloma & Oncology
+W100000226,10.1016/j.cell.2021.18.386,Biomarkers and therapeutic vulnerabilities in multiple myeloma & oncology (Merz et al.),2017,105,article,Multiple Myeloma & Oncology
+W100000227,10.1016/j.cell.2025.67.955,Biomarkers and therapeutic vulnerabilities in multiple myeloma & oncology (Merz et al.),2017,145,article,Multiple Myeloma & Oncology
+W100000228,10.1016/j.cell.2017.32.474,Biomarkers and therapeutic vulnerabilities in surgical oncology & apoptosis (Kretz et al.),2021,122,article,Surgical Oncology & Apoptosis
+W100000229,10.1016/j.cell.2020.36.346,Biomarkers and therapeutic vulnerabilities in surgical oncology & apoptosis (Kretz et al.),2019,103,article,Surgical Oncology & Apoptosis
+W100000230,10.1016/j.cell.2016.75.235,Biomarkers and therapeutic vulnerabilities in surgical oncology & apoptosis (Kretz et al.),2020,89,article,Surgical Oncology & Apoptosis
+W100000231,10.1016/j.cell.2023.31.706,Biomarkers and therapeutic vulnerabilities in surgical oncology & apoptosis (Kretz et al.),2020,105,article,Surgical Oncology & Apoptosis
+W100000232,10.1016/j.cell.2023.85.270,Biomarkers and therapeutic vulnerabilities in surgical oncology & apoptosis (Kretz et al.),2021,140,article,Surgical Oncology & Apoptosis
+W100000233,10.1016/j.cell.2017.29.546,Biomarkers and therapeutic vulnerabilities in dermato-oncology & viral vectors (Flatz et al.),2016,110,article,Dermato-Oncology & Viral Vectors
+W100000234,10.1016/j.cell.2025.44.461,Biomarkers and therapeutic vulnerabilities in dermato-oncology & viral vectors (Flatz et al.),2016,11,article,Dermato-Oncology & Viral Vectors
+W100000235,10.1016/j.cell.2018.92.359,Biomarkers and therapeutic vulnerabilities in dermato-oncology & viral vectors (Flatz et al.),2026,104,article,Dermato-Oncology & Viral Vectors
+W100000236,10.1016/j.cell.2023.17.520,Biomarkers and therapeutic vulnerabilities in dermato-oncology & viral vectors (Flatz et al.),2014,114,article,Dermato-Oncology & Viral Vectors
+W100000237,10.1016/j.cell.2025.39.228,Biomarkers and therapeutic vulnerabilities in dermato-oncology & viral vectors (Flatz et al.),2026,43,article,Dermato-Oncology & Viral Vectors
+W100000238,10.1016/j.cell.2021.16.442,Biomarkers and therapeutic vulnerabilities in dermato-oncology & viral vectors (Flatz et al.),2016,71,article,Dermato-Oncology & Viral Vectors
+W100000239,10.1016/j.cell.2019.84.308,Biomarkers and therapeutic vulnerabilities in dermato-oncology & viral vectors (Flatz et al.),2016,148,article,Dermato-Oncology & Viral Vectors
+W100000240,10.1016/j.cell.2017.42.729,Biomarkers and therapeutic vulnerabilities in dermato-oncology & viral vectors (Flatz et al.),2021,144,article,Dermato-Oncology & Viral Vectors
+W100000241,10.1016/j.cell.2019.71.181,Biomarkers and therapeutic vulnerabilities in nephrology & single-cell genomics (Kuppe et al.),2023,31,article,Nephrology & Single-Cell Genomics
+W100000242,10.1016/j.cell.2015.67.810,Biomarkers and therapeutic vulnerabilities in nephrology & single-cell genomics (Kuppe et al.),2023,10,article,Nephrology & Single-Cell Genomics
+W100000243,10.1016/j.cell.2015.48.900,Biomarkers and therapeutic vulnerabilities in nephrology & single-cell genomics (Kuppe et al.),2024,81,article,Nephrology & Single-Cell Genomics
+W100000244,10.1016/j.cell.2022.27.479,Biomarkers and therapeutic vulnerabilities in nephrology & single-cell genomics (Kuppe et al.),2014,22,article,Nephrology & Single-Cell Genomics
+W100000245,10.1016/j.cell.2018.68.653,Biomarkers and therapeutic vulnerabilities in nephrology & single-cell genomics (Kuppe et al.),2014,66,article,Nephrology & Single-Cell Genomics
+W100000246,10.1016/j.cell.2016.51.587,Biomarkers and therapeutic vulnerabilities in nephrology & single-cell genomics (Kuppe et al.),2014,142,article,Nephrology & Single-Cell Genomics
+W100000247,10.1016/j.cell.2025.63.551,Biomarkers and therapeutic vulnerabilities in nephrology & single-cell genomics (Kuppe et al.),2024,147,article,Nephrology & Single-Cell Genomics
+W100000248,10.1016/j.cell.2021.67.892,Biomarkers and therapeutic vulnerabilities in urological oncology (Rundstedt et al.),2021,44,article,Urological Oncology
+W100000249,10.1016/j.cell.2017.97.717,Biomarkers and therapeutic vulnerabilities in urological oncology (Rundstedt et al.),2021,35,article,Urological Oncology
+W100000250,10.1016/j.cell.2019.26.744,Biomarkers and therapeutic vulnerabilities in urological oncology (Rundstedt et al.),2016,110,article,Urological Oncology
+W100000251,10.1016/j.cell.2015.73.518,Biomarkers and therapeutic vulnerabilities in urological oncology (Rundstedt et al.),2013,62,article,Urological Oncology
+W100000252,10.1016/j.cell.2015.29.132,Biomarkers and therapeutic vulnerabilities in urological oncology (Rundstedt et al.),2020,28,article,Urological Oncology
+W100000253,10.1016/j.cell.2015.52.394,Biomarkers and therapeutic vulnerabilities in cardiovascular gene editing (Lebek et al.),2019,145,article,Cardiovascular Gene Editing
+W100000254,10.1016/j.cell.2018.15.717,Biomarkers and therapeutic vulnerabilities in cardiovascular gene editing (Lebek et al.),2016,150,article,Cardiovascular Gene Editing
+W100000255,10.1016/j.cell.2024.23.999,Biomarkers and therapeutic vulnerabilities in cardiovascular gene editing (Lebek et al.),2023,26,article,Cardiovascular Gene Editing
+W100000256,10.1016/j.cell.2015.89.696,Biomarkers and therapeutic vulnerabilities in cardiovascular gene editing (Lebek et al.),2024,88,article,Cardiovascular Gene Editing
+W100000257,10.1016/j.cell.2018.16.890,Biomarkers and therapeutic vulnerabilities in neurology & neurodegeneration (Voelkle et al.),2013,64,article,Neurology & Neurodegeneration
+W100000258,10.1016/j.cell.2020.83.318,Biomarkers and therapeutic vulnerabilities in neurology & neurodegeneration (Voelkle et al.),2020,58,article,Neurology & Neurodegeneration
+W100000259,10.1016/j.cell.2019.70.761,Biomarkers and therapeutic vulnerabilities in neurology & neurodegeneration (Voelkle et al.),2015,121,article,Neurology & Neurodegeneration
+W100000260,10.1016/j.cell.2019.24.440,Biomarkers and therapeutic vulnerabilities in pediatric hematology (Beauclair et al.),2016,86,article,Pediatric Hematology
+W100000261,10.1016/j.cell.2015.20.299,Biomarkers and therapeutic vulnerabilities in pediatric hematology (Beauclair et al.),2021,73,article,Pediatric Hematology
+W100000262,10.1016/j.cell.2024.37.240,Biomarkers and therapeutic vulnerabilities in pediatric hematology (Beauclair et al.),2025,81,article,Pediatric Hematology
+W100000263,10.1016/j.cell.2023.14.770,Biomarkers and therapeutic vulnerabilities in pediatric hematology (Beauclair et al.),2014,114,article,Pediatric Hematology
+W100000264,10.1016/j.cell.2018.56.812,Biomarkers and therapeutic vulnerabilities in translational neurovascular medicine (Mayer-Suess et al.),2014,66,article,Translational Neurovascular Medicine
+W100000265,10.1016/j.cell.2023.56.599,Biomarkers and therapeutic vulnerabilities in translational neurovascular medicine (Mayer-Suess et al.),2026,117,article,Translational Neurovascular Medicine
+W100000266,10.1016/j.cell.2023.25.458,Biomarkers and therapeutic vulnerabilities in translational neurovascular medicine (Mayer-Suess et al.),2019,140,article,Translational Neurovascular Medicine
+W100000267,10.1016/j.cell.2025.89.638,Biomarkers and therapeutic vulnerabilities in translational neurovascular medicine (Mayer-Suess et al.),2018,58,article,Translational Neurovascular Medicine
+W100000268,10.1016/j.cell.2017.63.612,Biomarkers and therapeutic vulnerabilities in translational neurovascular medicine (Mayer-Suess et al.),2025,124,article,Translational Neurovascular Medicine
+W100000269,10.1016/j.cell.2025.58.736,Biomarkers and therapeutic vulnerabilities in translational neurovascular medicine (Mayer-Suess et al.),2018,102,article,Translational Neurovascular Medicine
+W100000270,10.1016/j.cell.2022.74.832,Biomarkers and therapeutic vulnerabilities in translational neurovascular medicine (Mayer-Suess et al.),2016,17,article,Translational Neurovascular Medicine
+W100000271,10.1016/j.cell.2018.49.178,Biomarkers and therapeutic vulnerabilities in translational neurovascular medicine (Mayer-Suess et al.),2015,131,article,Translational Neurovascular Medicine
+W100000272,10.1016/j.cell.2014.50.882,Biomarkers and therapeutic vulnerabilities in cancer immunotherapy (Kobold et al.),2018,130,article,Cancer Immunotherapy
+W100000273,10.1016/j.cell.2014.73.950,Biomarkers and therapeutic vulnerabilities in cancer immunotherapy (Kobold et al.),2023,128,article,Cancer Immunotherapy
+W100000274,10.1016/j.cell.2017.70.541,Biomarkers and therapeutic vulnerabilities in cancer immunotherapy (Kobold et al.),2019,51,article,Cancer Immunotherapy
+W100000275,10.1016/j.cell.2019.25.301,Biomarkers and therapeutic vulnerabilities in cancer immunotherapy (Kobold et al.),2015,93,article,Cancer Immunotherapy
+W100000276,10.1016/j.cell.2024.47.770,Biomarkers and therapeutic vulnerabilities in innate immunity & inflammasomes (Hornung et al.),2013,128,article,Innate Immunity & Inflammasomes
+W100000277,10.1016/j.cell.2020.72.678,Biomarkers and therapeutic vulnerabilities in innate immunity & inflammasomes (Hornung et al.),2024,94,article,Innate Immunity & Inflammasomes
+W100000278,10.1016/j.cell.2014.21.280,Biomarkers and therapeutic vulnerabilities in innate immunity & inflammasomes (Hornung et al.),2024,88,article,Innate Immunity & Inflammasomes
+W100000279,10.1016/j.cell.2017.97.464,Biomarkers and therapeutic vulnerabilities in innate immunity & inflammasomes (Hornung et al.),2025,53,article,Innate Immunity & Inflammasomes
+W100000280,10.1016/j.cell.2025.62.885,Biomarkers and therapeutic vulnerabilities in innate immunity & inflammasomes (Hornung et al.),2016,123,article,Innate Immunity & Inflammasomes
+W100000281,10.1016/j.cell.2020.64.515,Biomarkers and therapeutic vulnerabilities in innate immunity & inflammasomes (Hornung et al.),2021,135,article,Innate Immunity & Inflammasomes
+W100000282,10.1016/j.cell.2015.66.829,Biomarkers and therapeutic vulnerabilities in apoptosis & tumor immunology (Krammer et al.),2017,148,article,Apoptosis & Tumor Immunology
+W100000283,10.1016/j.cell.2019.68.778,Biomarkers and therapeutic vulnerabilities in apoptosis & tumor immunology (Krammer et al.),2013,139,article,Apoptosis & Tumor Immunology
+W100000284,10.1016/j.cell.2025.94.626,Biomarkers and therapeutic vulnerabilities in apoptosis & tumor immunology (Krammer et al.),2014,140,article,Apoptosis & Tumor Immunology
+W100000285,10.1016/j.cell.2015.34.344,Biomarkers and therapeutic vulnerabilities in apoptosis & tumor immunology (Krammer et al.),2013,113,article,Apoptosis & Tumor Immunology
+W100000286,10.1016/j.cell.2022.96.582,Biomarkers and therapeutic vulnerabilities in apoptosis & tumor immunology (Krammer et al.),2024,36,article,Apoptosis & Tumor Immunology
+W100000287,10.1016/j.cell.2017.26.616,Biomarkers and therapeutic vulnerabilities in apoptosis & tumor immunology (Krammer et al.),2023,133,article,Apoptosis & Tumor Immunology
+W100000288,10.1016/j.cell.2025.14.533,Biomarkers and therapeutic vulnerabilities in apoptosis & tumor immunology (Krammer et al.),2016,150,article,Apoptosis & Tumor Immunology
+W100000289,10.1016/j.cell.2024.53.580,Biomarkers and therapeutic vulnerabilities in leukemia & targeted therapies (Hallek et al.),2023,41,article,Leukemia & Targeted Therapies
+W100000290,10.1016/j.cell.2017.92.137,Biomarkers and therapeutic vulnerabilities in leukemia & targeted therapies (Hallek et al.),2019,23,article,Leukemia & Targeted Therapies
+W100000291,10.1016/j.cell.2025.45.550,Biomarkers and therapeutic vulnerabilities in leukemia & targeted therapies (Hallek et al.),2015,118,article,Leukemia & Targeted Therapies
+W100000292,10.1016/j.cell.2017.98.355,Biomarkers and therapeutic vulnerabilities in leukemia & targeted therapies (Hallek et al.),2025,74,article,Leukemia & Targeted Therapies
+W100000293,10.1016/j.cell.2025.91.408,Biomarkers and therapeutic vulnerabilities in leukemia & targeted therapies (Hallek et al.),2024,32,article,Leukemia & Targeted Therapies
+W100000294,10.1016/j.cell.2024.11.529,Biomarkers and therapeutic vulnerabilities in molecular microbiology (Albers et al.),2015,115,article,Molecular Microbiology
+W100000295,10.1016/j.cell.2022.86.534,Biomarkers and therapeutic vulnerabilities in molecular microbiology (Albers et al.),2019,102,article,Molecular Microbiology
+W100000296,10.1016/j.cell.2022.85.376,Biomarkers and therapeutic vulnerabilities in molecular microbiology (Albers et al.),2015,106,article,Molecular Microbiology
+W100000297,10.1016/j.cell.2014.14.973,Biomarkers and therapeutic vulnerabilities in chronic inflammation & liver cancer (Heikenwälder et al.),2014,79,article,Chronic Inflammation & Liver Cancer
+W100000298,10.1016/j.cell.2020.86.352,Biomarkers and therapeutic vulnerabilities in chronic inflammation & liver cancer (Heikenwälder et al.),2022,123,article,Chronic Inflammation & Liver Cancer
+W100000299,10.1016/j.cell.2017.36.367,Biomarkers and therapeutic vulnerabilities in chronic inflammation & liver cancer (Heikenwälder et al.),2014,120,article,Chronic Inflammation & Liver Cancer
+W100000300,10.1016/j.cell.2018.21.723,Biomarkers and therapeutic vulnerabilities in chronic inflammation & liver cancer (Heikenwälder et al.),2018,22,article,Chronic Inflammation & Liver Cancer
+W100000301,10.1016/j.cell.2024.73.443,Biomarkers and therapeutic vulnerabilities in chronic inflammation & liver cancer (Heikenwälder et al.),2018,28,article,Chronic Inflammation & Liver Cancer
+W100000302,10.1016/j.cell.2025.27.329,Biomarkers and therapeutic vulnerabilities in chronic inflammation & liver cancer (Heikenwälder et al.),2019,92,article,Chronic Inflammation & Liver Cancer
+W100000303,10.1016/j.cell.2015.60.257,Biomarkers and therapeutic vulnerabilities in structural biology & ubiquitin (Schulman et al.),2021,61,article,Structural Biology & Ubiquitin
+W100000304,10.1016/j.cell.2021.37.200,Biomarkers and therapeutic vulnerabilities in structural biology & ubiquitin (Schulman et al.),2017,67,article,Structural Biology & Ubiquitin
+W100000305,10.1016/j.cell.2025.69.321,Biomarkers and therapeutic vulnerabilities in structural biology & ubiquitin (Schulman et al.),2022,44,article,Structural Biology & Ubiquitin
+W100000306,10.1016/j.cell.2019.75.308,Biomarkers and therapeutic vulnerabilities in structural biology & ubiquitin (Schulman et al.),2019,62,article,Structural Biology & Ubiquitin
+W100000307,10.1016/j.cell.2025.48.615,Biomarkers and therapeutic vulnerabilities in structural biology & ubiquitin (Schulman et al.),2025,67,article,Structural Biology & Ubiquitin
+W100000308,10.1016/j.cell.2021.99.556,Biomarkers and therapeutic vulnerabilities in structural biology & ubiquitin (Schulman et al.),2022,93,article,Structural Biology & Ubiquitin
+W100000309,10.1016/j.cell.2019.60.919,Biomarkers and therapeutic vulnerabilities in structural biology & ubiquitin (Schulman et al.),2025,145,article,Structural Biology & Ubiquitin
+W100000310,10.1016/j.cell.2014.50.543,Biomarkers and therapeutic vulnerabilities in structural biology & ubiquitin (Schulman et al.),2014,141,article,Structural Biology & Ubiquitin
+W100000311,10.1016/j.cell.2019.38.846,Biomarkers and therapeutic vulnerabilities in t cell memory & adoptive transfer (Busch et al.),2023,89,article,T Cell Memory & Adoptive Transfer
+W100000312,10.1016/j.cell.2022.98.330,Biomarkers and therapeutic vulnerabilities in t cell memory & adoptive transfer (Busch et al.),2023,66,article,T Cell Memory & Adoptive Transfer
+W100000313,10.1016/j.cell.2022.85.284,Biomarkers and therapeutic vulnerabilities in t cell memory & adoptive transfer (Busch et al.),2014,49,article,T Cell Memory & Adoptive Transfer
+W100000314,10.1016/j.cell.2019.47.465,Biomarkers and therapeutic vulnerabilities in t cell memory & adoptive transfer (Busch et al.),2025,72,article,T Cell Memory & Adoptive Transfer
+W100000315,10.1016/j.cell.2016.93.252,Biomarkers and therapeutic vulnerabilities in t cell memory & adoptive transfer (Busch et al.),2019,73,article,T Cell Memory & Adoptive Transfer
+W100000316,10.1016/j.cell.2016.42.172,Biomarkers and therapeutic vulnerabilities in t cell memory & adoptive transfer (Busch et al.),2013,41,article,T Cell Memory & Adoptive Transfer
+W100000317,10.1016/j.cell.2019.17.392,Biomarkers and therapeutic vulnerabilities in rna biology & bacterial infections (Vogel et al.),2024,64,article,RNA Biology & Bacterial Infections
+W100000318,10.1016/j.cell.2016.61.889,Biomarkers and therapeutic vulnerabilities in rna biology & bacterial infections (Vogel et al.),2025,51,article,RNA Biology & Bacterial Infections
+W100000319,10.1016/j.cell.2019.70.308,Biomarkers and therapeutic vulnerabilities in rna biology & bacterial infections (Vogel et al.),2015,41,article,RNA Biology & Bacterial Infections
+W100000320,10.1016/j.cell.2024.27.586,Biomarkers and therapeutic vulnerabilities in rna biology & bacterial infections (Vogel et al.),2014,85,article,RNA Biology & Bacterial Infections
+W100000321,10.1016/j.cell.2020.83.674,Biomarkers and therapeutic vulnerabilities in rna biology & bacterial infections (Vogel et al.),2019,82,article,RNA Biology & Bacterial Infections
+W100000322,10.1016/j.cell.2020.27.919,Biomarkers and therapeutic vulnerabilities in rna biology & bacterial infections (Vogel et al.),2024,37,article,RNA Biology & Bacterial Infections
+W100000323,10.1016/j.cell.2020.21.107,Biomarkers and therapeutic vulnerabilities in rna biology & bacterial infections (Vogel et al.),2022,88,article,RNA Biology & Bacterial Infections
+W100000324,10.1016/j.cell.2017.45.233,Biomarkers and therapeutic vulnerabilities in rna biology & bacterial infections (Vogel et al.),2018,108,article,RNA Biology & Bacterial Infections
+W100000325,10.1016/j.cell.2025.95.730,Biomarkers and therapeutic vulnerabilities in innate immunity & receptor signaling (Latz et al.),2013,81,article,Innate Immunity & Receptor Signaling
+W100000326,10.1016/j.cell.2018.67.513,Biomarkers and therapeutic vulnerabilities in innate immunity & receptor signaling (Latz et al.),2016,90,article,Innate Immunity & Receptor Signaling
+W100000327,10.1016/j.cell.2023.85.728,Biomarkers and therapeutic vulnerabilities in innate immunity & receptor signaling (Latz et al.),2013,88,article,Innate Immunity & Receptor Signaling
+W100000328,10.1016/j.cell.2021.21.669,Biomarkers and therapeutic vulnerabilities in innate immunity & receptor signaling (Latz et al.),2016,84,article,Innate Immunity & Receptor Signaling
+W100000329,10.1016/j.cell.2020.32.539,Biomarkers and therapeutic vulnerabilities in innate immunity & receptor signaling (Latz et al.),2015,86,article,Innate Immunity & Receptor Signaling
+W100000330,10.1016/j.cell.2014.42.937,Biomarkers and therapeutic vulnerabilities in gastroenterology & ibd (Siegmund et al.),2018,35,article,Gastroenterology & IBD
+W100000331,10.1016/j.cell.2024.48.472,Biomarkers and therapeutic vulnerabilities in gastroenterology & ibd (Siegmund et al.),2014,108,article,Gastroenterology & IBD
+W100000332,10.1016/j.cell.2016.82.758,Biomarkers and therapeutic vulnerabilities in gastroenterology & ibd (Siegmund et al.),2019,16,article,Gastroenterology & IBD
+W100000333,10.1016/j.cell.2023.49.953,Biomarkers and therapeutic vulnerabilities in gastroenterology & ibd (Siegmund et al.),2017,106,article,Gastroenterology & IBD
+W100000334,10.1016/j.cell.2024.33.969,Biomarkers and therapeutic vulnerabilities in gastroenterology & ibd (Siegmund et al.),2022,96,article,Gastroenterology & IBD
+W100000335,10.1016/j.cell.2014.87.312,Biomarkers and therapeutic vulnerabilities in gastroenterology & ibd (Siegmund et al.),2019,11,article,Gastroenterology & IBD
+W100000336,10.1016/j.cell.2014.94.338,Biomarkers and therapeutic vulnerabilities in gastroenterology & ibd (Siegmund et al.),2026,61,article,Gastroenterology & IBD
+W100000337,10.1016/j.cell.2020.38.880,Biomarkers and therapeutic vulnerabilities in gastroenterology & ibd (Siegmund et al.),2025,121,article,Gastroenterology & IBD
+W100000338,10.1016/j.cell.2024.87.206,Biomarkers and therapeutic vulnerabilities in viral hepatitis & cd8 t-cells (Thimme et al.),2026,91,article,Viral Hepatitis & CD8 T-Cells
+W100000339,10.1016/j.cell.2014.81.166,Biomarkers and therapeutic vulnerabilities in viral hepatitis & cd8 t-cells (Thimme et al.),2015,57,article,Viral Hepatitis & CD8 T-Cells
+W100000340,10.1016/j.cell.2017.48.548,Biomarkers and therapeutic vulnerabilities in viral hepatitis & cd8 t-cells (Thimme et al.),2023,76,article,Viral Hepatitis & CD8 T-Cells
+W100000341,10.1016/j.cell.2021.71.857,Biomarkers and therapeutic vulnerabilities in viral hepatitis & cd8 t-cells (Thimme et al.),2026,122,article,Viral Hepatitis & CD8 T-Cells
+W100000342,10.1016/j.cell.2025.80.654,Biomarkers and therapeutic vulnerabilities in viral hepatitis & cd8 t-cells (Thimme et al.),2023,39,article,Viral Hepatitis & CD8 T-Cells
+W100000343,10.1016/j.cell.2014.49.317,Biomarkers and therapeutic vulnerabilities in viral hepatitis & cd8 t-cells (Thimme et al.),2014,73,article,Viral Hepatitis & CD8 T-Cells
+W100000344,10.1016/j.cell.2021.80.880,Biomarkers and therapeutic vulnerabilities in viral hepatitis & cd8 t-cells (Thimme et al.),2014,61,article,Viral Hepatitis & CD8 T-Cells
+W100000345,10.1016/j.cell.2019.63.211,Biomarkers and therapeutic vulnerabilities in viral hepatitis & cd8 t-cells (Thimme et al.),2023,95,article,Viral Hepatitis & CD8 T-Cells
+W100000346,10.1016/j.cell.2019.57.347,Biomarkers and therapeutic vulnerabilities in oncology & functional genomics (Zender et al.),2025,90,article,Oncology & Functional Genomics
+W100000347,10.1016/j.cell.2020.68.693,Biomarkers and therapeutic vulnerabilities in oncology & functional genomics (Zender et al.),2016,117,article,Oncology & Functional Genomics
+W100000348,10.1016/j.cell.2023.13.916,Biomarkers and therapeutic vulnerabilities in oncology & functional genomics (Zender et al.),2026,97,article,Oncology & Functional Genomics
+W100000349,10.1016/j.cell.2025.84.567,Biomarkers and therapeutic vulnerabilities in oncology & functional genomics (Zender et al.),2016,112,article,Oncology & Functional Genomics

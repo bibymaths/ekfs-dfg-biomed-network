@@ -1,0 +1,22 @@
+---
+title: "03: Standalone EKFS Biomedical Funding & Coauthorship Network"
+author: "Network Science Team"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+# 1. Scope & Objective
+Analyzes the internal coauthorship and funding structure of researchers supported by the Else Kröner-Fresenius-Stiftung across its diverse scientific funding lines (Memorial Stipendien, Forschungskollegs, Schlüsselprojekte, First-in-HUMAN, Translationale Projekte).
+
+# 2. Network Construction & Metrics
+```{r ekfs_network, eval=FALSE}
+source("../R/build_coauthorship.R")
+source("../R/metrics.R")
+source("../R/communities.R")
+
+# Subsets to EKFS cohort and calculates centrality and Louvain community structures
+```
