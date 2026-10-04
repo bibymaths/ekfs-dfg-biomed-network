@@ -1,5 +1,114 @@
-.Rproj.user
+# -----------------------------
+# Python
+# -----------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Testing / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+
+# Type checking / linting / tooling
+.mypy_cache/
+.pyright/
+.ruff_cache/
+.dmypy.json
+dmypy.json
+
+# Jupyter
+.ipynb_checkpoints/
+
+# -----------------------------
+# R / RStudio
+# -----------------------------
+.Rproj.user/
 .Rhistory
 .RData
 .Ruserdata
+*.Rproj
+
+# renv local/cache files
+renv/library/
+renv/staging/
+renv/python/
+
+# -----------------------------
+# IDEs / Editors
+# -----------------------------
 .idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.settings/
+.classpath
+
+# -----------------------------
+# Operating system files
+# -----------------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+
+Thumbs.db
+Desktop.ini
+
+# -----------------------------
+# Logs / temporary files
+# -----------------------------
+*.log
+*.tmp
+*.temp
+*.bak
+*.cache
+
+tmp/
+temp/
+
+# -----------------------------
+# Environment / secrets
+# -----------------------------
+.env
+.env.*
+!.env.example
+
+*.pem
+*.key
+
+# -----------------------------
+# Local databases
+# -----------------------------
+*.sqlite
+*.sqlite3
+*.db
+
+# -----------------------------
+# Generated documentation
+# -----------------------------
+site/
+docs/_build/
+
+# -----------------------------
+# Miscellaneous
+# -----------------------------
+*.orig
