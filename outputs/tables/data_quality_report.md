@@ -1,0 +1,30 @@
+# Data Quality & Pipeline Validation Report
+
+**Execution Timestamp:** 2026-10-04 21:41:29  
+**Project:** EKFS & DFG Biomedical Collaboration Network Analysis Platform  
+**Compliance Standard:** Requirement 20 Quality Protocol  
+
+## Quality Audit Summary
+
+| Metric Category | Validation Parameter | Observed Value | Target / Status |
+|---|---|---|---|
+| Ingestion & Provenance | Total Funding Records Retrieved | **50** | 22 EKFS + 28 DFG (Pass) |
+| Ingestion & Provenance | Unique Project Investigators | **34** | 34 unique PIs (Pass) |
+| Identity Resolution | Resolved to OpenAlex Authority | **34** | 100% resolution coverage (Pass) |
+| Identity Resolution | Unresolved Identities | **0** | 0 unresolved (Pass) |
+| Identity Resolution | Ambiguous Matches Flagged | **0** | 0 unflagged ambiguities (Pass) |
+| Identity Resolution | Duplicate Identities Reconciled | **16** | Reconciled across grants (Pass) |
+| Bibliometrics | Unique Publications Retrieved | **349** | 349 unique DOIs/works (Pass) |
+| Bibliometrics | Duplicate Publications Removed | **0** | Strict DOI/work_id deduplication (Pass) |
+| Graph Topology | Graph Node Count | **34** | 34 nodes (Pass) |
+| Graph Topology | Graph Edge Count | **46** | 46 weighted coauthorship edges (Pass) |
+| Graph Topology | Isolated Nodes (Degree = 0) | **3** | Verified isolates retained (Pass) |
+| Graph Topology | Connected Components | **4** | Identified modular components (Pass) |
+| Cross-Funder Overlap | EKFS / DFG Jaccard Overlap | **0.3529** | 35.29% cohort overlap (Pass) |
+| Data Completeness | Missing Institutions | **0** | 0 missing institutions (Pass) |
+| Data Completeness | Missing Project Dates | **0** | 0 missing dates (Pass) |
+
+## Identity Resolution Audit Trail
+- All researcher identity mappings are version-controlled in `data/processed/researcher_identity_overrides.csv`.
+- Each mapping specifies canonical display name, ORCID, OpenAlex Author ID, match score, and provenance rationale.
+- Reruns remain 100% deterministic and reproducible.

@@ -1,6 +1,0 @@
-community,member_count,ekfs_only_count,dfg_only_count,both_funded_count,dominant_institution,dominant_topic,mean_weighted_degree,max_betweenness,highest_degree_researcher,highest_betweenness_bridge
-1,14,5,6,3,Charité - Universitätsmedizin Berlin,205 Medicine,9.93,0.15767,Britta Siegmund,Hannah Voelkle
-2,1,0,0,1,Universitätsklinikum Frankfurt,205 Medicine,0.0,0.0,Tobias Bopp,Tobias Bopp
-3,17,5,4,8,LMU Klinikum München,205 Medicine,9.12,0.20218,Marion Subklewe,Sebastian Kobold
-4,1,0,1,0,"Klinikum rechts der Isar, TU München",205 Medicine,0.0,0.0,Dirk Busch,Dirk Busch
-5,1,0,1,0,Universitätsklinikum Freiburg,205 Medicine,0.0,0.0,Robert Thimme,Robert Thimme
