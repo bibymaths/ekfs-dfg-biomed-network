@@ -14,7 +14,7 @@ The central question is:
 
 ```mermaid 
     flowchart TD
-    A[Authoritative Databases<br/>EKFS Project Database<br/>DFG GEPRIS]
+    A[Databases<br/>EKFS Project Database<br/>DFG GEPRIS]
     B[Ingestion & Normalisation]
     C[Identity Disambiguation<br/>OpenAlex + Manual Overrides]
     D[Relational Schema<br/>Researchers · Projects · Institutions · Publications]
@@ -44,7 +44,7 @@ The central question is:
 
 ## What It Does
 
-The pipeline combines authoritative EKFS and DFG funding records with OpenAlex bibliographic metadata to:
+The pipeline combines EKFS and DFG funding records with OpenAlex bibliographic metadata to:
 
 - normalize researchers, grants, institutions, and publications;
 - resolve researcher identities using multiple signals and manual overrides;

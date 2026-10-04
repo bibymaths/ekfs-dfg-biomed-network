@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Authoritative Data Generator for EKFS and DFG Biomedical Research Landscape.
+Data Generator for EKFS and DFG Biomedical Research Landscape.
 Creates realistic, rigorously structured snapshots representing German biomedical researchers,
 grants, publications, and institutional affiliations across EKFS and DFG GEPRIS.
 """
@@ -429,7 +429,7 @@ with open(
                 r["clean"],
                 r["oa_id"],
                 r["orcid"],
-                "Verified authoritative record",
+                "Verified record",
             ]
         )
 

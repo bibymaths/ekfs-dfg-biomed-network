@@ -40,7 +40,7 @@ with open(config_path, "r", encoding="utf-8") as f:
 print("Loaded configuration successfully.")
 
 # ------------------------------------------------------------------------------
-# 2. Ingest Authoritative Datasets
+# 2. Ingest Datasets
 # ------------------------------------------------------------------------------
 ekfs_raw = pd.read_csv("data/raw/ekfs/ekfs_projects_snapshot.csv")
 dfg_raw = pd.read_csv("data/raw/dfg/dfg_gepris_snapshot.csv")
